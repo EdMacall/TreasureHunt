@@ -9,7 +9,7 @@ namespace TreasureHunt.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Hunt { get; set; }
+        public Hunt Hunt { get; set; }
         public string Story { get; set; }
         public string Picture { get; set; }
         public int FirstClueId { get; set; }
