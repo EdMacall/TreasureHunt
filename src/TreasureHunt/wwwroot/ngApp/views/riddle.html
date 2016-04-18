@@ -1,0 +1,8 @@
+﻿<h2>Home</h2>
+<p>
+    {{controller.message}}
+</p>
+
+<p ng-repeat="riddle in controller.riddles">
+    {{riddle.clue}} - {{riddle.answer}} - {{riddle.IsAnswered}}
+</p>
