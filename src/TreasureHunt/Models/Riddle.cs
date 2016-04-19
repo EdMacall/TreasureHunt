@@ -12,11 +12,6 @@ namespace TreasureHunt.Models
         public string Clue { get; set; }
         public string Answer { get; set; }
         public bool IsAnswered { get; set; }
-        public int NextClueId { get; set; }
-
-        public int TeamId { get; set; }
-        [ForeignKey("TeamId")]
-        public Team Team { get; set; }
 
     }
 }

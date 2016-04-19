@@ -13,28 +13,34 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.HomeController,
                 controllerAs: 'controller'
             })
-            .state('team', {
-                url: '/team',
-                templateUrl: '/ngApp/views/team.html',
-                controller: TreasureHunt.Controllers.TeamController,
+            .state('secret', {
+                url: '/secret',
+                templateUrl: '/ngApp/views/secret.html',
+                controller: TreasureHunt.Controllers.SecretController,
                 controllerAs: 'controller'
             })
-            .state('hunt', {
-                url: '/hunt',
-                templateUrl: '/ngApp/views/hunt.html',
-                controller: TreasureHunt.Controllers.HuntController,
+            .state('login', {
+                url: '/login',
+                templateUrl: '/ngApp/views/login.html',
+                controller: TreasureHunt.Controllers.LoginController,
                 controllerAs: 'controller'
             })
-            .state('huntteams', {
-                url: '/huntteams',
-                templateUrl: '/ngApp/views/huntteams.html',
-                controller: TreasureHunt.Controllers.HuntTeamsController,
+            .state('register', {
+                url: '/register',
+                templateUrl: '/ngApp/views/register.html',
+                controller: TreasureHunt.Controllers.RegisterController,
                 controllerAs: 'controller'
             })
-            .state('riddle', {
-                url: '/riddle',
-                templateUrl: '/ngApp/views/riddle.html',
-                controller: TreasureHunt.Controllers.RiddleController,
+            .state('externalRegister', {
+                url: '/externalRegister',
+                templateUrl: '/ngApp/views/externalRegister.html',
+                controller: TreasureHunt.Controllers.ExternalRegisterController,
+                controllerAs: 'controller'
+            }) 
+            .state('about', {
+                url: '/about',
+                templateUrl: '/ngApp/views/about.html',
+                controller: TreasureHunt.Controllers.AboutController,
                 controllerAs: 'controller'
             })
             .state('notFound', {
@@ -47,6 +53,31 @@ namespace TreasureHunt {
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
+    });
+
+    
+    angular.module('TreasureHunt').factory('authInterceptor', (
+        $q: ng.IQService,
+        $window: ng.IWindowService,
+        $location: ng.ILocationService
+    ) =>
+        ({
+            request: function (config) {
+                config.headers = config.headers || {};
+                config.headers['X-Requested-With'] = 'XMLHttpRequest';
+                return config;
+            },
+            responseError: function (rejection) {
+                if (rejection.status === 401 || rejection.status === 403) {
+                    $location.path('/login');
+                }
+                return $q.reject(rejection);
+            }
+        })
+    );
+
+    angular.module('TreasureHunt').config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
     });
 
     

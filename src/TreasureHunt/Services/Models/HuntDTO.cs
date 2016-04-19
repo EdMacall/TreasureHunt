@@ -8,6 +8,5 @@ namespace TreasureHunt.Services.Models
     public class HuntDTO
     {
         public string Name { get; set; }
-        // public string[] TeamNames { get; set; }
     }
 }

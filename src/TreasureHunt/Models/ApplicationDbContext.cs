@@ -17,8 +17,8 @@ namespace TreasureHunt.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Team> Teams { get; set; }
         public DbSet<Hunt> Hunts { get; set; }
+        public DbSet<Team> Teams { get; set; }
         public DbSet<Riddle> Riddles { get; set; }
     }
 }

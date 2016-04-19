@@ -5,11 +5,20 @@ namespace TreasureHunt.Controllers {
     }
 
 
+    export class SecretController {
+        public secrets;
+
+        constructor($http: ng.IHttpService) {
+            $http.get('/api/secrets').then((results) => {
+                this.secrets = results.data;
+            });
+        }
+    }
+
 
     export class AboutController {
         public message = 'Hello from the about page!';
     }
-
 
     export class TeamController {
         public message = 'Hello from the Team page!';

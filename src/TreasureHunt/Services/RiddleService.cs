@@ -16,7 +16,7 @@ namespace TreasureHunt.Services
             _riddlerepository = riddlerepository;
         }
 
-        public ICollection<RiddleDTO>GetRiddleList()
+        public ICollection<RiddleDTO> GetRiddleList()
         {
             return (from r in _riddlerepository.List()
                     select new RiddleDTO

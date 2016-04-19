@@ -62,6 +62,13 @@ namespace TreasureHunt
                     new CamelCasePropertyNamesContractResolver();
             });
 
+
+            // add security policies
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
+            });
+
             // Repository
             services.AddScoped<TeamRepository>();
             services.AddScoped<HuntRepository>();
@@ -118,6 +125,9 @@ namespace TreasureHunt
                 );
             });
 
+
+            // initialize sample data
+            SampleData.Initialize(app.ApplicationServices).Wait();
 
         }
 
