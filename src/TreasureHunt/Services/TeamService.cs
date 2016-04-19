@@ -22,7 +22,7 @@ namespace TreasureHunt.Services
                     select new TeamDTO
                     {
                         Name = t.Name,
-                        Hunt = t.Hunt,
+                        HuntId = t.HuntId,
                         Story = t.Story,
                         NumRiddles = t.NumRiddles
                     }).ToList();

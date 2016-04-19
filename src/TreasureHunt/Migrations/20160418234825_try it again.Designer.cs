@@ -8,9 +8,10 @@ using TreasureHunt.Models;
 namespace TreasureHunt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160418234825_try it again")]
+    partial class tryitagain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -181,8 +182,6 @@ namespace TreasureHunt.Migrations
 
                     b.Property<int>("FirstClueId");
 
-                    b.Property<int?>("HuntId");
-
                     b.Property<string>("Name");
 
                     b.Property<int>("NumRiddles");
@@ -231,13 +230,6 @@ namespace TreasureHunt.Migrations
                     b.HasOne("TreasureHunt.Models.Team")
                         .WithMany()
                         .HasForeignKey("TeamId");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.Team", b =>
-                {
-                    b.HasOne("TreasureHunt.Models.Hunt")
-                        .WithMany()
-                        .HasForeignKey("HuntId");
                 });
         }
     }

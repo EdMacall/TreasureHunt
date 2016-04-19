@@ -37,6 +37,19 @@ namespace TreasureHunt.Controllers {
     }
 
 
+    export class HuntTeamsController {
+        public message = 'Hello from the Hunt Teams page!';
+
+        public hunts;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/hunts')
+                .then((response) => { this.hunts = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+
     export class RiddleController {
         public message = 'Hello from the Riddle page!';
 

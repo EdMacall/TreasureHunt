@@ -8,7 +8,7 @@ namespace TreasureHunt.Services.Models
     public class TeamDTO
     {
         public string Name { get; set; }
-        public int Hunt { get; set; }
+        public int? HuntId { get; set; }
         // public string Hunt { get; set; }
         public string Story { get; set; }
         // public string Picture { get; set; }
