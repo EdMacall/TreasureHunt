@@ -22,8 +22,8 @@ namespace TreasureHunt.Services
                     select new TeamDTO
                     {
                         Name = t.Name,
-                        ApplicationUsers = t.ApplicationUsers,
-                        Riddles = t.Riddles
+                        // ApplicationUsers = t.ApplicationUsers,
+                        // Riddles = t.Riddles
                     }).ToList();
         }
     }
