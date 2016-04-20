@@ -49,6 +49,18 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.HuntController,
                 controllerAs: 'controller'
             })
+            .state('addhunt', {
+                url: '/addhunt',
+                templateUrl: '/ngApp/views/addhunt.html',
+                controller: TreasureHunt.Controllers.AddHuntController,
+                controllerAs: 'controller'
+            })
+            .state('huntvieww', {
+                url: '/huntview/:id',
+                templateUrl: '/ngApp/views/huntview.html',
+                controller: TreasureHunt.Controllers.HuntViewController,
+                controllerAs: 'controller'
+            })
             .state('huntteams', {
                 url: '/huntteams',
                 templateUrl: '/ngApp/views/huntteams.html',
