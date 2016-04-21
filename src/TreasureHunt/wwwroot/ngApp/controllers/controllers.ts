@@ -5,17 +5,6 @@ namespace TreasureHunt.Controllers {
     }
 
 
-    export class SecretController {
-        public secrets;
-
-        constructor($http: ng.IHttpService) {
-            $http.get('/api/secrets').then((results) => {
-                this.secrets = results.data;
-            });
-        }
-    }
-
-
     export class AboutController {
         public message = 'Hello from the about page!';
     }
@@ -158,6 +147,19 @@ namespace TreasureHunt.Controllers {
             $http.get('/api/riddles')
                 .then((response) => { this.riddles = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+
+    export class SecretController {
+        public message = 'Hello from the Secret page!';
+
+        public secrets;
+
+        constructor($http: ng.IHttpService) {
+            $http.get('/api/secrets').then((results) => {
+                this.secrets = results.data;
+            });
         }
     }
 
