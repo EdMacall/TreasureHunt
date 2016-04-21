@@ -26,20 +26,34 @@ namespace TreasureHunt.Services
                     }).ToList();
         }
 
-        // public ICollection<HuntTeamDTO> GetHuntTeamList(int id)
+        public ICollection<HuntTeamDTO> GetHuntTeamList(int id)
+        { 
+        /*
         public ICollection<TeamDTO> GetHuntTeamList(int id)
         {
             Hunt hunt = (from ht in _huntteamrepository.List()
                          where ht.HuntId == id
                          select ht.Hunt).FirstOrDefault();
             return hunt.Teams.Cast<TeamDTO>().ToList();
-            // return  (from ht in _huntteamrepository.List()
-            // where ht.HuntId == id
-            // select new HuntTeamDTO
-            //{
-            //    TeamName = ht.Team.Name
+            */
+            return  (from ht in _huntteamrepository.List()
+            where ht.HuntId == id
+            select new HuntTeamDTO
+            {
+                TeamName = ht.Team.Name
 
-            //}).ToList();
+            }).ToList();
+        }
+
+        public void AddHuntTeam(int huntId, int teamId)
+        {
+            HuntTeam huntteam = new HuntTeam
+            {
+                HuntId = huntId,
+                TeamId = teamId
+            };
+            _huntteamrepository.Add(huntteam);
+            _huntteamrepository.SaveChanges();
         }
     }
 }

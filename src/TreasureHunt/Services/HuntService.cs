@@ -22,6 +22,7 @@ namespace TreasureHunt.Services
             return (from h in _huntrepository.List()
                     select new HuntDTO
                     {
+                        Id = h.Id,
                         Name = h.Name
                     }).ToList();
         }
@@ -36,10 +37,15 @@ namespace TreasureHunt.Services
             return new HuntDTO {Name = hunt.Name};
         }
 
-        public void AddHuntList(Hunt hunt)
+        public void AddHuntList(HuntDTO huntdto)
         {
+            Hunt hunt = new Hunt
+            {
+                Name = huntdto.Name
+            };
             _huntrepository.Add(hunt);
             _huntrepository.SaveChanges();
         }
+
     }
 }

@@ -10,7 +10,7 @@ using TreasureHunt.Services.Models;
 namespace TreasureHunt.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/huntteams")]
     public class HuntTeamsController : Controller
     {
         private HuntTeamService _huntteamservice;
@@ -36,8 +36,8 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            // ICollection<HuntTeamDTO> huntteamdto = _huntteamservice.GetHuntTeamList(id);
-            ICollection<TeamDTO> huntteamdto = _huntteamservice.GetHuntTeamList(id);
+            ICollection<HuntTeamDTO> huntteamdto = _huntteamservice.GetHuntTeamList(id);
+            // ICollection<TeamDTO> huntteamdto = _huntteamservice.GetHuntTeamList(id);
 
             // Hunt hunt = _huntservice.Hunts.Single(m => m.Id == id);
 
