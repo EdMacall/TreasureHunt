@@ -72,10 +72,12 @@ namespace TreasureHunt
             // Repository
             services.AddScoped<TeamRepository>();
             services.AddScoped<HuntRepository>();
+            services.AddScoped<HuntTeamRepository>();
             services.AddScoped<RiddleRepository>();
             // Services
             services.AddScoped<TeamService>();
             services.AddScoped<HuntService>();
+            services.AddScoped<HuntTeamService>();
             services.AddScoped<RiddleService>();
         }
 

@@ -49,11 +49,11 @@ namespace TreasureHunt.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Hunt hunt)
+        public IActionResult Post([FromBody]HuntDTO huntdto)
         {
             if (ModelState.IsValid)
             {
-                _huntservice.AddHuntList(hunt);
+                _huntservice.AddHuntList(huntdto);
 
                 return Ok();
             }

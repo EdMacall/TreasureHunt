@@ -7,6 +7,7 @@ namespace TreasureHunt.Services.Models
 {
     public class HuntDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

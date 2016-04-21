@@ -4,6 +4,17 @@
 </p>
 
 <p ng-repeat="hunt in controller.hunts">
-    {{hunt.name}}
-    <a href="/huntview/1">{{hunt.name}}</a> 
+    <a href="/huntview/{{hunt.id}}">{{hunt.name}}</a> 
 </p>
+
+<div>
+    <form ng-submit="controller.saveHunt()">
+        <div>
+            <div>
+
+            </div>
+            <input type="text" ng-model="controller.huntadd.name" placeholder="Name of Treasure Hunt" />
+        </div>
+        <input type="submit" value="Add Treasure Hunt" />
+    </form>
+</div>

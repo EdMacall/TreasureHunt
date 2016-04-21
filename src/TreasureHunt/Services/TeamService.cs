@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TreasureHunt.Infrastructure;
+using TreasureHunt.Models;
 using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
@@ -10,10 +11,12 @@ namespace TreasureHunt.Services
     public class TeamService
     {
         private TeamRepository _teamrepository;
+        private HuntTeamRepository _huntTeamRepo;
 
-        public TeamService(TeamRepository teamrepository)
+        public TeamService(TeamRepository teamrepository, HuntTeamRepository huntTeamRepo)
         {
             _teamrepository = teamrepository;
+            _huntTeamRepo = huntTeamRepo;
         }
 
         public ICollection<TeamDTO> GetTeamList()
@@ -25,6 +28,41 @@ namespace TreasureHunt.Services
                         // ApplicationUsers = t.ApplicationUsers,
                         // Riddles = t.Riddles
                     }).ToList();
+        }
+
+        public void AddTeamList(TeamDTO teamdto)
+        {
+            Team team = new Team
+            {
+                Name = teamdto.Name
+            };
+
+            _teamrepository.Add(team);
+            _teamrepository.SaveChanges();
+
+        }
+
+        public TeamDTO AddHuntTeamList(int huntId, TeamDTO teamdto)
+        {
+
+            Team team = new Team
+            {
+                Name = teamdto.Name
+            };
+
+            _teamrepository.Add(team);
+            _teamrepository.SaveChanges();
+
+            _huntTeamRepo.Add(new HuntTeam()
+            {
+                HuntId = huntId,
+                TeamId = team.Id
+            });
+            _huntTeamRepo.SaveChanges();
+
+            return new TeamDTO() {
+                Name = team.Name
+            };
         }
     }
 }

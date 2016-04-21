@@ -8,5 +8,17 @@
 </p>
 
 <p ng-repeat="team in controller.teams">
-    {{team.name}}
+    {{team.teamName}}
 </p>
+
+<div>
+    <form ng-submit="controller.saveTeam()">
+        <div>
+            <div>
+
+            </div>
+            <input type="text" ng-model="controller.teamadd.name" placeholder="Name of Team on Hunt" />
+        </div>
+        <input type="submit" value="Add Team" />
+    </form>
+</div>
