@@ -1,16 +1,11 @@
 
 <link href="../../css/site.css" rel="stylesheet" />
-    
+</br>
+</br>
+</br>
+</br>
 
-
-    <legend>Login</legend>
-    <ul>
-        <li ng-repeat="error in controller.validationMessages">
-            {{error}}
-        </li>
-    </ul>
-
-    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <div class="containerr">
         <div class="row">
@@ -26,6 +21,11 @@
                             <span class="group-btn">
                                 <input class="btn btn-primary btn-md" type="submit" value="Login" />      <a href="/register">Register</a>
                             </span>
+                            <ul>
+                                <li ng-repeat="error in controller.validationMessages">
+                                    {{error}}
+                                </li>
+                            </ul>
                     </form>
                 </div>
             </div>
