@@ -38,6 +38,7 @@ namespace TreasureHunt.Controllers {
         }
 
         public saveHunt(): void {
+            console.log("I ran");
             this.$http.post('/api/hunts', this.huntadd)
                 .then((response) => {
                     // do we even need this anymore?

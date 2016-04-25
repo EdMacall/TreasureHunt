@@ -4946,10 +4946,10 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #337ab7;
-  background-color: #fff;
+  color: red;
+  background-color: red;
 }
-.list-group-item > .badge {
+.list-group-item > .badge list-group-item
   float: right;
 }
 .list-group-item > .badge + .badge {
