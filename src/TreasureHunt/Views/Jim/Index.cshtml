@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Jim_042416">
+<head>
+    <title>Jim_042416</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" id="logo">Fox Hunt</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/" class="currnet">Home</a></li>
+                <li><a href="/nfl">Hunts</a></li>
+                <li><a href="/">Teams</a></li>
+                <li><a href="/">Members</a></li>
+                <li><a href="/">Cats</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">SignUp</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ui-view></ui-view>
+
+    <footer>
+        <section>
+            <h3><b>Fox Hunt</b></h3>
+            <p>
+                <b>713-555-5555</b><br /><br />
+                1700 Polk Avenue<br />
+                Houston, TX 77478<br />
+                contact@estadio.com
+            </p>
+        </section>
+        <section>
+            <h3>Connect With Us!</h3>
+            <ul class="social">
+                <li><a href="#"><img src="http://www.w3newbie.com/wp-content/uploads/facebook1.png" /></a></li>
+                <li><a href="#"><img src="http://www.w3newbie.com/wp-content/uploads/googleplus.png" /></a></li>
+                <li><a href="#"><img src="http://www.w3newbie.com/wp-content/uploads/twitter1.png" /></a></li>
+                <li><a href="#"><img src="http://www.w3newbie.com/wp-content/uploads/youtube1.png" /></a></li>
+            </ul>
+        </section>
+        <section>
+            <img src="https://pbs.twimg.com/profile_images/683320254844551168/gfMMGxbd.png" id="gear"/>
+        </section>
+    </footer>
+    @*<footer class="second">
+            <p>©Copyright - The Gym, 2014</p>
+        </footer>*@
+
+
+
+
+    <!-- Library Files -->
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-touch/angular-touch.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- App Files-->
+    <script src="~/ngapp/app.js"></script>
+    <script src="~/ngapp/controllers/controllers.js"></script>
+    <script src="~/ngapp/services/services.js"></script>
+
+
+</body>
+</html>
