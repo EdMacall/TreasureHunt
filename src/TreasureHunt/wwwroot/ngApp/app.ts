@@ -79,6 +79,12 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.AboutController,
                 controllerAs: 'controller'
             })
+            .state('point', {
+                url: '/point',
+                templateUrl: '/ngApp/views/point.html',
+                controller: TreasureHunt.Controllers.PointController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
