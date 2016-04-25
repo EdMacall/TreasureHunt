@@ -1,24 +1,24 @@
 ﻿<h2>Home</h2>
-<p>
+<h2>
     {{controller.message}}
-</p>
+</h2>
 
-<p >
+<h3 >
     {{controller.hunt.name}}
-</p>
+</h3>
 
-<p ng-repeat="team in controller.teams">
+<h4 ng-repeat="team in controller.teams">
     {{team.teamName}}
-</p>
-
-<div>
+</h4>
+<div class="row">
     <form ng-submit="controller.saveTeam()">
         <div>
             <div>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="controller.teamadd.name" placeholder="Name of Team on Hunt" />
+                </div>
+                <button type="submit" class="btn btn-warning" value="Add Treasure Hunt">Add </button>
 
-            </div>
-            <input type="text" ng-model="controller.teamadd.name" placeholder="Name of Team on Hunt" />
-        </div>
-        <input type="submit" value="Add Team" />
     </form>
 </div>
+
