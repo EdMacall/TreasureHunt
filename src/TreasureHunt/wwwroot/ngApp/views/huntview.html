@@ -1,19 +1,19 @@
 ﻿<h2>Home</h2>
 <h2>
-    {{controller.message}}
+    <!--{{controller.message}}-->
 </h2>
 
-<h3 >
+<h3>
     {{controller.hunt.name}}
 </h3>
 
-<h4 ng-repeat="team in controller.teams">
+<div ng-repeat="team in controller.teams">
     {{team.teamName}}
-</h4>
+</div>
 <div class="row">
     <form ng-submit="controller.saveTeam()">
-        <div>
-            <div>
+        <!-- <div>
+        <div> -->
                 <div class="col-xs-3">
                     <input type="text" class="form-control"  ng-model="controller.teamadd.name" placeholder="Name of Team on Hunt" />
                 </div>

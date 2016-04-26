@@ -4,5 +4,17 @@
 </p>
 
 <p ng-repeat="riddle in controller.riddles">
-    {{riddle.clue}} - {{riddle.answer}} - {{riddle.IsAnswered}}
+    {{riddle.clue}} - {{riddle.answer}} - {{riddle.points}}
 </p>
+
+<div>
+    <form ng-submit="controller.saveRiddle()">
+        <div>
+            <input type="text" ng-model="controller.riddleAdd.clue" placeholder="Clue" />
+            <input type="text" ng-model="controller.riddleAdd.answer" placeholder="Answer" />
+            <input type="text" ng-model="controller.riddleAdd.points" placeholder="Points" />
+          
+        </div>
+        <input type="submit" value="Add Riddle" />
+    </form>
+</div>

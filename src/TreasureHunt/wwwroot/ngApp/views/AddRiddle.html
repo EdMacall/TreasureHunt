@@ -1,5 +1,12 @@
-﻿<div>
-    <form ng-submit="controller.saveHunt()">
+﻿<ul  ng-repeat="riddle in controller.riddles" >
+  
+    <li>
+        {{riddle.clue}}
+    </li>
+</ul>
+
+<div>
+    <form ng-submit="controller.saveRiddle()">
         <div>
             <div>
 
