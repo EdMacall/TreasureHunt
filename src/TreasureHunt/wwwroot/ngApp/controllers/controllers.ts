@@ -176,5 +176,16 @@ namespace TreasureHunt.Controllers {
             });
         }
     }
+    // added 4/25/16    
+    export class PointController {
+        public points;
+
+        constructor(public $http: ng.IHttpService) {
+            this.$http.get<any>('/api/Points')
+                .then((response) => {
+                    this.points = response.data;
+                });             
+        }
+    }
 
 }
