@@ -1,0 +1,16 @@
+﻿<p ng-repeat="riddle in controller.riddle">
+    {{riddle.clue}}
+
+</p>
+
+<div>
+    <form ng-submit="controller.submitAnswer()">
+        <div>
+            <div>
+
+            </div>
+            <input type="text" ng-model="controller.riddle.answer" placeholder="Answer"/>
+        </div>
+        <input type="submit" value="Answer" />
+    </form>
+</div>

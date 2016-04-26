@@ -142,11 +142,24 @@ namespace TreasureHunt.Controllers {
     export class RiddleController {
         public message = 'Hello from the Riddle page!';
 
+        public riddleAdd;
         public riddles;
 
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/riddles')
                 .then((response) => { this.riddles = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+        public saveRiddle(): void {
+            console.log("I ran");
+            this.$http.post('/api/riddles', this.riddleAdd)
+                .then((response) => {
+                  
+
+                    this.$http.get('/api/riddles')
+                        .then((response) => { this.riddles = response.data })
+                        .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+                })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
     }
@@ -161,6 +174,17 @@ namespace TreasureHunt.Controllers {
             $http.get('/api/secrets').then((results) => {
                 this.secrets = results.data;
             });
+        }
+    }
+    // added 4/25/16    
+    export class PointController {
+        public points;
+
+        constructor(public $http: ng.IHttpService) {
+            this.$http.get<any>('/api/Points')
+                .then((response) => {
+                    this.points = response.data;
+                });             
         }
     }
 
