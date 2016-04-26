@@ -18,8 +18,8 @@
 
 <div class="row">
     <form ng-submit="controller.saveHunt()">
-        <div>
-            <div>
+        <!-- <div>
+            <div> -->
                 <div class="col-xs-3">
                     <input type="text" class="form-control"  ng-model="controller.huntadd.name" placeholder="Hunt Name" >
                 </div>           
@@ -27,13 +27,11 @@
       <!-- <input type="submit" value="Add Treasure Hunt" /> -->
     </form>
 </div>
-</br>
+<br />
 <ul class="list-group" ng-repeat="hunt in controller.hunts">
     <li class="list-group-item">
         <span class="label label-default label-pill pull-xs-right"></span>
         <a href="/huntview/{{hunt.id}}">{{hunt.name}}</a>
     </li>
-   
-  
 </ul>
 
