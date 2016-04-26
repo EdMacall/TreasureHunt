@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TreasureHunt.Infrastructure;
+using TreasureHunt.Models;
 using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
@@ -23,8 +24,21 @@ namespace TreasureHunt.Services
                     {
                         Clue = r.Clue,
                         Answer = r.Answer,
-                        IsAnswered = r.IsAnswered
+                        IsAnswered = r.IsAnswered,
+                        Points = r.Points
                     }).ToList();
+        }
+        public void AddRiddlesList(RiddleDTO riddledto)
+        {
+           Riddle riddle = new Riddle
+            {
+               Clue = riddledto.Clue,
+               Answer = riddledto.Answer,
+               IsAnswered = riddledto.IsAnswered,
+               Points = riddledto.Points
+           };
+            _riddlerepository.Add(riddle);
+            _riddlerepository.SaveChanges();
         }
     }
 }

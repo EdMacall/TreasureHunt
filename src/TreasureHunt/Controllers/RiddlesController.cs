@@ -27,124 +27,109 @@ namespace TreasureHunt.Controllers
             return _riddleservice.GetRiddleList().ToList();
         }
 
-        /*
-        // GET: api/Riddles/5
-        [HttpGet("{id}", Name = "GetRiddle")]
-        public IActionResult GetRiddle([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
 
-            Riddle riddle = _context.Riddles.Single(m => m.Id == id);
+        //// GET: api/Riddles/5
+        //[HttpGet("{id}", Name = "GetRiddle")]
+        //public IActionResult GetRiddle([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            if (riddle == null)
-            {
-                return HttpNotFound();
-            }
+        //    Riddle riddle = _context.Riddles.Single(m => m.Id == id);
 
-            return Ok(riddle);
-        }
+        //    if (riddle == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-        // PUT: api/Riddles/5
-        [HttpPut("{id}")]
-        public IActionResult PutRiddle(int id, [FromBody] Riddle riddle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //    return Ok(riddle);
+        //}
 
-            if (id != riddle.Id)
-            {
-                return HttpBadRequest();
-            }
+        //// PUT: api/Riddles/5
+        //[HttpPut("{id}")]
+        //public IActionResult PutRiddle(int id, [FromBody] Riddle riddle)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            _context.Entry(riddle).State = EntityState.Modified;
+        //    if (id != riddle.Id)
+        //    {
+        //        return HttpBadRequest();
+        //    }
 
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RiddleExists(id))
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    _context.Entry(riddle).State = EntityState.Modified;
 
-            return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
-        }
+        //    try
+        //    {
+        //        _context.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!RiddleExists(id))
+        //        {
+        //            return HttpNotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-        // POST: api/Riddles
+        //    return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
+        //}
+
+        //// POST: api/Riddles
         [HttpPost]
-        public IActionResult PostRiddle([FromBody] Riddle riddle)
+        public IActionResult Post([FromBody]RiddleDTO riddledto)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                _riddleservice.AddRiddlesList(riddledto);
+
+                return Ok();
+            }
+            else {
                 return HttpBadRequest(ModelState);
             }
-
-            _context.Riddles.Add(riddle);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (RiddleExists(riddle.Id))
-                {
-                    return new HttpStatusCodeResult(StatusCodes.Status409Conflict);
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("GetRiddle", new { id = riddle.Id }, riddle);
         }
+        //// DELETE: api/Riddles/5
+        //[HttpDelete("{id}")]
+        //public IActionResult DeleteRiddle(int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-        // DELETE: api/Riddles/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteRiddle(int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //    Riddle riddle = _context.Riddles.Single(m => m.Id == id);
+        //    if (riddle == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            Riddle riddle = _context.Riddles.Single(m => m.Id == id);
-            if (riddle == null)
-            {
-                return HttpNotFound();
-            }
+        //    _context.Riddles.Remove(riddle);
+        //    _context.SaveChanges();
 
-            _context.Riddles.Remove(riddle);
-            _context.SaveChanges();
+        //    return Ok(riddle);
+        //}
 
-            return Ok(riddle);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        _context.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //private bool RiddleExists(int id)
+        //{
+        //    return _context.Riddles.Count(e => e.Id == id) > 0;
+        //}
 
-        private bool RiddleExists(int id)
-        {
-            return _context.Riddles.Count(e => e.Id == id) > 0;
-        }
-        */
     }
 }
