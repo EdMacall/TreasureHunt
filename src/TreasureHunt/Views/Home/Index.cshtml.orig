@@ -4,7 +4,6 @@
     <title>TreasureHunt</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -90,11 +89,19 @@
                             <a class="page-scroll" href="point">Points</a>
                         </li>
                         <li>
+<<<<<<< HEAD
+                            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                            <div  ng-show="account.isLoggedIn()" >
+                                {{account.getUserName()}}
+                            </div>
+=======
                                 <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
                                 <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
                                 <div ng-show="account.isLoggedIn()">
                                     {{account.getUserName()}}
                                 </div>
+>>>>>>> fffa66bef8d7b07862489d613113cdebbd1cb89f
                         </li>
                     </ul>
                 </div>
