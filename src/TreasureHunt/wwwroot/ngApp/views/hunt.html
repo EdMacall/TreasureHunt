@@ -1,12 +1,11 @@
-﻿</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+﻿<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<h2>Choose or Add a Hunt</h2>
+
+<!--
 <h2>Home</h2>
 <p>
     {{controller.message}}
@@ -15,15 +14,26 @@
 <p ng-repeat="hunt in controller.hunts">
     <a href="/huntview/{{hunt.id}}">{{hunt.name}}</a> 
 </p>
+-->
 
-<div>
+<div class="row">
     <form ng-submit="controller.saveHunt()">
         <div>
             <div>
-
-            </div>
-            <input type="text" ng-model="controller.huntadd.name" placeholder="Name of Treasure Hunt" />
-        </div>
-        <input type="submit" value="Add Treasure Hunt" />
+                <div class="col-xs-3">
+                    <input type="text" class="form-control"  ng-model="controller.huntadd.name" placeholder="Hunt Name" >
+                </div>           
+        <button type="submit" class="btn btn-warning" value="Add Treasure Hunt" >Add </button>
+      <!-- <input type="submit" value="Add Treasure Hunt" /> -->
     </form>
 </div>
+</br>
+<ul class="list-group" ng-repeat="hunt in controller.hunts">
+    <li class="list-group-item">
+        <span class="label label-default label-pill pull-xs-right"></span>
+        <a href="/huntview/{{hunt.id}}">{{hunt.name}}</a>
+    </li>
+   
+  
+</ul>
+

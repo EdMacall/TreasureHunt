@@ -81,18 +81,13 @@
                             <a class="page-scroll" href="#about">About</a>
                         </li>
                         <li>
-
-                            <a class="page-scroll" href="/hunt">Hunts</a>
-                        </li>
-                        <!--added 4/25/16--> 
-                        <li>
-                            <a class="page-scroll" href="point">Points</a>
+                            <a class="page-scroll" href="#team">Team</a>
                         </li>
                         <li>
-                                <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-                                <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-                                <div ng-show="account.isLoggedIn()">
-                                    {{account.getUserName()}}
+                            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                            <div  ng-show="account.isLoggedIn()" >
+                                {{account.getUserName()}}
                                 </div>
                         </li>
                     </ul>
@@ -108,9 +103,8 @@
        
         
         <!-- jQuery -->
-    <script src="~/lib/jquery/dist/jquery.js"></script>--
+        <script src="lib/jquery/dist/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         @*<script src="lib/bootstrap/dist/bootstrap.min.js"></script>
         <!-- Plugin JavaScript -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
