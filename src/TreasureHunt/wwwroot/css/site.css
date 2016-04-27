@@ -3,17 +3,22 @@ body {
     padding-bottom: 20px;
 }
 .point-body {
-    background-image: url("http://d3819ii77zvwic.cloudfront.net/wp-content/uploads/2015/07/oTvmy5bwH5-1920x1080.jpg");
-    
+    background-image: url("https://i.ytimg.com/vi/b3mwewqb05k/maxresdefault.jpg");
+       
 }
-
-.body-wrap {
-        font-family: Impact, Charcoal, sans-serif;
-    font-size: 25px;
-    color: red;
+.point-tr{
+    color:whitesmoke;
+}
+.point-body{
+    color:white;
 }
 /*ui-view{
-    min-height: 75vh;
+    http://knowbetter.today/wp-content/uploads/2015/01/treasure-hunt-map.jpg
+    http://static.vecteezy.com/system/resources/previews/000/106/870/original/free-strass-vector-gold-glitter-texture-on-black-background.jpg
+    http://getbg.net/upload/full/583716_konfetti_siyanie_zoloto_fon_blestki_4500x3300_www.GetBg.net.jpg
+    http://cdn.itvs.org/black_gold-background.jpg
+    http://d3819ii77zvwic.cloudfront.net/wp-content/uploads/2015/07/oTvmy5bwH5-1920x1080.jpg
+    http://wallpapercave.com/wp/2vPNIjG.jpg
 }*/
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
