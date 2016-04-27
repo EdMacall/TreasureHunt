@@ -9,9 +9,7 @@ namespace TreasureHunt.ViewModels.Account
     public class LoginViewModel
     {
         [Required]
-        // [EmailAddress]
-        [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
