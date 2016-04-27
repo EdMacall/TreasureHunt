@@ -68,7 +68,7 @@ namespace TreasureHunt {
                 controllerAs: 'controller'
             })
             .state('playpage', {
-                url: '/play',
+                url: '/play/:hunt',
                 templateUrl: '/ngApp/views/Play.html',
                 controller: TreasureHunt.Controllers.PlayController,
                 controllerAs: 'controller'

@@ -147,13 +147,17 @@ namespace TreasureHunt.Controllers {
         public riddle;
         public riddles;
 
-        constructor(private $http: ng.IHttpService) {
+
+
+        constructor(private $http: ng.IHttpService,
+                    private $stateParams: ng.ui.IStateParamsService,
+                    private $state: ng.ui.IStateService) {
         // how to know which treasure Hunt to get?
-            $http.get('/api/riddles')
+            $http.get(`/api/hunts/${$stateParams['hunt']}`)
                 .then((response) => { this.hunt = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         // how to know which team name to get?
-            $http.get('/api/riddles')
+            $http.get(`/api/teams/${$stateParams['team']}`)
                 .then((response) => { this.team = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         // do we need this? or could the web page get the answer it needs from the next loader?

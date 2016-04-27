@@ -3,8 +3,8 @@
     {{controller.hunt.name}}
 </h2>
 
-<div ng-repeat="team in controller.teams">
-    {{team.teamName}}
+<div >
+    {{team.teamName}} - {{team.points}}
 </div>
 <p ng-repeat="riddle in controller.riddles">
     {{riddle.clue}} - {{riddle.points}}
