@@ -11,5 +11,6 @@ namespace TreasureHunt.Services.Models
         public string Name { get; set; }
         public ICollection<ApplicationUser> ApplicationUsers { get; set; }
         public ICollection<Riddle> Riddles { get; set; }
+        public int Points { get; set; }
     }
 }
