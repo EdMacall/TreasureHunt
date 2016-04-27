@@ -159,7 +159,7 @@ namespace TreasureHunt.Controllers {
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the teams controller...') });
             // how to know which treasure Hunt to get?
             /*
-            $http.get(`/api/hunts/${$stateParams['hunt']}`)
+            $http.get(`/api/teamhunts/${$stateParams['hunt']}`)
                 .then((response) => { this.hunt = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the hunts controller...') });
                 */
