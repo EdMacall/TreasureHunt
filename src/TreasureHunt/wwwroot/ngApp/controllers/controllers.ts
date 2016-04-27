@@ -139,6 +139,35 @@ namespace TreasureHunt.Controllers {
     }
 
 
+    export class PlayController {
+        public message = 'Hello from the PlayPage page!';
+
+        public hunt;
+        public team;
+        public riddle;
+        public riddles;
+
+        constructor(private $http: ng.IHttpService) {
+        // how to know which treasure Hunt to get?
+            $http.get('/api/riddles')
+                .then((response) => { this.hunt = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        // how to know which team name to get?
+            $http.get('/api/riddles')
+                .then((response) => { this.team = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        // do we need this? or could the web page get the answer it needs from the next loader?
+        // how to know which clue to get?
+            $http.get('/api/riddle')
+                .then((response) => { this.riddle = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+            $http.get('/api/riddles')
+                .then((response) => { this.riddles = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+
     export class RiddleController {
         public message = 'Hello from the Riddle page!';
 
