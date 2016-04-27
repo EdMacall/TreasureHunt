@@ -13,6 +13,6 @@ namespace TreasureHunt.Models
         public string Answer { get; set; }
         public string PlayersAnswer { get; set; }
         public bool IsAnswered { get; set; }
-        public int PointValue { get; set; }
+        public int Points { get; set; }
     }
 }
