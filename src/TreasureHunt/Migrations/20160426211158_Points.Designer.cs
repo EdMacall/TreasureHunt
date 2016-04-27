@@ -8,9 +8,10 @@ using TreasureHunt.Models;
 namespace TreasureHunt.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160426211158_Points")]
+    partial class Points
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -188,8 +189,6 @@ namespace TreasureHunt.Migrations
                     b.Property<int?>("HuntId");
 
                     b.Property<bool>("IsAnswered");
-
-                    b.Property<string>("PlayersAnswer");
 
                     b.Property<int>("Points");
 

@@ -27,6 +27,27 @@ namespace TreasureHunt.Controllers
             return _teamservice.GetTeamList().ToList();
         }
 
+        // GET: api/Teams/5
+        [HttpGet("{id}", Name = "GetTeam")]
+        public IActionResult GetHunt([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return HttpBadRequest(ModelState);
+            }
+
+            TeamDTO teamdto = _teamservice.GetTeam(id);
+
+            // Hunt hunt = _huntservice.Hunts.Single(m => m.Id == id);
+
+            if (teamdto == null)
+            {
+                return HttpNotFound();
+            }
+
+            return Ok(teamdto);
+        }
+
         [HttpPost("{huntId}")]
         public IActionResult Post(int huntId, [FromBody]TeamDTO teamdto)
         // public IActionResult Post(int huntId, [FromBody]Team team)
