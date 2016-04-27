@@ -1,6 +1,16 @@
-﻿<p ng-repeat="riddle in controller.riddle">
-    {{riddle.clue}}
+﻿</br>
+</br>
+</br>
+</br>
+<h3>
+    {{controller.hunt.name}}
+</h3>
 
+<div ng-repeat="team in controller.teams">
+    {{team.teamName}}
+</div>
+<p ng-repeat="riddle in controller.riddles">
+    {{riddle.clue}} - {{riddle.points}}
 </p>
 
 <div>
@@ -9,7 +19,7 @@
             <div>
 
             </div>
-            <input type="text" ng-model="controller.riddle.answer" placeholder="Answer"/>
+            <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
         </div>
         <input type="submit" value="Answer" />
     </form>

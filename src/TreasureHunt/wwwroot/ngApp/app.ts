@@ -88,7 +88,13 @@ namespace TreasureHunt {
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
-            });
+            })
+            .state('play', {
+                url: '/play',
+                templateUrl: '/ngApp/views/Play.html',
+                controller: TreasureHunt.Controllers.RiddleController,
+                controllerAs: 'controller'
+            })
 
         // Handle request for non-existent route
         $urlRouterProvider.otherwise('/notFound');
