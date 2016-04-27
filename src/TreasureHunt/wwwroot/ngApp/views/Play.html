@@ -3,9 +3,14 @@
     {{controller.hunt.name}}
 </h2>
 
+<!-- <p>This is the Treasure Hunt name.</p> -->
+
 <div >
-    {{team.teamName}} - {{team.points}}
+    {{controller.team.name}} - {{controller.team.points}} <!-- This is the Team name and Team score. -->
+    
 </div>
+
+<br/>
 <p ng-repeat="riddle in controller.riddles">
     {{riddle.clue}} - {{riddle.points}}
 </p>

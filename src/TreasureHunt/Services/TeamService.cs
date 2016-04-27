@@ -30,6 +30,16 @@ namespace TreasureHunt.Services
                     }).ToList();
         }
 
+        public TeamDTO GetTeam(int id)
+        {
+            // return _huntrepository.First(b => b.Id ==id);
+
+            Team team = _teamrepository.List().FirstOrDefault(m => m.Id == id);
+
+            return new TeamDTO { Name = team.Name,
+            Points = team.Points};
+        }
+
         public void AddTeamList(TeamDTO teamdto)
         {
             Team team = new Team
