@@ -8,11 +8,11 @@
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 .point-body {
-    background-image: url("https://i.ytimg.com/vi/b3mwewqb05k/maxresdefault.jpg");
+    background-image: url("http://knowbetter.today/wp-content/uploads/2015/01/treasure-hunt-map.jpg");
        
 }
 .point-tr{
@@ -21,8 +21,12 @@ body {
 .point-body{
     color:white;
 }
+table {
+    width:100%;
+}
 /*ui-view{
-    http://knowbetter.today/wp-content/uploads/2015/01/treasure-hunt-map.jpg
+    
+    https://i.ytimg.com/vi/b3mwewqb05k/maxresdefault.jpg
     http://static.vecteezy.com/system/resources/previews/000/106/870/original/free-strass-vector-gold-glitter-texture-on-black-background.jpg
     http://getbg.net/upload/full/583716_konfetti_siyanie_zoloto_fon_blestki_4500x3300_www.GetBg.net.jpg
     http://cdn.itvs.org/black_gold-background.jpg

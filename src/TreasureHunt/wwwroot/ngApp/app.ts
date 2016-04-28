@@ -36,7 +36,7 @@ namespace TreasureHunt {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: TreasureHunt.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
-            }) 
+            })
             .state('team', {
                 url: '/team',
                 templateUrl: '/ngApp/views/team.html',
@@ -101,6 +101,12 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.RiddleController,
                 controllerAs: 'controller'
             })
+            .state('test', {
+                url: '/test',
+                templateUrl: '/ngApp/views/test.html',
+                controller: TreasureHunt.Controllers.HomeController,
+                controllerAs: 'controller'
+            });
 
         // Handle request for non-existent route
         $urlRouterProvider.otherwise('/notFound');
