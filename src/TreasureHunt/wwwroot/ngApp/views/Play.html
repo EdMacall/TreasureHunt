@@ -1,5 +1,5 @@
 ﻿ <head>
-    > <!-- Material Design fonts -->
+    <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -9,12 +9,15 @@
     <!-- Bootstrap Material Design -->
     <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
+
 </head>
+
+
 <h2 class="ang-margin">
+    <!-- <p>This is the Treasure Hunt name.</p> -->
     {{controller.hunt.name}} Treasure Hunt
 </h2>
 
-<!-- <p>This is the Treasure Hunt name.</p> -->
 
 <div class="row">
     <div class="col-md-10">
@@ -22,6 +25,7 @@
     </div>
 </div>
 <br />
+
 <div class="row">
     <div class="col-md-2">
 
@@ -30,27 +34,34 @@
         <div class="col-md-4">
             
             <p ng-repeat="riddle in controller.riddles">
+                <!-- Do we really want to display all of this stuff? -->
+                <!-- How to get IsAnswered to display as a check box? -->
                 {{riddle.title}} - {{riddle.points}} - {{riddle.completed}}
             </p>
 
-            <div>
-                <form ng-submit="controller.submitAnswer()">
+        </div>
+
+    <div class="col-md-4">
+        <!-- This is just a test to display something in the second column... -->
+        <p ng-repeat="riddle in controller.riddles">{{riddle.title}}</p>
+
+        <!-- This is what I want to display,  but I haven't worked out the controller to display this stuff... -->
+        We want something to display here...
+        {{focusriddle.title}}<br />
+        {{focusriddle.clue}}<br />
+        {{focusriddle.completed}}<br />
+
+        <div>
+            <form ng-submit="controller.submitAnswer()">
+                <div>
                     <div>
-                        <div>
 
-                        </div>
-                        <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
                     </div>
-                    <input type="submit" value="Answer" />
-                </form>
-            </div>
+                    <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
+                </div>
+                <input type="submit" value="Answer" />
+            </form>
         </div>
-
-        <div class="col-md-4">
-            <p ng-repeat="riddle in controller.riddles">{{riddle.title}}</p>
-            {{focusriddle.title}}<br />
-            {{focusriddle.clue}}<br />
-            {{focusriddle.completed}}<br />
-        </div>
+    </div>
 
     </div> <!-- End class = "row" -->
