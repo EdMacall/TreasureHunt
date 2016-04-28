@@ -144,33 +144,39 @@ namespace TreasureHunt.Controllers {
 
         public hunt;
         public team;
-        public riddle;
+        public focusriddle;
         public riddles;
-
-
 
         constructor(private $http: ng.IHttpService,
                     private $stateParams: ng.ui.IStateParamsService,
                     private $state: ng.ui.IStateService) {
 
-        // how to know which team name to get?
-            $http.get(`/api/teams/${$stateParams['team']}`)
+            $http.get(`/api/teams/${$stateParams['id']}`)
                 .then((response) => { this.team = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the teams controller...') });
-            // how to know which treasure Hunt to get?
-            /*
-            $http.get(`/api/teamhunts/${$stateParams['hunt']}`)
+            // how to know which treasure Hunt to get?   
+            $http.get(`/api/teamhunts/${$stateParams['id']}`)
                 .then((response) => { this.hunt = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the hunts controller...') });
-                */
         // do we need this? or could the web page get the answer it needs from the next loader?
         // how to know which clue to get?
             $http.get('/api/riddle')
-                .then((response) => { this.riddle = response.data })
+                .then((response) => { this.focusriddle = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddle controller...') });
             $http.get('/api/riddles')
                 .then((response) => { this.riddles = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddles contoller...') })
+
+                /*  This doesn't work
+            for (let r in this.riddles)
+            {
+                if (r.isAnswered)
+                {
+                    r.completed = "Completed";
+                    console.log("We have a completed.")
+                }
+            }
+            */
         }
     }
 

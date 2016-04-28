@@ -4,6 +4,8 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using TreasureHunt.Models;
+using TreasureHunt.Services;
+using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Controllers
 {
@@ -11,22 +13,24 @@ namespace TreasureHunt.Controllers
     [Route("api/teamhunts")]
     public class TeamHuntsController : Controller
     {
-        private ApplicationDbContext _context;
+        private HuntTeamService _huntteamservice;
 
-        public TeamHuntsController(ApplicationDbContext context)
+        public TeamHuntsController(HuntTeamService huntteamservice)
         {
-            _context = context;
+            _huntteamservice = huntteamservice;
         }
 
+        /*
         // GET: api/TeamHunts
         [HttpGet]
         public IEnumerable<HuntTeam> GetHuntTeams()
         {
-            return _context.HuntTeams;
+            return _huntteamservice.HuntTeams;
         }
+        */
 
         // GET: api/TeamHunts/5
-        [HttpGet("{id}", Name = "GetHuntTeam")]
+        [HttpGet("{id}", Name = "GetTeamHunts")]
         public IActionResult GetHuntTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -34,16 +38,17 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            HuntTeam huntTeam = _context.HuntTeams.Single(m => m.HuntId == id);
+            HuntDTO huntdto = _huntteamservice.GetTeamHuntList(id);
 
-            if (huntTeam == null)
+            if (huntdto == null)
             {
                 return HttpNotFound();
             }
 
-            return Ok(huntTeam);
+            return Ok(huntdto);
         }
 
+        /*
         // PUT: api/TeamHunts/5
         [HttpPut("{id}")]
         public IActionResult PutHuntTeam(int id, [FromBody] HuntTeam huntTeam)
@@ -58,11 +63,11 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest();
             }
 
-            _context.Entry(huntTeam).State = EntityState.Modified;
+            _huntteamservice.Entry(huntTeam).State = EntityState.Modified;
 
             try
             {
-                _context.SaveChanges();
+                _huntteamservice.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -88,10 +93,10 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            _context.HuntTeams.Add(huntTeam);
+            _huntteamservice.HuntTeams.Add(huntTeam);
             try
             {
-                _context.SaveChanges();
+                _huntteamservice.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -117,14 +122,14 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            HuntTeam huntTeam = _context.HuntTeams.Single(m => m.HuntId == id);
+            HuntTeam huntTeam = _huntteamservice.HuntTeams.Single(m => m.HuntId == id);
             if (huntTeam == null)
             {
                 return HttpNotFound();
             }
 
-            _context.HuntTeams.Remove(huntTeam);
-            _context.SaveChanges();
+            _huntteamservice.HuntTeams.Remove(huntTeam);
+            _huntteamservice.SaveChanges();
 
             return Ok(huntTeam);
         }
@@ -133,14 +138,15 @@ namespace TreasureHunt.Controllers
         {
             if (disposing)
             {
-                _context.Dispose();
+                _huntteamservice.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool HuntTeamExists(int id)
         {
-            return _context.HuntTeams.Count(e => e.HuntId == id) > 0;
+            return _huntteamservice.HuntTeams.Count(e => e.HuntId == id) > 0;
         }
+        */
     }
 }

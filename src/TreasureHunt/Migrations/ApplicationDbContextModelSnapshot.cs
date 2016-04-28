@@ -155,6 +155,8 @@ namespace TreasureHunt.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Story");
+
                     b.HasKey("Id");
                 });
 
@@ -194,6 +196,8 @@ namespace TreasureHunt.Migrations
                     b.Property<int>("Points");
 
                     b.Property<int?>("TeamId");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
                 });

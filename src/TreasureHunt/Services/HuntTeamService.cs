@@ -41,8 +41,17 @@ namespace TreasureHunt.Services
             select new HuntTeamDTO
             {
                 TeamName = ht.Team.Name
-
             }).ToList();
+        }
+
+        public HuntDTO GetTeamHuntList(int id)
+        {
+            Hunt hunt = (from tm in _huntteamrepository.List()
+                         where tm.TeamId == id
+                         select tm.Hunt).FirstOrDefault();
+            HuntDTO huntdto = new HuntDTO { Name = hunt.Name };
+            return huntdto;
+ 
         }
 
         public void AddHuntTeam(int huntId, int teamId)
