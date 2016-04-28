@@ -92,12 +92,12 @@
                             
                                 <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
                                 <!-- <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a> -->
-                                <div ng-show="account.isLoggedIn()">{{account.getUserName()}}
+                                <div ng-show ng-cloak="account.isLoggedIn()">{{account.getUserName()}}
                              <a href="#" ng-click="account.logout()"> Logout</a>
                                 </div>
                           
                         </li>
-                        @*<li>
+                        <li>
 
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -111,7 +111,7 @@
                                     </ul>
                                 </div>
 
-                        </li>*@
+                        </li>
                     </ul>
                 </div> <!-- /.navbar-collapse -->
             </div> <!-- /.container -->

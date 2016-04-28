@@ -5,6 +5,13 @@
 
 <!-- <p>This is the Treasure Hunt name.</p> -->
 
+<div class="list-group" ng-repeat="riddle in controller.riddles">
+    <a href="#" class="list-group-item  list-group-item-info" >
+        <h4>{{riddle.clue}} - {{riddle.points}}</h4>
+        <p></p>
+    </a>
+    
+</div>
 <div >
     {{controller.team.name}} - {{controller.team.points}} <!-- This is the Team name and Team score. -->
     
@@ -26,3 +33,4 @@
         <input type="submit" value="Answer" />
     </form>
 </div>
+
