@@ -11,37 +11,46 @@
     <link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
 </head>
 <h2 class="ang-margin">
-    {{controller.hunt.name}}
+    {{controller.hunt.name}} Treasure Hunt
 </h2>
 
 <!-- <p>This is the Treasure Hunt name.</p> -->
 
-<div class="list-group" ng-repeat="riddle in controller.riddles">
-    <a href="#" class="list-group-item  list-group-item-info" >
-        <h4>{{riddle.clue}} - {{riddle.points}}</h4>
-        <p></p>
-    </a>
-    
+<div class="row">
+    <div class="col-md-10">
+        {{controller.team.name}} Team - {{controller.team.points}} points<!-- This is the Team name and Team score. -->
+    </div>
 </div>
-<div >
-    {{controller.team.name}} - {{controller.team.points}} <!-- This is the Team name and Team score. -->
-    
-</div>
+<br />
+<div class="row">
+    <div class="col-md-2">
 
-<br/>
-<p ng-repeat="riddle in controller.riddles">
-    {{riddle.clue}} - {{riddle.points}}
-</p>
+    </div>
 
-<div>
-    <form ng-submit="controller.submitAnswer()">
-        <div>
+        <div class="col-md-4">
+            
+            <p ng-repeat="riddle in controller.riddles">
+                {{riddle.title}} - {{riddle.points}} - {{riddle.completed}}
+            </p>
+
             <div>
+                <form ng-submit="controller.submitAnswer()">
+                    <div>
+                        <div>
 
+                        </div>
+                        <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
+                    </div>
+                    <input type="submit" value="Answer" />
+                </form>
             </div>
-            <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
         </div>
-        <input type="submit" value="Answer" />
-    </form>
-</div>
 
+        <div class="col-md-4">
+            <p ng-repeat="riddle in controller.riddles">{{riddle.title}}</p>
+            {{focusriddle.title}}<br />
+            {{focusriddle.clue}}<br />
+            {{focusriddle.completed}}<br />
+        </div>
+
+    </div> <!-- End class = "row" -->
