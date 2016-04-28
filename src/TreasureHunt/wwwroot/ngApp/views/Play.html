@@ -33,23 +33,35 @@
 
         <div class="col-md-4">
             
-            <p ng-repeat="riddle in controller.riddles">
+            <div ng-repeat="riddle in controller.riddles">
                 <!-- Do we really want to display all of this stuff? -->
                 <!-- How to get IsAnswered to display as a check box? -->
-                {{riddle.title}} - {{riddle.points}} - {{riddle.completed}}
-            </p>
+            <!-- <p ng-click="controller.pickColor(riddle)">{{riddle.title}} - {{riddle.points}} - {{riddle.completed}}</p> -->
+                <p ng-click="controller.pickColor(riddle)">
+                <span class="glyphicon" ng-class="riddle.isAnswered ? 'glyphicon-check' : 'glyphicon-unchecked'"> {{riddle.title}}</span>
+                    </p>
+                <!-- <p class="glyphicon" ng-class="riddle.isAnswered ? 'glyphicon-check' : 'glyphicon-unchecked'" ng-click="controller.pickColor(riddle)">
+                     {{riddle.title}}
+                </p> -->
+            </div>
+
+            <!-- <p>
+                The Picked Riddle should show up here...   {{controller.focusriddle}}
+            </p> --> 
 
         </div>
 
     <div class="col-md-4">
         <!-- This is just a test to display something in the second column... -->
-        <p ng-repeat="riddle in controller.riddles">{{riddle.title}}</p>
+        <!-- <p ng-repeat="riddle in controller.riddles">{{riddle.title}}</p> -->
 
         <!-- This is what I want to display,  but I haven't worked out the controller to display this stuff... -->
-        We want something to display here...
-        {{focusriddle.title}}<br />
-        {{focusriddle.clue}}<br />
-        {{focusriddle.completed}}<br />
+        We want something to display here...<br /><br />
+        The Mission: {{controller.focusriddle.title}}<br /><br />
+        The Task: {{controller.focusriddle.clue}}<br /><br />
+        Point Value: {{controller.focusriddle.points}} points<br /><br />
+        Status: {{controller.focusriddle.completed}}<br /><br />
+        Cheat: {{controller.focusriddle.answer}}<br /><br />
 
         <div>
             <form ng-submit="controller.submitAnswer()">
@@ -57,11 +69,12 @@
                     <div>
 
                     </div>
-                    <input type="text" ng-model="controller.riddle.answer" placeholder="Answer" />
+                    <input type="text" ng-model="controller.answer" placeholder="Answer" />
                 </div>
                 <input type="submit" value="Answer" />
             </form>
         </div>
+        <p>{{controller.submittedanswer}}</p>
     </div>
 
     </div> <!-- End class = "row" -->

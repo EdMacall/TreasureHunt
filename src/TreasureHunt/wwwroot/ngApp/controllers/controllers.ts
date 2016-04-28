@@ -146,6 +146,9 @@ namespace TreasureHunt.Controllers {
         public team;
         public focusriddle;
         public riddles;
+        public pickedRiddle;
+        public answer;
+        public submittedanswer;
 
         constructor(private $http: ng.IHttpService,
                     private $stateParams: ng.ui.IStateParamsService,
@@ -154,29 +157,41 @@ namespace TreasureHunt.Controllers {
             $http.get(`/api/teams/${$stateParams['id']}`)
                 .then((response) => { this.team = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the teams controller...') });
-            // how to know which treasure Hunt to get?   
             $http.get(`/api/teamhunts/${$stateParams['id']}`)
                 .then((response) => { this.hunt = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the hunts controller...') });
-        // do we need this? or could the web page get the answer it needs from the next loader?
-        // how to know which clue to get?
-            $http.get('/api/riddle')
-                .then((response) => { this.focusriddle = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddle controller...') });
+
+            // The only riddles which should be returned are the ones that match this Hunt
             $http.get('/api/riddles')
                 .then((response) => { this.riddles = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddles contoller...') })
 
-                /*  This doesn't work
+            // do we need this? or could the web page get the answer it needs from the next loader?
+            // how to know which clue to get?
+            $http.get('/api/riddle')
+                .then((response) => { this.focusriddle = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddle controller...') });
+
+                //  This doesn't work
             for (let r in this.riddles)
             {
                 if (r.isAnswered)
                 {
                     r.completed = "Completed";
-                    console.log("We have a completed.")
+                    console.log("We have a completed.");
                 }
             }
-            */
+            
+        }
+
+        pickColor(pickedRiddle) {
+            this.focusriddle = pickedRiddle;
+            // console.log(pickedRiddle);
+        }
+
+        submitAnswer() {
+            this.submittedanswer = this.answer;
+            // console.log(pickedRiddle);
         }
     }
 

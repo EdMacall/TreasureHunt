@@ -1,3 +1,7 @@
+.btn-primary:focus, .btn-primary:hover {
+    background-position: 0 -32px;
+}
+
 .ang-margin {
     margin-top: 3em;
 

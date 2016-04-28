@@ -39,10 +39,11 @@ namespace TreasureHunt.Services
 
             return riddledto;
         }
+
         public void AddRiddlesList(RiddleDTO riddledto)
         {
            Riddle riddle = new Riddle
-            {
+           {
                Clue = riddledto.Clue,
                Answer = riddledto.Answer,
                IsAnswered = riddledto.IsAnswered,
