@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TreasureHunt.Services.Models
 {
+    // phasing this one out...
     public class RiddleDTO
     {
         public string Title { get; set; }

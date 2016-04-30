@@ -9,8 +9,12 @@ namespace TreasureHunt.Services.Models
     public class TeamDTO
     {
         public string Name { get; set; }
-        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
-        public ICollection<Riddle> Riddles { get; set; }
+        public string ImageURL { get; set; }
         public int Points { get; set; }
+
+        public ICollection<ApplicationUserDTO> ApplicationUsers { get; set; }
+        public ICollection<ClueDTO> Clues { get; set; }
+
+        // public ICollection<Riddle> Riddles { get; set; }
     }
 }

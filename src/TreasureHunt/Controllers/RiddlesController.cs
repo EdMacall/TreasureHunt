@@ -9,6 +9,7 @@ using TreasureHunt.Services;
 
 namespace TreasureHunt.Controllers
 {
+    // phasing this one out...
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class RiddlesController : Controller
@@ -27,6 +28,24 @@ namespace TreasureHunt.Controllers
             return _riddleservice.GetRiddleList().ToList();
         }
 
+        // I don't know if I can get the riddle Id...
+        // This needs to be a post to find out if the player's answer
+        // matches the riddle's answer in the database
+        [HttpPost("{riddleId}")]
+        public IActionResult Post(int riddleId, [FromBody]string playersanswer)
+        {
+            if (ModelState.IsValid)
+            {
+                // _teamservice.AddTeamList(team);
+
+                // return Ok(_teamservice.AddHuntTeamList(huntId, teamdto));
+                _riddleservice.CheckAnswer(riddleId, playersanswer);
+                return Ok();
+            }
+            else {
+                return HttpBadRequest(ModelState);
+            }
+        }
 
         //// GET: api/Riddles/5
         //[HttpGet("{id}", Name = "GetRiddle")]

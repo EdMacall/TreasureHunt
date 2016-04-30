@@ -10,8 +10,17 @@ namespace TreasureHunt.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
-        public ICollection<Riddle> Riddles { get; set; }
+        public string ImageURL { get; set; }
         public int Points { get; set; }
+
+        public ICollection<TeamClue> TeamClues { get; set; }
+        public ICollection<TeamUser> TeamUsers { get; set; }
+
+        public int HuntId { get; set; }
+        [ForeignKey("HuntId")]
+        public Hunt Hunt { get; set; }
+
+        // public ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        // public ICollection<Riddle> Riddles { get; set; }
     }
 }

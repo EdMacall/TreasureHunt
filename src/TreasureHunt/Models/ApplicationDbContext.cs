@@ -12,6 +12,10 @@ namespace TreasureHunt.Models
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            // builder.Entity<TeamUser>().HasKey(x => new { x.TeamId, x.ApplicationUserId });
+            // builder.Entity<TeamClue>().HasKey(x => new { x.TeamId, x.ClueId });
+
+            // phasing these tables out...
             builder.Entity<HuntTeam>().HasKey(x => new { x.HuntId, x.TeamId });
             builder.Entity<HuntRiddle>().HasKey(x => new { x.HuntId, x.RiddleId });
             builder.Entity<TeamRiddle>().HasKey(x => new { x.TeamId, x.RiddleId });
@@ -23,6 +27,11 @@ namespace TreasureHunt.Models
 
         public DbSet<Hunt> Hunts { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamUser> TeamUsers { get; set; }
+        public DbSet<Clue> Clues { get; set; }
+        public DbSet<TeamClue> TeamClues { get; set; }
+
+        // phasing these tables out...
         public DbSet<Riddle> Riddles { get; set; }
         public DbSet<HuntTeam> HuntTeams { get; set; }
         public DbSet<HuntRiddle> HuntRiddles { get; set; }

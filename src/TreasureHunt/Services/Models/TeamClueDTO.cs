@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace TreasureHunt.Services.Models
 {
-    // phasing this one out...
-    public class HuntTeamDTO
+    public class TeamClueDTO
     {
-        public string TeamName { get; set; }
     }
 }

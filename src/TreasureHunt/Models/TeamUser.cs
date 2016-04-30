@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 namespace TreasureHunt.Models
 {
     // phasing this one out...
-    public class TeamRiddle
+    public class TeamUser
     {
+        // appropriate to have Id here?
+        public int Id { get; set; }
+
+        // need to do something with Team or User here?
         public int TeamId { get; set; }
         [ForeignKey("TeamId")]
         public Team Team { get; set; }
 
-        public int RiddleId { get; set; }
-        [ForeignKey("RiddleId")]
-        public Riddle Riddle { get; set; }
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

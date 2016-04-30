@@ -1,24 +1,11 @@
 namespace TreasureHunt.Controllers {
 
-    export class HomeController {
-        public message = 'Hello from the home page!';
-    }
-
-
     export class AboutController {
         public message = 'Hello from the about page!';
     }
 
-    export class TeamController {
-        public message = 'Hello from the Team page!';
-
-        public teams;
-
-        constructor(private $http: ng.IHttpService) {
-            $http.get('/api/teams')
-                .then((response) => { this.teams = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
-        }
+    export class HomeController {
+        public message = 'Hello from the home page!';
     }
 
 
@@ -80,6 +67,19 @@ namespace TreasureHunt.Controllers {
     // do we even need that anymore?
 
 
+    export class HuntTeamsController {
+        public message = 'Hello from the Hunt Teams page!';
+
+        public hunts;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/hunts')
+                .then((response) => { this.hunts = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+
     export class HuntViewController {
         public message = 'Hello from the Hunt View page!';
 
@@ -90,8 +90,8 @@ namespace TreasureHunt.Controllers {
         public teamadd;
 
         constructor(private $http: ng.IHttpService,
-                    private $stateParams: ng.ui.IStateParamsService,
-                    private $state: ng.ui.IStateService) {
+            private $stateParams: ng.ui.IStateParamsService,
+            private $state: ng.ui.IStateService) {
             $http.get(`/api/hunts/${$stateParams['id']}`)
                 .then((response) => { this.hunt = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -112,7 +112,7 @@ namespace TreasureHunt.Controllers {
 
         public saveTeam(): void {
             // this.$http.post(`/api/teams/${this.$stateParams['id']}`, { name: this.teamadd })
-            this.$http.post(`/api/teams/${this.$stateParams['id']}`,  this.teamadd)
+            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.teamadd)
                 .then((response) => {
                     this.$http.get(`/api/huntteams/${this.$stateParams['id']}`)
                         .then((response) => { this.teams = response.data })
@@ -122,19 +122,6 @@ namespace TreasureHunt.Controllers {
                     // this.teams.push(response.data);
                 })
                 .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
-        }
-    }
-
-
-    export class HuntTeamsController {
-        public message = 'Hello from the Hunt Teams page!';
-
-        public hunts;
-
-        constructor(private $http: ng.IHttpService) {
-            $http.get('/api/hunts')
-                .then((response) => { this.hunts = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
     }
 
@@ -149,6 +136,7 @@ namespace TreasureHunt.Controllers {
         public pickedRiddle;
         public answer;
         public submittedanswer;
+        public teams;
 
         constructor(private $http: ng.IHttpService,
                     private $stateParams: ng.ui.IStateParamsService,
@@ -156,21 +144,21 @@ namespace TreasureHunt.Controllers {
 
             $http.get(`/api/teams/${$stateParams['id']}`)
                 .then((response) => { this.team = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem in the teams controller...') });
+                .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers teams get...') });
             $http.get(`/api/teamhunts/${$stateParams['id']}`)
                 .then((response) => { this.hunt = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem in the hunts controller...') });
+                .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers teamhunts get...') });
 
             // The only riddles which should be returned are the ones that match this Hunt
             $http.get('/api/riddles')
                 .then((response) => { this.riddles = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddles contoller...') })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers riddles gets...') })
 
             // do we need this? or could the web page get the answer it needs from the next loader?
             // how to know which clue to get?
             $http.get('/api/riddle')
                 .then((response) => { this.focusriddle = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem in the riddle controller...') });
+                .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers riddle get...') });
 
                 //  This doesn't work
             for (let r in this.riddles)
@@ -181,20 +169,55 @@ namespace TreasureHunt.Controllers {
                     console.log("We have a completed.");
                 }
             }
-            
         }
 
-        pickColor(pickedRiddle) {
+        public pickColor(pickedRiddle): void {
             this.focusriddle = pickedRiddle;
             // console.log(pickedRiddle);
         }
 
-        submitAnswer() {
-            this.submittedanswer = this.answer;
+        public submitAnswer(): void {
+            this.answer = this.submittedanswer;
             // console.log(pickedRiddle);
+            this.$http.post(`/api/riddle/${this.$stateParams['id']}`, this.submittedanswer)
+                .then((response) => {
+                    this.$http.get(`/api/huntteams/${this.$stateParams['id']}`)
+                        .then((response) => { this.teams = response.data })
+                        .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+                    this.$state.go('huntview');
+ 
+                })
+                .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
         }
+
+        /*
+        public saveTeam(): void {
+            // this.$http.post(`/api/teams/${this.$stateParams['id']}`, { name: this.teamadd })
+            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.teamadd)
+                .then((response) => {
+                    this.$http.get(`/api/huntteams/${this.$stateParams['id']}`)
+                        .then((response) => { this.teams = response.data })
+                        .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+                    this.$state.go('huntview');
+                    // This doesn't work
+                    // this.teams.push(response.data);
+                })
+                .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
+        }
+        */
     }
 
+    // added 4/25/16
+    export class PointController {
+        public points;
+
+        constructor(public $http: ng.IHttpService) {
+            this.$http.get<any>('/api/Points')
+                .then((response) => {
+                    this.points = response.data;
+                });
+        }
+    }
 
     export class RiddleController {
         public message = 'Hello from the Riddle page!';
@@ -233,16 +256,18 @@ namespace TreasureHunt.Controllers {
             });
         }
     }
-    // added 4/25/16    
-    export class PointController {
-        public points;
 
-        constructor(public $http: ng.IHttpService) {
-            this.$http.get<any>('/api/Points')
-                .then((response) => {
-                    this.points = response.data;
-                });             
+    export class TeamController {
+        public message = 'Hello from the Team page!';
+
+        public teams;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/teams')
+                .then((response) => { this.teams = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
     }
+
 
 }

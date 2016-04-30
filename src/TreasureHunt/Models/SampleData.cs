@@ -32,6 +32,22 @@ namespace TreasureHunt.Models
                 await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
             }
 
+            // Ensure Stephen (IsAdmin)
+            var stephenw = await userManager.FindByNameAsync("Stephen");
+            if (stephenw == null)
+            {
+                // create user
+                stephenw = new ApplicationUser
+                {
+                    UserName = "Stephen",
+                    Email = "Stephen.Walther@CoderCamps.com"
+                };
+                await userManager.CreateAsync(stephenw, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(stephenw, new Claim("IsAdmin", "true"));
+            }
+
             // Ensure irvedwmac (IsAdmin)
             var irvedwmac = await userManager.FindByNameAsync("irvedwmac@aol.com");
             if (irvedwmac == null)
@@ -46,6 +62,22 @@ namespace TreasureHunt.Models
 
                 // add claims
                 await userManager.AddClaimAsync(irvedwmac, new Claim("IsAdmin", "true"));
+            }
+
+            // Ensure irvedwmac (IsAdmin)
+            var irvedwma = await userManager.FindByNameAsync("EdMacall");
+            if (irvedwma == null)
+            {
+                // create user
+                irvedwma = new ApplicationUser
+                {
+                    UserName = "EdMacall",
+                    Email = "irvedwmac@aol.com"
+                };
+                await userManager.CreateAsync(irvedwma, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(irvedwma, new Claim("IsAdmin", "true"));
             }
 
             // Ensure xayadeth (IsAdmin)
@@ -64,6 +96,22 @@ namespace TreasureHunt.Models
                 await userManager.AddClaimAsync(xayadeth, new Claim("IsAdmin", "true"));
             }
 
+            // Ensure xayadeth (IsAdmin)
+            var xayadeth360 = await userManager.FindByNameAsync("Xayadeth360");
+            if (xayadeth360 == null)
+            {
+                // create user
+                xayadeth360 = new ApplicationUser
+                {
+                    UserName = "Xayadeth360",
+                    Email = "xayadeth360@gmail.com"
+                };
+                await userManager.CreateAsync(xayadeth360, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(xayadeth360, new Claim("IsAdmin", "true"));
+            }
+
             // Ensure gescobedoz (IsAdmin)
             var gescobedoz = await userManager.FindByNameAsync("gescobedoz@broncs.utpa.edu");
             if (gescobedoz == null)
@@ -80,6 +128,22 @@ namespace TreasureHunt.Models
                 await userManager.AddClaimAsync(gescobedoz, new Claim("IsAdmin", "true"));
             }
 
+            // Ensure gescobedoz (IsAdmin)
+            var gabe = await userManager.FindByNameAsync("Gabe");
+            if (gabe == null)
+            {
+                // create user
+                gabe = new ApplicationUser
+                {
+                    UserName = "Gabe",
+                    Email = "gescobedoz@broncs.utpa.edu"
+                };
+                await userManager.CreateAsync(gabe, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(gabe, new Claim("IsAdmin", "true"));
+            }
+
             // Ensure Mike (not IsAdmin)
             var mike = await userManager.FindByNameAsync("Mike@CoderCamps.com");
             if (mike == null)
@@ -94,6 +158,18 @@ namespace TreasureHunt.Models
             }
 
 
+            // Ensure Mike (not IsAdmin)
+            var mikey = await userManager.FindByNameAsync("Mike");
+            if (mikey == null)
+            {
+                // create user
+                mikey = new ApplicationUser
+                {
+                    UserName = "Mike",
+                    Email = "Mike@CoderCamps.com"
+                };
+                await userManager.CreateAsync(mikey, "Secret123!");
+            }
         }
 
     }

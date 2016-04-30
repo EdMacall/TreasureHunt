@@ -6,9 +6,8 @@ using TreasureHunt.Models;
 
 namespace TreasureHunt.Infrastructure
 {
-    // phasing this one out...
-    public class RiddleRepository : GenericRepository<Riddle>
+    public class TeamUserRepository : GenericRepository<TeamUser>
     {
-        public RiddleRepository(ApplicationDbContext db) : base(db) { }
+        public TeamUserRepository(ApplicationDbContext db) : base(db) { }
     }
 }

@@ -8,6 +8,7 @@ using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
 {
+    // phasing this one out...
     public class RiddleService
     {
         private RiddleRepository _riddlerepository;
@@ -38,6 +39,12 @@ namespace TreasureHunt.Services
             }
 
             return riddledto;
+        }
+
+        // I don't know if I can get the riddleId here either.
+        public void CheckAnswer(int riddleId, string playersanswer)
+        {
+
         }
 
         public void AddRiddlesList(RiddleDTO riddledto)

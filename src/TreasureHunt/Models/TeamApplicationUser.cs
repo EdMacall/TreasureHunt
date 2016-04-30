@@ -8,12 +8,12 @@ namespace TreasureHunt.Models
 {
     public class TeamApplicationUser
     {
-        [ForeignKey("TeamId")]
         public int TeamId { get; set; }
+        [ForeignKey("TeamId")]
         public Team Team { get; set; }
 
-        [ForeignKey("ApplicationUserId")]
         public int ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

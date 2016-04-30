@@ -8,6 +8,7 @@ using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
 {
+    // phasing this one out...
     public class HuntTeamService
     {
         private HuntTeamRepository _huntteamrepository;
@@ -37,11 +38,11 @@ namespace TreasureHunt.Services
             return hunt.Teams.Cast<TeamDTO>().ToList();
             */
             return  (from ht in _huntteamrepository.List()
-            where ht.HuntId == id
-            select new HuntTeamDTO
-            {
-                TeamName = ht.Team.Name
-            }).ToList();
+                     where ht.HuntId == id
+                     select new HuntTeamDTO
+                     {
+                         TeamName = ht.Team.Name
+                     }).ToList();
         }
 
         public HuntDTO GetTeamHuntList(int id)

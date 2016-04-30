@@ -9,6 +9,7 @@ using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Controllers
 {
+    // phasing this one out...
     [Produces("application/json")]
     [Route("api/huntteams")]
     public class HuntTeamsController : Controller

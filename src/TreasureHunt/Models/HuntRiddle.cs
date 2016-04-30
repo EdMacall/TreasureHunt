@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace TreasureHunt.Models
 {
+    // phasing this one out...
     public class HuntRiddle
     {
-        [ForeignKey("HuntId")]
         public int HuntId { get; set; }
+        [ForeignKey("HuntId")]
         public Hunt Hunt { get; set; }
 
-        [ForeignKey("RiddleId")]
         public int RiddleId { get; set; }
+        [ForeignKey("RiddleId")]
         public Riddle Riddle { get; set; }
     }
 }

@@ -9,5 +9,8 @@ namespace TreasureHunt.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+        // Inherits Id,  UserName,  EmailAddress,  and  Password
+        public string ImageURL { get; set; }
+        public ICollection<TeamUser> TeamUsers { get; set; }
     }
 }
