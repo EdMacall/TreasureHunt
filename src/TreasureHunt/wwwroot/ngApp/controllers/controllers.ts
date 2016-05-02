@@ -264,13 +264,13 @@ namespace TreasureHunt.Controllers {
                 .then((response) => { this.focusriddle = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers riddle get...') });
 
-            //  This doesn't work
-            for (let r in this.riddles) {
-                if (r.isAnswered) {
-                    r.completed = "Completed";
-                    console.log("We have a completed.");
-                }
-            }
+            ////  This doesn't work
+            //for (let r in this.riddles) {
+            //    if (r.isAnswered) {
+            //        r.completed = "Completed";
+            //        console.log("We have a completed.");
+            //    }
+            //}
         }
 
         public pickColor(pickedRiddle): void {
