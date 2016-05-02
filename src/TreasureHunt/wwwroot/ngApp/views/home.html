@@ -1,16 +1,31 @@
-<h2>Home</h2>
-<p>
-    {{controller.message}}
-</p>
-<br />
 
-<div ng-repeat="hunt in controller.hunts">
-    {{hunt}}
+<div class="container">
+  <img class="center-block" src="../../images/home_header.png" />
+  <hr />
+  <button type="button" class="center-block btn btn-success btn-circle">
+    <i class="glyphicon glyphicon-play"></i>
+  </button>
 </div>
-<br />
+<hr />
+<div class="container">
+  <div class="row">
+      <div class="col-sm-3 cards" ng-repeat="hunt in controller.hunts">
+        <img class="card-img-top" data-src="..." alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{hunt.name}}</h4>
+          <p class="card-text">Description</p>
+        </div>
+    </div>
+  </div>
+</div>
 
 
-<img src="ngApp/views/images/MasterOfOrion/1290175462masteroforion2.jpg" />
-<br />
-<br />
+
+  <!--<div>
+    <div ng-repeat="hunt in controller.hunts">
+      {{hunt.name}}
+    </div>
+  </div>-->
+
+
 
