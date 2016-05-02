@@ -33,11 +33,11 @@ namespace TreasureHunt.Services
                         Teams = (from tu in _teamuserrepository.List()
                                  where tu.ApplicationUser.UserName == a.UserName
                                  select new TeamDTO {
-                                     /*
-                                     Name = tu.Name,
-                                     ImageURL = tu.ImageURL,
-                                     Points = tu.Points
-                                     */
+
+                                     Name = tu.Team.Name,
+                                     ImageURL = tu.Team.ImageURL,
+                                     Points = tu.Team.Points
+
                                  }).ToList()
                     }).ToList();
         }
