@@ -14,7 +14,7 @@ namespace TreasureHunt {
                 controllerAs: 'controller'
             })
             .state('clue', {
-                url: '/clue',
+                url: '/clue/:id',
                 templateUrl: '/ngApp/views/clue.html',
                 controller: TreasureHunt.Controllers.ClueController,
                 controllerAs: 'controller'
@@ -32,7 +32,7 @@ namespace TreasureHunt {
                 controllerAs: 'controller'
             })
             .state('hunt', {
-                url: '/hunt',
+                url: '/hunt/:id',
                 templateUrl: '/ngApp/views/hunt.html',
                 controller: TreasureHunt.Controllers.HuntController,
                 controllerAs: 'controller'

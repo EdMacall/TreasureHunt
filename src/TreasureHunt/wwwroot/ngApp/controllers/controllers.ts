@@ -6,27 +6,94 @@ namespace TreasureHunt.Controllers {
 
 
     export class ClueController {
-        public message = 'Hello from the clue page!';
+        public message = 'Hello from the Clue Controller!';
+
+        public clue;
+
+        constructor(private $http: ng.IHttpService,
+            private $stateParams: ng.ui.IStateParamsService,
+            private $state: ng.ui.IStateService) {
+            $http.get(`/api/clues/${$stateParams['id']}`)
+                .then((response) => { this.clue = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
     }
 
 
     export class HomeController {
-        public message = 'Hello from the Home page!';
+        public message = 'Hello from the Home Controller!';
+
+        public hunts;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/hunts')
+                .then((response) => { this.hunts = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
     }
 
 
     export class HuntController {
-        public message = 'Hello from the Hunt page!';
+        public message = 'Hello from the Treasure Hunt Controller!';
+
+        public hunts;
+
+        public hunt;
+
+        public teams;
+
+        public teamadd;
+
+        constructor(private $http: ng.IHttpService,
+                    private $stateParams: ng.ui.IStateParamsService,
+                    private $state: ng.ui.IStateService) {
+            $http.get(`/api/hunts/${$stateParams['id']}`)
+                .then((response) => { this.hunt = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+            $http.get(`/api/huntteams/${$stateParams['id']}`)
+                .then((response) => { this.teams = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+
+        public saveHunt(): void {
+            this.$http.post('/api/hunts', this.hunt)
+                .then((response) => {
+                    this.$state.go('hunt');
+                })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+
+        public saveTeam(): void {
+            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.teamadd)
+                .then((response) => {
+                    this.$http.get(`/api/huntteams/${this.$stateParams['id']}`)
+                        .then((response) => { this.teams = response.data })
+                        .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+                    this.$state.go('huntview');
+                })
+                .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
+        }
     }
 
 
     export class HuntsController {
-        public message = 'Hello from the Hunts page!';
+        public message = 'Hello from the Treasure Hunts Controller!';
+
+        public hunts;
+
+        public searchparameter;
+
+        // This controller needs to be modified to take a search string
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/hunts')
+                .then((response) => { this.hunts = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
     }
 
 
     export class SecretController {
-        public message = 'Hello from the Secret page!';
+        public message = 'Hello from the Secret Controller!';
 
         public secrets;
 

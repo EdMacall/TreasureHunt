@@ -36,14 +36,14 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            Clue clue = _clueservice.GetClue(id);
+            ClueDTO cluedto = _clueservice.GetClue(id);
 
-            if (clue == null)
+            if (cluedto == null)
             {
                 return HttpNotFound();
             }
 
-            return Ok(clue);
+            return Ok(cluedto);
         }
 
         /*
