@@ -11,8 +11,8 @@ namespace TreasureHunt.Controllers {
         public clue;
 
         constructor(private $http: ng.IHttpService,
-            private $stateParams: ng.ui.IStateParamsService,
-            private $state: ng.ui.IStateService) {
+                    private $stateParams: ng.ui.IStateParamsService,
+                    private $state: ng.ui.IStateService) {
             $http.get(`/api/clues/${$stateParams['id']}`)
                 .then((response) => { this.clue = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -25,7 +25,8 @@ namespace TreasureHunt.Controllers {
 
         public hunts;
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService,
+                    private $state: ng.ui.IStateService) {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -84,7 +85,8 @@ namespace TreasureHunt.Controllers {
         public searchparameter;
 
         // This controller needs to be modified to take a search string
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService,
+                    private $state: ng.ui.IStateService) {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
