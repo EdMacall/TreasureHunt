@@ -3,25 +3,39 @@
     <title>TreasureHunt</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container">
-        <h1>TreasureHunt</h1>
-        <div>
-          <a href="/">Home</a> /
-            <a href="/hunt">Hunt</a> /
-            <a href="/hunts">Hunts</a> /
-            <a href="/clue">Clue</a> /
-            <a href="/about">About</a>
 
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
+    <div class="container">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Treasure Hunt</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/hunt">Hunt</a></li>
+            <li><a href="/hunts">Hunts</a></li>
+            <li><a href="/clue">Clue</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/login" ng-show="!account.isLoggedIn()">
+                <span class="glyphicon glyphicon-user"></span> Login
+              </a>
+            </li>
+            <li>
+              <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">
+                <span class="glyphicon glyphicon-log-out"></span> Logout
+              </a>
+            </li>
+            <li ng-show="account.isLoggedIn()">[{{account.getUserName()}}]</li>
+          </ul>
         </div>
+      </nav>  
         <hr />
 
         <ui-view></ui-view>
