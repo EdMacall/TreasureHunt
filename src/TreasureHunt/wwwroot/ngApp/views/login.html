@@ -1,32 +1,32 @@
+<fieldset>
+    <legend>Login with a Social Provider</legend>
 
-<link href="../../css/site.css" rel="stylesheet" />
-<h2  class="ang-margin"></h2>
+    <ul>
+        <li ng-repeat="externalLogin in account.externalLogins">
+            <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
+        </li>
+    </ul>
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</fieldset>
 
-    <div class="containerr">
-        <div class="row">
-            <div class="col-md-offset-5 col-md-3">
-                <div class="form-login">
-                    <h4>Welcome back.</h4>
-                    <form ng-submit="controller.login()">
-                        <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="User Name" ng-model="controller.loginUser.userName" />
-                        <br />
-                        <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="controller.loginUser.password" />
-                        <br />
-                        <div class="wrapper">
-                            <span class="group-btn">
-                                <input class="btn btn-primary btn-md" type="submit" value="Login" />      <a href="/register">Register</a>
-                            </span>
-                            <ul>
-                                <li ng-repeat="error in controller.validationMessages">
-                                    {{error}}
-                                </li>
-                            </ul>
-                            </div>
-                    </form>
-                </div>
-            </div>
+<fieldset>
+    <legend>Login Locally</legend>
+    <ul>
+        <li ng-repeat="error in controller.validationMessages">
+            {{error}}
+        </li>
+    </ul>
 
+    <form ng-submit="controller.login()">
+        <div>
+            <label>Email:</label>
+            <input ng-model="controller.loginUser.email" />
         </div>
-    </div>
+        <div>
+            <label>Password:</label>
+            <input ng-model="controller.loginUser.password" />
+        </div>
+        <input type="submit" value="Login" />
+        <a href="/register">Register</a>
+    </form>
+</fieldset>

@@ -4,12 +4,46 @@ namespace TreasureHunt.Controllers {
         public message = 'Hello from the about page!';
     }
 
+
+    export class ClueController {
+        public message = 'Hello from the clue page!';
+    }
+
+
     export class HomeController {
-        public message = 'Hello from the home page!';
+        public message = 'Hello from the Home page!';
     }
 
 
     export class HuntController {
+        public message = 'Hello from the Hunt page!';
+    }
+
+
+    export class HuntsController {
+        public message = 'Hello from the Hunts page!';
+    }
+
+
+    export class SecretController {
+        public message = 'Hello from the Secret page!';
+
+        public secrets;
+
+        constructor($http: ng.IHttpService) {
+            $http.get('/api/secrets').then((results) => {
+                this.secrets = results.data;
+            });
+        }
+    }
+
+
+    export class oldHomeController {
+        public message = 'Hello from the home page!';
+    }
+
+
+    export class oldHuntController {
         public message = 'Hello from the Hunt page!';
 
         public hunts;
@@ -17,8 +51,8 @@ namespace TreasureHunt.Controllers {
         public huntadd;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-        // TODO this.$http = $http ?
-        // TODO getHunts(); ?
+            // TODO this.$http = $http ?
+            // TODO getHunts(); ?
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -48,8 +82,9 @@ namespace TreasureHunt.Controllers {
         */
     }
 
+
     // do we even need this anymore?
-    export class HuntAddController {
+    export class oldHuntAddController {
         public message = 'Hello from the Add Hunt page!';
 
         public hunt;
@@ -67,7 +102,7 @@ namespace TreasureHunt.Controllers {
     // do we even need that anymore?
 
 
-    export class HuntTeamsController {
+    export class oldHuntTeamsController {
         public message = 'Hello from the Hunt Teams page!';
 
         public hunts;
@@ -80,7 +115,7 @@ namespace TreasureHunt.Controllers {
     }
 
 
-    export class HuntViewController {
+    export class oldHuntViewController {
         public message = 'Hello from the Hunt View page!';
 
         public hunt;
@@ -126,7 +161,7 @@ namespace TreasureHunt.Controllers {
     }
 
 
-    export class PlayController {
+    export class oldPlayController {
         public message = 'Hello from the PlayPage page!';
 
         public hunt;
@@ -139,8 +174,8 @@ namespace TreasureHunt.Controllers {
         public teams;
 
         constructor(private $http: ng.IHttpService,
-                    private $stateParams: ng.ui.IStateParamsService,
-                    private $state: ng.ui.IStateService) {
+            private $stateParams: ng.ui.IStateParamsService,
+            private $state: ng.ui.IStateService) {
 
             $http.get(`/api/teams/${$stateParams['id']}`)
                 .then((response) => { this.team = response.data })
@@ -160,11 +195,9 @@ namespace TreasureHunt.Controllers {
                 .then((response) => { this.focusriddle = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem in the play controllers riddle get...') });
 
-                //  This doesn't work
-            for (let r in this.riddles)
-            {
-                if (r.isAnswered)
-                {
+            //  This doesn't work
+            for (let r in this.riddles) {
+                if (r.isAnswered) {
                     r.completed = "Completed";
                     console.log("We have a completed.");
                 }
@@ -185,30 +218,15 @@ namespace TreasureHunt.Controllers {
                         .then((response) => { this.teams = response.data })
                         .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
                     this.$state.go('huntview');
- 
-                })
-                .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
-        }
 
-        /*
-        public saveTeam(): void {
-            // this.$http.post(`/api/teams/${this.$stateParams['id']}`, { name: this.teamadd })
-            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.teamadd)
-                .then((response) => {
-                    this.$http.get(`/api/huntteams/${this.$stateParams['id']}`)
-                        .then((response) => { this.teams = response.data })
-                        .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
-                    this.$state.go('huntview');
-                    // This doesn't work
-                    // this.teams.push(response.data);
                 })
                 .catch((response) => { console.log('Whitney Houston,  we have a save team problem...') })
         }
-        */
     }
 
+
     // added 4/25/16
-    export class PointController {
+    export class oldPointController {
         public points;
 
         constructor(public $http: ng.IHttpService) {
@@ -219,7 +237,8 @@ namespace TreasureHunt.Controllers {
         }
     }
 
-    export class RiddleController {
+
+    export class oldRiddleController {
         public message = 'Hello from the Riddle page!';
 
         public riddleAdd;
@@ -234,7 +253,7 @@ namespace TreasureHunt.Controllers {
             console.log("I ran");
             this.$http.post('/api/riddles', this.riddleAdd)
                 .then((response) => {
-                  
+
 
                     this.$http.get('/api/riddles')
                         .then((response) => { this.riddles = response.data })
@@ -245,19 +264,7 @@ namespace TreasureHunt.Controllers {
     }
 
 
-    export class SecretController {
-        public message = 'Hello from the Secret page!';
-
-        public secrets;
-
-        constructor($http: ng.IHttpService) {
-            $http.get('/api/secrets').then((results) => {
-                this.secrets = results.data;
-            });
-        }
-    }
-
-    export class TeamController {
+    export class oldTeamController {
         public message = 'Hello from the Team page!';
 
         public teams;
@@ -268,6 +275,4 @@ namespace TreasureHunt.Controllers {
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
     }
-
-
 }

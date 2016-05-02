@@ -1,0 +1,18 @@
+﻿<ul  ng-repeat="riddle in controller.riddles" >
+  
+    <li>
+        {{riddle.clue}}
+    </li>
+</ul>
+
+<div>
+    <form ng-submit="controller.saveRiddle()">
+        <div>
+            <div>
+
+            </div>
+            <input type="text" ng-model="controller.hunt.name" placeholder="Name of Treasure Hunt"/>
+        </div>
+        <input type="submit" value="Add Treasure Hunt" />
+    </form>
+</div>

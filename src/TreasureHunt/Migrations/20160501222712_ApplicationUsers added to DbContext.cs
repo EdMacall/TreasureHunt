@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Migrations;
 
 namespace TreasureHunt.Migrations
 {
-    public partial class PointsValueToPoints : Migration
+    public partial class ApplicationUsersaddedtoDbContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,17 +13,9 @@ namespace TreasureHunt.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropForeignKey(name: "FK_HuntRiddle_Hunt_HuntId", table: "HuntRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_HuntRiddle_Riddle_RiddleId", table: "HuntRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_HuntTeam_Hunt_HuntId", table: "HuntTeam");
-            migrationBuilder.DropForeignKey(name: "FK_HuntTeam_Team_TeamId", table: "HuntTeam");
-            migrationBuilder.DropForeignKey(name: "FK_TeamApplicationUser_Team_TeamId", table: "TeamApplicationUser");
-            migrationBuilder.DropForeignKey(name: "FK_TeamRiddle_Riddle_RiddleId", table: "TeamRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_TeamRiddle_Team_TeamId", table: "TeamRiddle");
-            migrationBuilder.AddColumn<string>(
-                name: "PlayersAnswer",
-                table: "Riddle",
-                nullable: true);
+            migrationBuilder.DropForeignKey(name: "FK_TeamClue_Clue_ClueId", table: "TeamClue");
+            migrationBuilder.DropForeignKey(name: "FK_TeamClue_Team_TeamId", table: "TeamClue");
+            migrationBuilder.DropForeignKey(name: "FK_TeamUser_Team_TeamId", table: "TeamUser");
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
@@ -60,50 +52,22 @@ namespace TreasureHunt.Migrations
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
             migrationBuilder.AddForeignKey(
-                name: "FK_HuntRiddle_Hunt_HuntId",
-                table: "HuntRiddle",
-                column: "HuntId",
-                principalTable: "Hunt",
+                name: "FK_TeamClue_Clue_ClueId",
+                table: "TeamClue",
+                column: "ClueId",
+                principalTable: "Clue",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
             migrationBuilder.AddForeignKey(
-                name: "FK_HuntRiddle_Riddle_RiddleId",
-                table: "HuntRiddle",
-                column: "RiddleId",
-                principalTable: "Riddle",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-            migrationBuilder.AddForeignKey(
-                name: "FK_HuntTeam_Hunt_HuntId",
-                table: "HuntTeam",
-                column: "HuntId",
-                principalTable: "Hunt",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-            migrationBuilder.AddForeignKey(
-                name: "FK_HuntTeam_Team_TeamId",
-                table: "HuntTeam",
+                name: "FK_TeamClue_Team_TeamId",
+                table: "TeamClue",
                 column: "TeamId",
                 principalTable: "Team",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
             migrationBuilder.AddForeignKey(
-                name: "FK_TeamApplicationUser_Team_TeamId",
-                table: "TeamApplicationUser",
-                column: "TeamId",
-                principalTable: "Team",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-            migrationBuilder.AddForeignKey(
-                name: "FK_TeamRiddle_Riddle_RiddleId",
-                table: "TeamRiddle",
-                column: "RiddleId",
-                principalTable: "Riddle",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-            migrationBuilder.AddForeignKey(
-                name: "FK_TeamRiddle_Team_TeamId",
-                table: "TeamRiddle",
+                name: "FK_TeamUser_Team_TeamId",
+                table: "TeamUser",
                 column: "TeamId",
                 principalTable: "Team",
                 principalColumn: "Id",
@@ -117,14 +81,9 @@ namespace TreasureHunt.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropForeignKey(name: "FK_HuntRiddle_Hunt_HuntId", table: "HuntRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_HuntRiddle_Riddle_RiddleId", table: "HuntRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_HuntTeam_Hunt_HuntId", table: "HuntTeam");
-            migrationBuilder.DropForeignKey(name: "FK_HuntTeam_Team_TeamId", table: "HuntTeam");
-            migrationBuilder.DropForeignKey(name: "FK_TeamApplicationUser_Team_TeamId", table: "TeamApplicationUser");
-            migrationBuilder.DropForeignKey(name: "FK_TeamRiddle_Riddle_RiddleId", table: "TeamRiddle");
-            migrationBuilder.DropForeignKey(name: "FK_TeamRiddle_Team_TeamId", table: "TeamRiddle");
-            migrationBuilder.DropColumn(name: "PlayersAnswer", table: "Riddle");
+            migrationBuilder.DropForeignKey(name: "FK_TeamClue_Clue_ClueId", table: "TeamClue");
+            migrationBuilder.DropForeignKey(name: "FK_TeamClue_Team_TeamId", table: "TeamClue");
+            migrationBuilder.DropForeignKey(name: "FK_TeamUser_Team_TeamId", table: "TeamUser");
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
@@ -161,50 +120,22 @@ namespace TreasureHunt.Migrations
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
             migrationBuilder.AddForeignKey(
-                name: "FK_HuntRiddle_Hunt_HuntId",
-                table: "HuntRiddle",
-                column: "HuntId",
-                principalTable: "Hunt",
+                name: "FK_TeamClue_Clue_ClueId",
+                table: "TeamClue",
+                column: "ClueId",
+                principalTable: "Clue",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
             migrationBuilder.AddForeignKey(
-                name: "FK_HuntRiddle_Riddle_RiddleId",
-                table: "HuntRiddle",
-                column: "RiddleId",
-                principalTable: "Riddle",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-            migrationBuilder.AddForeignKey(
-                name: "FK_HuntTeam_Hunt_HuntId",
-                table: "HuntTeam",
-                column: "HuntId",
-                principalTable: "Hunt",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-            migrationBuilder.AddForeignKey(
-                name: "FK_HuntTeam_Team_TeamId",
-                table: "HuntTeam",
+                name: "FK_TeamClue_Team_TeamId",
+                table: "TeamClue",
                 column: "TeamId",
                 principalTable: "Team",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
             migrationBuilder.AddForeignKey(
-                name: "FK_TeamApplicationUser_Team_TeamId",
-                table: "TeamApplicationUser",
-                column: "TeamId",
-                principalTable: "Team",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-            migrationBuilder.AddForeignKey(
-                name: "FK_TeamRiddle_Riddle_RiddleId",
-                table: "TeamRiddle",
-                column: "RiddleId",
-                principalTable: "Riddle",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-            migrationBuilder.AddForeignKey(
-                name: "FK_TeamRiddle_Team_TeamId",
-                table: "TeamRiddle",
+                name: "FK_TeamUser_Team_TeamId",
+                table: "TeamUser",
                 column: "TeamId",
                 principalTable: "Team",
                 principalColumn: "Id",

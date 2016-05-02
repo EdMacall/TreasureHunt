@@ -38,8 +38,6 @@ namespace TreasureHunt.Controllers
 
             HuntDTO huntdto = _huntservice.GetHunt(id);
 
-            // Hunt hunt = _huntservice.Hunts.Single(m => m.Id == id);
-
             if (huntdto == null)
             {
                 return HttpNotFound();

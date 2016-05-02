@@ -16,11 +16,5 @@ namespace TreasureHunt.Models
         public ICollection<TeamClue> TeamClues { get; set; }
         public ICollection<TeamUser> TeamUsers { get; set; }
 
-        public int HuntId { get; set; }
-        [ForeignKey("HuntId")]
-        public Hunt Hunt { get; set; }
-
-        // public ICollection<ApplicationUser> ApplicationUsers { get; set; }
-        // public ICollection<Riddle> Riddles { get; set; }
     }
 }

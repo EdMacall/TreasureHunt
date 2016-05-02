@@ -11,12 +11,10 @@ namespace TreasureHunt.Services
     public class TeamService
     {
         private TeamRepository _teamrepository;
-        private HuntTeamRepository _huntTeamRepo;
 
-        public TeamService(TeamRepository teamrepository, HuntTeamRepository huntTeamRepo)
+        public TeamService(TeamRepository teamrepository)
         {
             _teamrepository = teamrepository;
-            _huntTeamRepo = huntTeamRepo;
         }
 
         public ICollection<TeamDTO> GetTeamList()
@@ -25,26 +23,36 @@ namespace TreasureHunt.Services
                     select new TeamDTO
                     {
                         Name = t.Name,
+                        ImageURL = t.ImageURL,
+                        Points = t.Points,
                         // ApplicationUsers = t.ApplicationUsers,
-                        // Riddles = t.Riddles
+                        // Clues = t.Clues
                     }).ToList();
         }
 
         public TeamDTO GetTeam(int id)
         {
-            // return _huntrepository.First(b => b.Id ==id);
-
             Team team = _teamrepository.List().FirstOrDefault(m => m.Id == id);
 
-            return new TeamDTO { Name = team.Name,
-            Points = team.Points};
+            return new TeamDTO
+            {
+                Name = team.Name,
+                ImageURL = team.ImageURL,
+                Points = team.Points,
+                // ApplicationUsers = team.ApplicationUsers,
+                // Clues = team.Clues
+            };
         }
 
         public void AddTeamList(TeamDTO teamdto)
         {
             Team team = new Team
             {
-                Name = teamdto.Name
+                Name = teamdto.Name,
+                ImageURL = teamdto.ImageURL,
+                Points = teamdto.Points,
+                // ApplicationUsers = teamdto.ApplicationUsers,
+                // Clues = teamdto.Clues
             };
 
             _teamrepository.Add(team);
@@ -52,6 +60,7 @@ namespace TreasureHunt.Services
 
         }
 
+        /*
         public TeamDTO AddHuntTeamList(int huntId, TeamDTO teamdto)
         {
 
@@ -74,5 +83,6 @@ namespace TreasureHunt.Services
                 Name = team.Name
             };
         }
+        */
     }
 }

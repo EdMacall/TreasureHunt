@@ -17,7 +17,9 @@ namespace TreasureHunt.Models
         [ForeignKey("TeamId")]
         public Team Team { get; set; }
 
+        // public string ApplicationUserId { get; set; }
         public string ApplicationUserId { get; set; }
+        // [ForeignKey("ApplicationUserId")]
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
     }

@@ -13,7 +13,7 @@ namespace TreasureHunt.Services.Models
         public string Answer { get; set; }
         public int PointValue { get; set; }
 
-        // should this be a TeamClueDTO?  Or a TeamDTO?
-        public ICollection<TeamDTO> TeamClues { get; set; }
+        // should this be a TeamDTO
+        public ICollection<TeamDTO> Teams { get; set; }
     }
 }

@@ -13,6 +13,12 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.AboutController,
                 controllerAs: 'controller'
             })
+            .state('clue', {
+                url: '/clue',
+                templateUrl: '/ngApp/views/clue.html',
+                controller: TreasureHunt.Controllers.ClueController,
+                controllerAs: 'controller'
+            })
             .state('externalRegister', {
                 url: '/externalRegister',
                 templateUrl: '/ngApp/views/externalRegister.html',
@@ -31,22 +37,10 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.HuntController,
                 controllerAs: 'controller'
             })
-            .state('huntadd', {
-                url: '/huntadd',
-                templateUrl: '/ngApp/views/huntadd.html',
-                controller: TreasureHunt.Controllers.HuntAddController,
-                controllerAs: 'controller'
-            })
-            .state('huntteams', {
-                url: '/huntteams',
-                templateUrl: '/ngApp/views/huntteams.html',
-                controller: TreasureHunt.Controllers.HuntTeamsController,
-                controllerAs: 'controller'
-            })
-            .state('huntview', {
-                url: '/huntview/:id',
-                templateUrl: '/ngApp/views/huntview.html',
-                controller: TreasureHunt.Controllers.HuntViewController,
+            .state('hunts', {
+                url: '/hunts',
+                templateUrl: '/ngApp/views/hunts.html',
+                controller: TreasureHunt.Controllers.HuntsController,
                 controllerAs: 'controller'
             })
             .state('login', {
@@ -59,34 +53,10 @@ namespace TreasureHunt {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
             })
-            .state('play', {
-                url: '/play',
-                templateUrl: '/ngApp/views/play.html',
-                controller: TreasureHunt.Controllers.RiddleController,
-                controllerAs: 'controller'
-            })
-            .state('playpage', {
-                url: '/play/:id',
-                templateUrl: '/ngApp/views/play.html',
-                controller: TreasureHunt.Controllers.PlayController,
-                controllerAs: 'controller'
-            })
-             .state('point', {
-                url: '/point',
-                templateUrl: '/ngApp/views/point.html',
-                controller: TreasureHunt.Controllers.PointController,
-                controllerAs: 'controller'
-            })
             .state('register', {
                 url: '/register',
                 templateUrl: '/ngApp/views/register.html',
                 controller: TreasureHunt.Controllers.RegisterController,
-                controllerAs: 'controller'
-            })
-            .state('riddle', {
-                url: '/riddle',
-                templateUrl: '/ngApp/views/riddle.html',
-                controller: TreasureHunt.Controllers.RiddleController,
                 controllerAs: 'controller'
             })
             .state('secret', {
@@ -95,16 +65,70 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.SecretController,
                 controllerAs: 'controller'
             })
-            .state('team', {
-                url: '/team',
-                templateUrl: '/ngApp/views/team.html',
-                controller: TreasureHunt.Controllers.TeamController,
-                controllerAs: 'controller'
-            })
             .state('test', {
                 url: '/test',
                 templateUrl: '/ngApp/views/test.html',
                 controller: TreasureHunt.Controllers.HomeController,
+                controllerAs: 'controller'
+            })
+            .state('oldhome', {
+                url: '/oldhome',
+                templateUrl: '/ngApp/views/old/oldhome.html',
+                controller: TreasureHunt.Controllers.oldHomeController,
+                controllerAs: 'controller'
+            })
+            .state('oldhunt', {
+                url: '/oldhunt',
+                templateUrl: '/ngApp/views/old/oldhunt.html',
+                controller: TreasureHunt.Controllers.oldHuntController,
+                controllerAs: 'controller'
+            })
+            .state('oldhuntadd', {
+                url: '/oldhuntadd',
+                templateUrl: '/ngApp/views/old/oldhuntadd.html',
+                controller: TreasureHunt.Controllers.oldHuntAddController,
+                controllerAs: 'controller'
+            })
+            .state('oldhuntteams', {
+                url: '/oldhuntteams',
+                templateUrl: '/ngApp/views/old/oldhuntteams.html',
+                controller: TreasureHunt.Controllers.oldHuntTeamsController,
+                controllerAs: 'controller'
+            })
+            .state('oldhuntview', {
+                url: '/oldhuntview/:id',
+                templateUrl: '/ngApp/views/old/oldhuntview.html',
+                controller: TreasureHunt.Controllers.oldHuntViewController,
+                controllerAs: 'controller'
+            })
+            .state('oldplay', {
+                url: '/oldplay',
+                templateUrl: '/ngApp/views/old/oldplay.html',
+                controller: TreasureHunt.Controllers.oldRiddleController,
+                controllerAs: 'controller'
+            })
+            .state('oldplaypage', {
+                url: '/oldplay/:id',
+                templateUrl: '/ngApp/views/old/oldplay.html',
+                controller: TreasureHunt.Controllers.oldPlayController,
+                controllerAs: 'controller'
+            })
+            .state('oldpoint', {
+                url: '/oldpoint',
+                templateUrl: '/ngApp/views/old/oldpoint.html',
+                controller: TreasureHunt.Controllers.oldPointController,
+                controllerAs: 'controller'
+            })
+            .state('oldriddle', {
+                url: '/oldriddle',
+                templateUrl: '/ngApp/views/old/oldriddle.html',
+                controller: TreasureHunt.Controllers.oldRiddleController,
+                controllerAs: 'controller'
+            })
+            .state('oldteam', {
+                url: '/oldteam',
+                templateUrl: '/ngApp/views/old/oldteam.html',
+                controller: TreasureHunt.Controllers.oldTeamController,
                 controllerAs: 'controller'
             });
 

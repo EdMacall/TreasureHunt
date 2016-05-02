@@ -104,8 +104,6 @@ namespace TreasureHunt.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int>("ApplicationUserId");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -159,7 +157,7 @@ namespace TreasureHunt.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("HuntId");
+                    b.Property<int?>("HuntId");
 
                     b.Property<int>("PointValue");
 
@@ -182,50 +180,12 @@ namespace TreasureHunt.Migrations
                     b.HasKey("Id");
                 });
 
-            modelBuilder.Entity("TreasureHunt.Models.HuntRiddle", b =>
-                {
-                    b.Property<int>("HuntId");
-
-                    b.Property<int>("RiddleId");
-
-                    b.HasKey("HuntId", "RiddleId");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.HuntTeam", b =>
-                {
-                    b.Property<int>("HuntId");
-
-                    b.Property<int>("TeamId");
-
-                    b.HasKey("HuntId", "TeamId");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.Riddle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Answer");
-
-                    b.Property<string>("Clue");
-
-                    b.Property<bool>("IsAnswered");
-
-                    b.Property<string>("PlayersAnswer");
-
-                    b.Property<int>("Points");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-                });
-
             modelBuilder.Entity("TreasureHunt.Models.Team", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("HuntId");
+                    b.Property<int?>("HuntId");
 
                     b.Property<string>("ImageURL");
 
@@ -236,52 +196,30 @@ namespace TreasureHunt.Migrations
                     b.HasKey("Id");
                 });
 
-            modelBuilder.Entity("TreasureHunt.Models.TeamApplicationUser", b =>
-                {
-                    b.Property<int>("TeamId");
-
-                    b.Property<int>("ApplicationUserId");
-
-                    b.Property<string>("ApplicationUserId1");
-
-                    b.HasKey("TeamId", "ApplicationUserId");
-                });
-
             modelBuilder.Entity("TreasureHunt.Models.TeamClue", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("TeamId");
 
                     b.Property<int>("ClueId");
 
-                    b.Property<bool>("Solved");
+                    b.Property<int>("Id");
 
-                    b.Property<int>("TeamId");
+                    b.Property<bool>("Solved");
 
                     b.Property<string>("TeamsAnswer");
 
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.TeamRiddle", b =>
-                {
-                    b.Property<int>("TeamId");
-
-                    b.Property<int>("RiddleId");
-
-                    b.HasKey("TeamId", "RiddleId");
+                    b.HasKey("TeamId", "ClueId");
                 });
 
             modelBuilder.Entity("TreasureHunt.Models.TeamUser", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ApplicationUserId");
-
                     b.Property<int>("TeamId");
 
-                    b.HasKey("Id");
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int>("Id");
+
+                    b.HasKey("TeamId", "ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -323,44 +261,11 @@ namespace TreasureHunt.Migrations
                         .HasForeignKey("HuntId");
                 });
 
-            modelBuilder.Entity("TreasureHunt.Models.HuntRiddle", b =>
-                {
-                    b.HasOne("TreasureHunt.Models.Hunt")
-                        .WithMany()
-                        .HasForeignKey("HuntId");
-
-                    b.HasOne("TreasureHunt.Models.Riddle")
-                        .WithMany()
-                        .HasForeignKey("RiddleId");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.HuntTeam", b =>
-                {
-                    b.HasOne("TreasureHunt.Models.Hunt")
-                        .WithMany()
-                        .HasForeignKey("HuntId");
-
-                    b.HasOne("TreasureHunt.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId");
-                });
-
             modelBuilder.Entity("TreasureHunt.Models.Team", b =>
                 {
                     b.HasOne("TreasureHunt.Models.Hunt")
                         .WithMany()
                         .HasForeignKey("HuntId");
-                });
-
-            modelBuilder.Entity("TreasureHunt.Models.TeamApplicationUser", b =>
-                {
-                    b.HasOne("TreasureHunt.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId1");
-
-                    b.HasOne("TreasureHunt.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("TreasureHunt.Models.TeamClue", b =>
@@ -374,23 +279,11 @@ namespace TreasureHunt.Migrations
                         .HasForeignKey("TeamId");
                 });
 
-            modelBuilder.Entity("TreasureHunt.Models.TeamRiddle", b =>
-                {
-                    b.HasOne("TreasureHunt.Models.Riddle")
-                        .WithMany()
-                        .HasForeignKey("RiddleId");
-
-                    b.HasOne("TreasureHunt.Models.Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId");
-                });
-
             modelBuilder.Entity("TreasureHunt.Models.TeamUser", b =>
                 {
                     b.HasOne("TreasureHunt.Models.ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .HasPrincipalKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("TreasureHunt.Models.Team")
                         .WithMany()

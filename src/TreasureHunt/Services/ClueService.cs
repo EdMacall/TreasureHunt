@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TreasureHunt.Infrastructure;
+using TreasureHunt.Models;
 using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
@@ -27,7 +28,21 @@ namespace TreasureHunt.Services
                         Description = c.Description,
                         Answer = c.Answer,
                         PointValue = c.PointValue
+                        // Teams =
                     }).ToList();
+        }
+
+        public ClueDTO GetClue(int id)
+        {
+            Clue clue = _cluerepository.List().FirstOrDefault(m => m.Id == id);
+
+            return new ClueDTO {
+                Title = clue.Title,
+                Description = clue.Description,
+                Answer = clue.Answer,
+                PointValue = clue.PointValue
+                // Teams =
+            };
         }
     }
 }

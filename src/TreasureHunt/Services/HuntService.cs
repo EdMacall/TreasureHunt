@@ -29,12 +29,11 @@ namespace TreasureHunt.Services
 
         public HuntDTO GetHunt(int id)
         {
-            // return _huntrepository.First(b => b.Id ==id);
-
             Hunt hunt = _huntrepository.List().FirstOrDefault(m => m.Id == id);
 
-
-            return new HuntDTO {Name = hunt.Name};
+            return new HuntDTO {
+                Name = hunt.Name
+            };
         }
 
         public void AddHuntList(HuntDTO huntdto)

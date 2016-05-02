@@ -38,8 +38,6 @@ namespace TreasureHunt.Controllers
 
             TeamDTO teamdto = _teamservice.GetTeam(id);
 
-            // Hunt hunt = _huntservice.Hunts.Single(m => m.Id == id);
-
             if (teamdto == null)
             {
                 return HttpNotFound();
@@ -48,9 +46,10 @@ namespace TreasureHunt.Controllers
             return Ok(teamdto);
         }
 
-        [HttpPost("{huntId}")]
-        public IActionResult Post(int huntId, [FromBody]TeamDTO teamdto)
-        // public IActionResult Post(int huntId, [FromBody]Team team)
+        /*
+        [HttpPost("{teamId}")]
+        public IActionResult Post(int teamId, [FromBody]TeamDTO teamdto)
+        // public IActionResult Post(int teamId, [FromBody]Team team)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,7 @@ namespace TreasureHunt.Controllers
             }
         }
 
-        /*
+        
         // GET: api/Teams/5
         [HttpGet("{id}", Name = "GetTeam")]
         public IActionResult GetTeam([FromRoute] int id)
@@ -75,7 +74,7 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            Team team = _context.Teams.Single(m => m.Id == id);
+            Team team = _teamservice.Teams.Single(m => m.Id == id);
 
             if (team == null)
             {
@@ -103,7 +102,7 @@ namespace TreasureHunt.Controllers
 
             try
             {
-                _context.SaveChanges();
+                _teamservice.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -132,7 +131,7 @@ namespace TreasureHunt.Controllers
             _context.Teams.Add(team);
             try
             {
-                _context.SaveChanges();
+                _teamservice.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -158,14 +157,14 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            Team team = _context.Teams.Single(m => m.Id == id);
+            Team team = _teamservice.Teams.Single(m => m.Id == id);
             if (team == null)
             {
                 return HttpNotFound();
             }
 
-            _context.Teams.Remove(team);
-            _context.SaveChanges();
+            _teamservice.Teams.Remove(team);
+            _teamservice.SaveChanges();
 
             return Ok(team);
         }
@@ -174,14 +173,14 @@ namespace TreasureHunt.Controllers
         {
             if (disposing)
             {
-                _context.Dispose();
+                _teamservice.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool TeamExists(int id)
         {
-            return _context.Teams.Count(e => e.Id == id) > 0;
+            return _teamservice.Teams.Count(e => e.Id == id) > 0;
         }
         */
     }

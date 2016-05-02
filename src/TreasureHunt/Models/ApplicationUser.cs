@@ -11,6 +11,7 @@ namespace TreasureHunt.Models
     {
         // Inherits Id,  UserName,  EmailAddress,  and  Password
         public string ImageURL { get; set; }
+
         public ICollection<TeamUser> TeamUsers { get; set; }
     }
 }

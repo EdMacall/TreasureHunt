@@ -9,70 +9,67 @@ using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Controllers
 {
-    // phasing this one oout...
     [Produces("application/json")]
-    [Route("api/teamhunts")]
-    public class TeamHuntsController : Controller
+    [Route("api/[controller]")]
+    public class CluesController : Controller
     {
-        private HuntTeamService _huntteamservice;
+        private ClueService _clueservice;
 
-        public TeamHuntsController(HuntTeamService huntteamservice)
+        public CluesController(ClueService clueservice)
         {
-            _huntteamservice = huntteamservice;
+            _clueservice = clueservice;
         }
 
-        /*
-        // GET: api/TeamHunts
+        // GET: api/Hunts
         [HttpGet]
-        public IEnumerable<HuntTeam> GetHuntTeams()
+        public ICollection<ClueDTO> GetHunt()
         {
-            return _huntteamservice.HuntTeams;
+            return _clueservice.GetClueList().ToList();
         }
-        */
 
-        // GET: api/TeamHunts/5
-        [HttpGet("{id}", Name = "GetTeamHunts")]
-        public IActionResult GetHuntTeam([FromRoute] int id)
+        // GET: api/Clues/5
+        [HttpGet("{id}", Name = "GetClue")]
+        public IActionResult GetClue([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);
             }
 
-            HuntDTO huntdto = _huntteamservice.GetTeamHuntList(id);
+            Clue clue = _clueservice.GetClue(id);
 
-            if (huntdto == null)
+            if (clue == null)
             {
                 return HttpNotFound();
             }
 
-            return Ok(huntdto);
+            return Ok(clue);
         }
 
         /*
-        // PUT: api/TeamHunts/5
+        // PUT: api/Clues/5
         [HttpPut("{id}")]
-        public IActionResult PutHuntTeam(int id, [FromBody] HuntTeam huntTeam)
+        public IActionResult PutClue(int id, [FromBody] Clue clue)
         {
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);
             }
 
-            if (id != huntTeam.HuntId)
+            if (id != clue.Id)
             {
                 return HttpBadRequest();
             }
 
-            _huntteamservice.Entry(huntTeam).State = EntityState.Modified;
+            _context.Entry(clue).State = EntityState.Modified;
 
             try
             {
-                _huntteamservice.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HuntTeamExists(id))
+                if (!ClueExists(id))
                 {
                     return HttpNotFound();
                 }
@@ -85,23 +82,23 @@ namespace TreasureHunt.Controllers
             return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // POST: api/TeamHunts
+        // POST: api/Clues
         [HttpPost]
-        public IActionResult PostHuntTeam([FromBody] HuntTeam huntTeam)
+        public IActionResult PostClue([FromBody] Clue clue)
         {
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);
             }
 
-            _huntteamservice.HuntTeams.Add(huntTeam);
+            _context.Clues.Add(clue);
             try
             {
-                _huntteamservice.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbUpdateException)
             {
-                if (HuntTeamExists(huntTeam.HuntId))
+                if (ClueExists(clue.Id))
                 {
                     return new HttpStatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -111,42 +108,42 @@ namespace TreasureHunt.Controllers
                 }
             }
 
-            return CreatedAtRoute("GetHuntTeam", new { id = huntTeam.HuntId }, huntTeam);
+            return CreatedAtRoute("GetClue", new { id = clue.Id }, clue);
         }
 
-        // DELETE: api/TeamHunts/5
+        // DELETE: api/Clues/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteHuntTeam(int id)
+        public IActionResult DeleteClue(int id)
         {
             if (!ModelState.IsValid)
             {
                 return HttpBadRequest(ModelState);
             }
 
-            HuntTeam huntTeam = _huntteamservice.HuntTeams.Single(m => m.HuntId == id);
-            if (huntTeam == null)
+            Clue clue = _context.Clues.Single(m => m.Id == id);
+            if (clue == null)
             {
                 return HttpNotFound();
             }
 
-            _huntteamservice.HuntTeams.Remove(huntTeam);
-            _huntteamservice.SaveChanges();
+            _context.Clues.Remove(clue);
+            _context.SaveChanges();
 
-            return Ok(huntTeam);
+            return Ok(clue);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                _huntteamservice.Dispose();
+                _context.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool HuntTeamExists(int id)
+        private bool ClueExists(int id)
         {
-            return _huntteamservice.HuntTeams.Count(e => e.HuntId == id) > 0;
+            return _context.Clues.Count(e => e.Id == id) > 0;
         }
         */
     }
