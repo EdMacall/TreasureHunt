@@ -41,7 +41,7 @@ namespace TreasureHunt.Services
 
             // Team team = _teamrepository.List().
 
-            // Clue clue
+            // Clue clue = _cluerepository.List().
 
             return new HuntDTO
             {
