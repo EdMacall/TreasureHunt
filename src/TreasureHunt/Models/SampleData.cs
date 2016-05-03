@@ -813,19 +813,28 @@ namespace TreasureHunt.Models
             if (!context.Teams.Any())
             {
                 context.Teams.AddRange(
-                    new Team { Name = "Sssla", ImageURL = "", Points = 0 },
-                    new Team { Name = "Terra", ImageURL = "", Points = 0 },
-                    new Team { Name = "Navin", ImageURL = "", Points = 0 },
-                    new Team { Name = "Draconis", ImageURL = "", Points = 0 },
-                    new Team { Name = "Altair", ImageURL = "", Points = 0 },
-                    new Team { Name = "Kholdan", ImageURL = "", Points = 0 },
-                    new Team { Name = "Fierias", ImageURL = "", Points = 0 },
-                    new Team { Name = "Ursa", ImageURL = "", Points = 0 },
-                    new Team { Name = "Meklon", ImageURL = "", Points = 0 },
-                    new Team { Name = "Trilar", ImageURL = "", Points = 0 },
-                    new Team { Name = "Gnol", ImageURL = "", Points = 0 },
-                    new Team { Name = "Cryslon", ImageURL = "", Points = 0 },
-                    new Team { Name = "Mentar", ImageURL = "", Points = 0 }
+                    new Team { Name = "Sssla", ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkralogo.jpg", Points = 0 },
+                    new Team { Name = "Terra", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
+                    new Team { Name = "Navin", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
+                    new Team { Name = "Draconis", ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianbanner.jpg", Points = 0 },
+                    new Team { Name = "Altair", ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarilogo.jpg", Points = 0 },
+                    new Team { Name = "Kholdan", ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonlogo.jpg", Points = 0 },
+                    new Team { Name = "Fierias", ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanlogo.jpg", Points = 0 },
+                    new Team { Name = "Ursa", ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathilogo.jpg", Points = 0 },
+                    new Team { Name = "Meklon", ImageURL = "ngApp/views/images/MasterOfOrion/Meklar/Meklarlogo.jpg", Points = 0 },
+                    new Team { Name = "Trilar", ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianbanner.jpg", Points = 0 },
+                    new Team { Name = "Gnol", ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolambanner.jpg", Points = 0 },
+                    new Team { Name = "Cryslon", ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidlogo.jpg", Points = 0 },
+                    new Team { Name = "Mentar", ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonlogo.jpg", Points = 0 },
+                    new Team { Name = "Mercury", ImageURL = "ngApp/views/images/Planets/planet-mercury.png", Points = 0 },
+                    new Team { Name = "Venus", ImageURL = "ngApp/views/images/Planets/planet-venus.png", Points = 0 },
+                    new Team { Name = "Earth", ImageURL = "ngApp/views/images/Planets/planet-earth.png", Points = 0 },
+                    new Team { Name = "Mars", ImageURL = "ngApp/views/images/Planets/planet-mars.png", Points = 0 },
+                    new Team { Name = "Jupiter", ImageURL = "ngApp/views/images/Planets/planet-jupiter.png", Points = 0 },
+                    new Team { Name = "Saturn", ImageURL = "ngApp/views/images/Planets/planet-saturn.png", Points = 0 },
+                    new Team { Name = "Neptune", ImageURL = "ngApp/views/images/Planets/planet-neptune.png", Points = 0 },
+                    new Team { Name = "Uranus", ImageURL = "ngApp/views/images/Planets/planet-uranus.png", Points = 0 },
+                    new Team { Name = "Pluto", ImageURL = "ngApp/views/images/Planets/52315396-pluto.jpg", Points = 0 }
                 );
                 context.SaveChanges();
             }
