@@ -4,12 +4,15 @@
     <hr />
       <div class="row">
         <div class="input-group col-md-4 center-block">
-          <input type="text" class="search-query form-control" placeholder="Search" />
+          <input type="text" class="search-query form-control" placeholder="Search" ng-model="controller.searchstring"/>
           <span class="input-group-btn">
             <span class="btn btn-default" type="submit">
               <lable class="fa fa-search"></lable>
+                
             </span>
+
           </span>
+            {{controller.searchstring}}
         </div>
       </div>
     </div>
