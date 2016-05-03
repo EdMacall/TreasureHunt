@@ -12,15 +12,19 @@ namespace TreasureHunt.Services
     {
         private HuntRepository _huntrepository;
         private TeamRepository _teamrepository;
+        private TeamService    _teamservice;
         private ClueRepository _cluerepository;
 
         public HuntService(HuntRepository huntrepository,
                            TeamRepository teamrepository,
-                           ClueRepository cluerepository)
+                           TeamService    teamservice,
+                           ClueRepository cluerepository
+                           )
         {
             _huntrepository = huntrepository;
             _teamrepository = teamrepository;
             _cluerepository = cluerepository;
+            _teamservice    = teamservice;
         }
 
         public ICollection<HuntDTO> GetHuntList()
@@ -37,19 +41,18 @@ namespace TreasureHunt.Services
 
         public HuntDTO GetHunt(int id)
         {
-            Hunt hunt = _huntrepository.List().FirstOrDefault(m => m.Id == id);
+            HuntDTO hunt = (from h in _huntrepository.FindHuntById(id)
+                            select new HuntDTO
+                            {
+                                Id = h.Id,
+                                Story = h.Story,
+                                Name = h.Name,
+                                ImageURL = h.ImageURL
+                            }).FirstOrDefault();
 
-            // Team team = _teamrepository.List().
+            hunt.Teams = _teamservice.GetTeamsWithHuntId(id);
 
-            // Clue clue = _cluerepository.List().
-
-            return new HuntDTO
-            {
-                Id = hunt.Id,
-                Story = hunt.Story,
-                Name = hunt.Name,
-                ImageURL = hunt.ImageURL
-            };
+            return hunt;
         }
 
         public void AddHuntList(HuntDTO huntdto)
