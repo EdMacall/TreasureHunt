@@ -24,7 +24,8 @@ namespace TreasureHunt.Models
                 stephen = new ApplicationUser
                 {
                     UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    Email = "Stephen.Walther@CoderCamps.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(stephen, "Secret123!");
 
@@ -40,7 +41,8 @@ namespace TreasureHunt.Models
                 stephenw = new ApplicationUser
                 {
                     UserName = "Stephen",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    Email = "Stephen.Walther@CoderCamps.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(stephenw, "Secret123!");
 
@@ -56,7 +58,8 @@ namespace TreasureHunt.Models
                 irvedwmac = new ApplicationUser
                 {
                     UserName = "irvedwmac@aol.com",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(irvedwmac, "Secret123!");
 
@@ -72,7 +75,8 @@ namespace TreasureHunt.Models
                 irvedwma = new ApplicationUser
                 {
                     UserName = "EdMacall",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(irvedwma, "Secret123!");
 
@@ -88,7 +92,8 @@ namespace TreasureHunt.Models
                 xayadeth = new ApplicationUser
                 {
                     UserName = "xayadeth360@gmail.com",
-                    Email = "xayadeth360@gmail.com"
+                    Email = "xayadeth360@gmail.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/xayadeth360.jpg"
                 };
                 await userManager.CreateAsync(xayadeth, "Secret123!");
 
@@ -104,7 +109,8 @@ namespace TreasureHunt.Models
                 xayadeth360 = new ApplicationUser
                 {
                     UserName = "Xayadeth360",
-                    Email = "xayadeth360@gmail.com"
+                    Email = "xayadeth360@gmail.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/xayadeth360.jpg"
                 };
                 await userManager.CreateAsync(xayadeth360, "Secret123!");
 
@@ -120,7 +126,8 @@ namespace TreasureHunt.Models
                 gescobedoz = new ApplicationUser
                 {
                     UserName = "gescobedoz@broncs.utpa.edu",
-                    Email = "gescobedoz@broncs.utpa.edu"
+                    Email = "gescobedoz@broncs.utpa.edu",
+                    ImageURL = "ngApp/views/images/CoderCamps/escobedo.gabe.jpg"
                 };
                 await userManager.CreateAsync(gescobedoz, "Secret123!");
 
@@ -136,12 +143,30 @@ namespace TreasureHunt.Models
                 gabe = new ApplicationUser
                 {
                     UserName = "Gabe",
-                    Email = "gescobedoz@broncs.utpa.edu"
+                    Email = "gescobedoz@broncs.utpa.edu",
+                    ImageURL = "ngApp/views/images/CoderCamps/escobedo.gabe.jpg"
                 };
                 await userManager.CreateAsync(gabe, "Secret123!");
 
                 // add claims
                 await userManager.AddClaimAsync(gabe, new Claim("IsAdmin", "true"));
+            }
+
+            // Ensure Nelson (IsAdmin)
+            var nelson = await userManager.FindByNameAsync("Nelson");
+            if (nelson == null)
+            {
+                // create user
+                nelson = new ApplicationUser
+                {
+                    UserName = "Nelson",
+                    Email = "speedknotjenkins@gmail.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/Cruz.nelson.m.jpg"
+                };
+                await userManager.CreateAsync(nelson, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(nelson, new Claim("IsAdmin", "true"));
             }
 
             // Ensure Mike (not IsAdmin)
@@ -152,7 +177,8 @@ namespace TreasureHunt.Models
                 mike = new ApplicationUser
                 {
                     UserName = "Mike@CoderCamps.com",
-                    Email = "Mike@CoderCamps.com"
+                    Email = "Mike@CoderCamps.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(mike, "Secret123!");
             }
@@ -166,7 +192,8 @@ namespace TreasureHunt.Models
                 mikey = new ApplicationUser
                 {
                     UserName = "Mike",
-                    Email = "Mike@CoderCamps.com"
+                    Email = "Mike@CoderCamps.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/"
                 };
                 await userManager.CreateAsync(mikey, "Secret123!");
             }
@@ -179,7 +206,8 @@ namespace TreasureHunt.Models
                 guanar = new ApplicationUser
                 {
                     UserName = "Guanar",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkratech.jpg"
                 };
                 await userManager.CreateAsync(guanar, "Secret123!");
             }
@@ -192,7 +220,8 @@ namespace TreasureHunt.Models
                 dactylus = new ApplicationUser
                 {
                     UserName = "Dactylus",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkraspy.jpg"
                 };
                 await userManager.CreateAsync(dactylus, "Secret123!");
             }
@@ -205,7 +234,8 @@ namespace TreasureHunt.Models
                 ragazor = new ApplicationUser
                 {
                     UserName = "Ragazor",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkratech.jpg"
                 };
                 await userManager.CreateAsync(ragazor, "Secret123!");
             }
@@ -218,7 +248,8 @@ namespace TreasureHunt.Models
                 tyran = new ApplicationUser
                 {
                     UserName = "Tyran",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkrawar.jpg"
                 };
                 await userManager.CreateAsync(tyran, "Secret123!");
             }
@@ -231,7 +262,8 @@ namespace TreasureHunt.Models
                 baldor = new ApplicationUser
                 {
                     UserName = "Baldor",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Humans/Humantech.jpg"
                 };
                 await userManager.CreateAsync(baldor, "Secret123!");
             }
@@ -244,7 +276,8 @@ namespace TreasureHunt.Models
                 hessler = new ApplicationUser
                 {
                     UserName = "Hessler",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Humans/Humanwar.jpg"
                 };
                 await userManager.CreateAsync(hessler, "Secret123!");
             }
@@ -257,7 +290,8 @@ namespace TreasureHunt.Models
                 putin = new ApplicationUser
                 {
                     UserName = "Putin",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Humans/Humanspy.jpg"
                 };
                 await userManager.CreateAsync(putin, "Secret123!");
             }
@@ -270,7 +304,8 @@ namespace TreasureHunt.Models
                 morfane = new ApplicationUser
                 {
                     UserName = "Morfane",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Darloks/Darloktech.jpg"
                 };
                 await userManager.CreateAsync(morfane, "Secret123!");
             }
@@ -283,7 +318,8 @@ namespace TreasureHunt.Models
                 narzina = new ApplicationUser
                 {
                     UserName = "Narzina",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Darloks/Darlokspy.jpg"
                 };
                 await userManager.CreateAsync(narzina, "Secret123!");
             }
@@ -296,7 +332,8 @@ namespace TreasureHunt.Models
                 mysvaleer = new ApplicationUser
                 {
                     UserName = "Mysvaleer",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Darloks/Darlokwar.jpg"
                 };
                 await userManager.CreateAsync(mysvaleer, "Secret123!");
             }
@@ -309,7 +346,8 @@ namespace TreasureHunt.Models
                 ellowyn = new ApplicationUser
                 {
                     UserName = "Ellowyn",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Eleriantech.jpg"
                 };
                 await userManager.CreateAsync(ellowyn, "Secret123!");
             }
@@ -322,7 +360,8 @@ namespace TreasureHunt.Models
                 yarasi = new ApplicationUser
                 {
                     UserName = "Yarasi",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Elerianspy.jpg"
                 };
                 await userManager.CreateAsync(yarasi, "Secret123!");
             }
@@ -335,7 +374,8 @@ namespace TreasureHunt.Models
                 berylia = new ApplicationUser
                 {
                     UserName = "Berylia",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianwar.jpg"
                 };
                 await userManager.CreateAsync(berylia, "Secret123!");
             }
@@ -348,7 +388,8 @@ namespace TreasureHunt.Models
                 voreetzry = new ApplicationUser
                 {
                     UserName = "VoreetZry",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarispy.jpg"
                 };
                 await userManager.CreateAsync(voreetzry, "Secret123!");
             }
@@ -361,7 +402,8 @@ namespace TreasureHunt.Models
                 saguaroty = new ApplicationUser
                 {
                     UserName = "SaguaroTy",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarispy.jpg"
                 };
                 await userManager.CreateAsync(saguaroty, "Secret123!");
             }
@@ -374,7 +416,8 @@ namespace TreasureHunt.Models
                 tavuapreet = new ApplicationUser
                 {
                     UserName = "TavuaPreet",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkariwar.jpg"
                 };
                 await userManager.CreateAsync(tavuapreet, "Secret123!");
             }
@@ -387,7 +430,8 @@ namespace TreasureHunt.Models
                 taktochno = new ApplicationUser
                 {
                     UserName = "TakTochno",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkaritech.jpg"
                 };
                 await userManager.CreateAsync(taktochno, "Secret123!");
             }
@@ -400,7 +444,8 @@ namespace TreasureHunt.Models
                 kkalak = new ApplicationUser
                 {
                     UserName = "Kkalak",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonwar.jpg"
                 };
                 await userManager.CreateAsync(kkalak, "Secret123!");
             }
@@ -413,7 +458,8 @@ namespace TreasureHunt.Models
                 klaquan = new ApplicationUser
                 {
                     UserName = "Klaquan",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackontech.jpg"
                 };
                 await userManager.CreateAsync(klaquan, "Secret123!");
             }
@@ -426,7 +472,8 @@ namespace TreasureHunt.Models
                 virzixl = new ApplicationUser
                 {
                     UserName = "Virzixl",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonspy.jpg"
                 };
                 await userManager.CreateAsync(virzixl, "Secret123!");
             }
@@ -439,7 +486,8 @@ namespace TreasureHunt.Models
                 parashavrrn = new ApplicationUser
                 {
                     UserName = "ParashaVrrn",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanwar.jpg"
                 };
                 await userManager.CreateAsync(parashavrrn, "Secret123!");
             }
@@ -452,7 +500,8 @@ namespace TreasureHunt.Models
                 harravaril = new ApplicationUser
                 {
                     UserName = "HarravaRil",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshantech.jpg"
                 };
                 await userManager.CreateAsync(harravaril, "Secret123!");
             }
@@ -465,7 +514,8 @@ namespace TreasureHunt.Models
                 yarralahrrsh = new ApplicationUser
                 {
                     UserName = "YarralaHrrsh",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshan.jpg"
                 };
                 await userManager.CreateAsync(yarralahrrsh, "Secret123!");
             }
@@ -478,7 +528,8 @@ namespace TreasureHunt.Models
                 grunk = new ApplicationUser
                 {
                     UserName = "Grunk",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathi.jpg"
                 };
                 await userManager.CreateAsync(grunk, "Secret123!");
             }
@@ -491,7 +542,8 @@ namespace TreasureHunt.Models
                 krorvog = new ApplicationUser
                 {
                     UserName = "Krorvog",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathispy.jpg"
                 };
                 await userManager.CreateAsync(krorvog, "Secret123!");
             }
@@ -504,7 +556,8 @@ namespace TreasureHunt.Models
                 uzor = new ApplicationUser
                 {
                     UserName = "Uzor",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathitech.jpg"
                 };
                 await userManager.CreateAsync(uzor, "Secret123!");
             }
@@ -517,7 +570,8 @@ namespace TreasureHunt.Models
                 m3850t = new ApplicationUser
                 {
                     UserName = "M3-850T",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Meklars/Meklarspy.jpg"
                 };
                 await userManager.CreateAsync(m3850t, "Secret123!");
             }
@@ -530,7 +584,8 @@ namespace TreasureHunt.Models
                 thx1137 = new ApplicationUser
                 {
                     UserName = "THX-1137",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Meklars/Meklartech.jpg"
                 };
                 await userManager.CreateAsync(thx1137, "Secret123!");
             }
@@ -543,7 +598,8 @@ namespace TreasureHunt.Models
                 int986 = new ApplicationUser
                 {
                     UserName = "INT-986",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Meklars/Meklarwar.jpg"
                 };
                 await userManager.CreateAsync(int986, "Secret123!");
             }
@@ -556,7 +612,8 @@ namespace TreasureHunt.Models
                 sparky = new ApplicationUser
                 {
                     UserName = "Sparky",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Meklars/Meklartech.jpg"
                 };
                 await userManager.CreateAsync(sparky, "Secret123!");
             }
@@ -569,7 +626,8 @@ namespace TreasureHunt.Models
                 calmari = new ApplicationUser
                 {
                     UserName = "Calmari",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilariantech.jpg"
                 };
                 await userManager.CreateAsync(calmari, "Secret123!");
             }
@@ -582,7 +640,8 @@ namespace TreasureHunt.Models
                 wavya = new ApplicationUser
                 {
                     UserName = "Wavya",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianwar.jpg"
                 };
                 await userManager.CreateAsync(wavya, "Secret123!");
             }
@@ -595,7 +654,8 @@ namespace TreasureHunt.Models
                 cress = new ApplicationUser
                 {
                     UserName = "Cress",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianspy.jpg"
                 };
                 await userManager.CreateAsync(cress, "Secret123!");
             }
@@ -608,7 +668,8 @@ namespace TreasureHunt.Models
                 bortis = new ApplicationUser
                 {
                     UserName = "Bortis",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolamtech.jpg"
                 };
                 await userManager.CreateAsync(bortis, "Secret123!");
             }
@@ -621,7 +682,8 @@ namespace TreasureHunt.Models
                 navolok = new ApplicationUser
                 {
                     UserName = "Navolok",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolamspy.jpg"
                 };
                 await userManager.CreateAsync(navolok, "Secret123!");
             }
@@ -634,7 +696,8 @@ namespace TreasureHunt.Models
                 dolgran = new ApplicationUser
                 {
                     UserName = "Dolgran",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolamwar.jpg"
                 };
                 await userManager.CreateAsync(dolgran, "Secret123!");
             }
@@ -647,7 +710,8 @@ namespace TreasureHunt.Models
                 geode = new ApplicationUser
                 {
                     UserName = "Geode",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidtech.jpg"
                 };
                 await userManager.CreateAsync(geode, "Secret123!");
             }
@@ -660,7 +724,8 @@ namespace TreasureHunt.Models
                 sedimen = new ApplicationUser
                 {
                     UserName = "Sedimen",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidspy.jpg"
                 };
                 await userManager.CreateAsync(sedimen, "Secret123!");
             }
@@ -673,7 +738,8 @@ namespace TreasureHunt.Models
                 vorkronoa = new ApplicationUser
                 {
                     UserName = "Vorkronoa",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidwar.jpg"
                 };
                 await userManager.CreateAsync(vorkronoa, "Secret123!");
             }
@@ -686,7 +752,8 @@ namespace TreasureHunt.Models
                 kelvan = new ApplicationUser
                 {
                     UserName = "Kelvan",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonwar.jpg"
                 };
                 await userManager.CreateAsync(kelvan, "Secret123!");
             }
@@ -699,7 +766,8 @@ namespace TreasureHunt.Models
                 meson = new ApplicationUser
                 {
                     UserName = "Meson",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilontech.jpg"
                 };
                 await userManager.CreateAsync(meson, "Secret123!");
             }
@@ -712,7 +780,8 @@ namespace TreasureHunt.Models
                 menzagitat = new ApplicationUser
                 {
                     UserName = "MenzAgitat",
-                    Email = "irvedwmac@aol.com"
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilon.jpg"
                 };
                 await userManager.CreateAsync(menzagitat, "Secret123!");
             }
@@ -722,11 +791,21 @@ namespace TreasureHunt.Models
             {
                 // create TreasureHunts
                 context.Hunts.AddRange(
-                    new Hunt { Name = "Master of Orion" },
-                    new Hunt { Name = "Elements" },
-                    new Hunt { Name = "The Planets" },
-                    new Hunt { Name = "The Wild Kingdom" },
-                    new Hunt { Name = "The Lord of the Rings" }
+                    new Hunt { Name = "Master of Orion",
+                               ImageURL = "ngApp/views/images/MasterOfOrion/1290175462masteroforion2.jpg",
+                               Story = "Gather resources to defeat the guardian of Orion." },
+                    new Hunt { Name = "Elements",
+                    ImageURL = "ngApp/views/images/Elements/the_4_elements_wallpaper_by_jsonn-d75p49x.jpg",
+                    Story = "Unlock the secret of the four basic elements of life." },
+                    new Hunt { Name = "The Planets",
+                        ImageURL = "ngApp/views/images/Planets/solar-system2.jpg",
+                        Story = "Go on a grand tour of the solar system." },
+                    new Hunt { Name = "The Wild Kingdom",
+                        ImageURL = "ngApp/views/images/Animals/2016-botswana-wild-kingdom-hero-botswana-elephant-herd-52098738.jpg",
+                        Story = "Go on a trek through the Animal Kingdom." },
+                    new Hunt { Name = "The Lord of the Rings",
+                        ImageURL = "ngApp/views/images/LordOfTheRings/imgres.jpg",
+                        Story = "Go on a quest to rid Middle Earth of all evil." }
                 );
                 context.SaveChanges();
             }
