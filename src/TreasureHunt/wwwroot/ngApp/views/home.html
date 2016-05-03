@@ -1,24 +1,26 @@
 
 <div class="container">
+  <!--Header-->
   <img class="center-block" src="../../images/home_header.png" />
   <hr />
+
+  <!--Play button-->
   <button type="button" class="center-block btn btn-success btn-circle">
     <i class="glyphicon glyphicon-play"></i>
   </button>
 </div>
-<hr />
+
+
+<!--Card-->
 <div class="container">
   <div class="row">
       <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts">
         <img class="img-thumbnail" ng-src="{{hunt.imageURL}}" alt="Card image cap">
-        <div class="card-block">
           <h4 class="card-title">{{hunt.name}}</h4>
           <p class="card-text">{{hunt.story}}</p>
         </div>
     </div>
   </div>
-</div>
-
 
 
   <!--<div>

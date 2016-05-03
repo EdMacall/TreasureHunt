@@ -10,16 +10,14 @@
 <body ng-controller="AccountController as account">
 
     <div class="container">
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="/">Treasure Hunt</a>
           </div>
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="/hunt">Hunt</a></li>
             <li><a href="/hunts">Hunts</a></li>
-            <li><a href="/clue">Clue</a></li>
             <li><a href="/about">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -38,7 +36,8 @@
             </li>
           </ul>
         </div>
-      </nav>  
+      </nav> 
+      <div class="spacer"></div> 
         <ui-view></ui-view>
     </div>
 
