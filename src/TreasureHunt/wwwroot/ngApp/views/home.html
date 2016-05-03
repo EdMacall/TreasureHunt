@@ -14,8 +14,8 @@
 <!--Card-->
 <div class="container">
   <div class="row">
-      <div class="col-sm-3 cards" ng-repeat="hunt in controller.hunts">
-        <img class="card-img-top" ng-src="{{hunt.imageURL}}">
+      <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts">
+        <img class="img-thumbnail" ng-src="{{hunt.imageURL}}" alt="Card image cap">
           <h4 class="card-title">{{hunt.name}}</h4>
           <p class="card-text">{{hunt.story}}</p>
         </div>

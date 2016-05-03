@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TreasureHunt.Infrastructure;
+using TreasureHunt.Models;
 using TreasureHunt.Services.Models;
 
 namespace TreasureHunt.Services
@@ -12,14 +13,39 @@ namespace TreasureHunt.Services
     {
         private ApplicationUserRepository _applicationuserrepository;
 
-        private TeamUserRepository _teamuserrepository;
+        private        TeamUserRepository        _teamuserrepository;
 
-        public ApplicationUserService(ApplicationUserRepository applicationuserrepository, TeamUserRepository teamuserrepository)
+        public ApplicationUserService(ApplicationUserRepository applicationuserrepository,
+                                             TeamUserRepository        teamuserrepository)
         {
             _applicationuserrepository = applicationuserrepository;
-            _teamuserrepository = teamuserrepository;
+                   _teamuserrepository =        teamuserrepository;
         }
 
+        public ApplicationUserDTO GetApplicationUser(string username)
+        {
+            ApplicationUser applicationuser =
+                _applicationuserrepository.List().FirstOrDefault(m => m.UserName == username);
+
+            return new ApplicationUserDTO
+            {
+                // Id = applicationuser.Id,
+                Email =    applicationuser.Email,
+                UserName = applicationuser.UserName,
+                ImageURL = applicationuser.ImageURL,
+                Teams = (from tu in _teamuserrepository.List()
+                         where tu.ApplicationUser.UserName == applicationuser.UserName
+                         select new TeamDTO
+                         {
+                             Name = tu.Team.Name,
+                             ImageURL = tu.Team.ImageURL,
+                             Points = tu.Team.Points
+                         }).ToList()
+            };
+        }
+
+        /*  We're probably not using this anymore...
+            Where did this come from anyway?
         public ICollection<ApplicationUserDTO> GetApplicationUserList()
         {
             return (from a in _applicationuserrepository.List()
@@ -41,5 +67,6 @@ namespace TreasureHunt.Services
                                  }).ToList()
                     }).ToList();
         }
+        */
     }
 }

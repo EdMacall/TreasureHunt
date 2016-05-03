@@ -31,7 +31,9 @@
                 <span class="glyphicon glyphicon-log-out"></span> Logout
               </a>
             </li>
-            <li ng-show="account.isLoggedIn()">[{{account.getUserName()}}]</li>
+            <li ng-show="account.isLoggedIn()">
+              {{account.getUserName()}}
+            </li>
           </ul>
         </div>
       </nav> 

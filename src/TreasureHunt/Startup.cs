@@ -27,7 +27,8 @@ namespace TreasureHunt
 
             if (env.IsDevelopment())
             {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+                // For more details on using the user secret store
+                // see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
 
@@ -70,17 +71,21 @@ namespace TreasureHunt
             });
 
             // Repository
+            services.AddScoped<ClueRepository>();
             services.AddScoped<TeamRepository>();
             services.AddScoped<HuntRepository>();
 
             // Services
+            services.AddScoped<ClueService>();
             services.AddScoped<TeamService>();
             services.AddScoped<HuntService>();
-
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        // This method gets called by the runtime.
+        // Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app,
+                              IHostingEnvironment env,
+                              ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -95,11 +100,12 @@ namespace TreasureHunt
             {
                 app.UseExceptionHandler("/Home/Error");
 
-                // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+                // For more details on creating database during deployment
+                // see http://go.microsoft.com/fwlink/?LinkID=615859
                 try
                 {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                        .CreateScope())
+                    using (var serviceScope = app.ApplicationServices.
+                        GetRequiredService<IServiceScopeFactory>().CreateScope())
                     {
                         serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
                              .Database.Migrate();
@@ -114,7 +120,8 @@ namespace TreasureHunt
 
             app.UseIdentity();
 
-            // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+            // To configure external authentication please
+            // see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
             {
