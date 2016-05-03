@@ -60,7 +60,11 @@ namespace TreasureHunt.Controllers
             }
         }
 
+        [HttpGet("{id}/teams")]
+        public IActionResult GetTeams(int huntId)
+        {
 
+        }
         /*
          // GET: api/Hunts/5
          [HttpGet("{id}", Name = "GetHunt")]
