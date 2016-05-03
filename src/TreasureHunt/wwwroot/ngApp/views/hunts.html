@@ -1,15 +1,26 @@
-﻿<h2 class="ang-margin">Home</h2>
-<p>
-    {{controller.message}}
-</p>
-<br />
+﻿<!--Search bar-->
+  <div class="container">
+    <img  class="center-block" src="../../images/hunts_header.png" />
+    <hr />
+      <div class="row">
+        <div class="input-group col-md-4 center-block">
+          <input type="text" class="search-query form-control" placeholder="Search" />
+          <span class="input-group-btn">
+            <span class="btn btn-default" type="submit">
+              <lable class="fa fa-search"></lable>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
 
-<div>
-
+<!--Card-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 cards" ng-repeat="hunt in controller.hunts">
+      <img class="card-img-top" ng-src="{{hunt.imageURL}}">
+      <h4 class="card-title">{{hunt.name}}</h4>
+      <p class="card-text">{{hunt.story}}</p>
+    </div>
+  </div>
 </div>
-<br />
-
-<p ng-repeat="hunt in controller.hunts">
-    {{hunt.name}}
-    
-</p>
