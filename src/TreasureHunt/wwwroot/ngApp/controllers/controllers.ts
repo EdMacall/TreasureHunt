@@ -53,9 +53,21 @@ namespace TreasureHunt.Controllers {
                     console.log(response);
                     this.hunt = response.data;
                 })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem...'); })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...'); });
+
+            this.teams = [
+                { name: 'Rat', points: 7},
+                { name: 'Snake', points: 3},
+                { name: 'Dog', points: 9},
+                { name: 'Python', points: 4 }
+                { name: 'Mouse', points: 10 },
+                { name: 'Cat', points: 7 },
+                { name: 'Eagle', points: 6 },
+                { name: 'Raven', points: 5 }
+            ];
+
             $http.get(`/api/hunts/${$stateParams['id']}/teams`)
-                .then((response) => { this.teams = response.data; })
+                //.then((response) => { this.teams = response.data; })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...'); })
         }
 

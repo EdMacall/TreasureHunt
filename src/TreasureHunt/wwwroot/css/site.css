@@ -4,7 +4,6 @@ body {
 .spacer{
   padding-top:70px;
 }
-
 .btn-circle {
   width: 120px;
   height: 120px;
@@ -34,14 +33,77 @@ div.input-group.col-md-4.center-block{
     float:left;
     padding:5px;	      
 }
-
-#section {
+/*#section {
     width:550px;
     float:left;
     padding:10px;
     background-color: aquamarine;	 	 
+}*/
+.flex-container {
+  
+  display: flex;
+  width: 200px;
+  height: 600px;
+  flex-direction: column;
+  background-color: lightgrey;
+  margin-right: 5px;
 }
 
+.container-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-row :first-child {
+    padding: 5px;
+}
+.flex-row :last-child {
+    padding: 5px;
+    text-align: right;
+}
+
+.flex-container-two {  
+  
+  width: 900px;
+  height: 600px;
+  flex-direction: column;
+  background-color: lightgrey;
+  //margin-right: 5px;
+}
+
+.flex-container-main {
+  display: flex;
+  width: 200px;
+  height: 600px;
+  background-color: lightgrey;
+}
+
+.flex-item {
+  background-color: cornflowerblue;
+  width: 90px;
+  height: 30px;
+  margin: 2px;
+}
+
+.flex-row {
+  display: flex;
+  background-color: cornflowerblue;
+  min-height: 30px;
+  width: 100%;
+  margin: 2px;
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  background-color: darkgrey;
+  margin-right: 5px;
+}
 
 
 

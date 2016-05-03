@@ -20,40 +20,43 @@
         <h4><a href="/huntview/{{hunt.id}}">{{hunt.name}}</a></h4>
     </li>
 </ul>-->
+<!--<div class="flex-container-main">
+    <div id="nav">
+        <h2>Team Leaders</h2>                
+        <div class="flex-container">
+            <div class="flex-container" ng-repeat="team in controller.teams|orderBy:'-points'">
+                <div class="flex-item">{{team.name}}</div>
+                <div class="flex-item">{{team.points}}</div>
+            </div>            
+        </div>
+    </div>
+    <div id="section">
+        <h2>Clue</h2>  
+        <div class="flex-container">          
+            <div class="flex-container" ng-repeat="team in controller.teams">
+                <div class="flex-item">{{team.name}}</div>
+                <div class="flex-item">{{team.points}}</div>
+            </div>
+        </div>
+    </div>
+</div>-->
 
-<div id="nav">
-    <table st-table="rowCollection" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Team</th>
-                <th>Leaders</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="team in controller.teams">
-                <!--<td><img ng-src="{{team.imageurl}}" id="point-image" /></td>-->
-                <td>{{team.name}}</td>
-                <td>{{team.points}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="flex-container-main">
+    <div class="flex-container">
+        <h2>Team Leaders</h2>
+        <div class="container-row" ng-repeat="team in controller.teams">
+            <div class="flex-row">
+                <div>{{team.name}}</div>
+                <div>{{team.points}}</div>
+            </div>
+        </div>        
+    </div>
+    <div class="flex-container-two">
+            <h2>One Team</h2>  
+        <div class="container-row" ng-repeat="team in controller.teams">
+            <div class="flex-item">{{team.name}}</div>
+            <div class="flex-item">{{team.points}}</div>
+        </div>        
+    </div>
 </div>
-<div id="section">
-    <table st-table="rowCollection" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Clue</th>
-                <th>Points</th>
-                <th>More Points</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="point in controller.points">
-                <td><img ng-src="{{point.image}}" id="point-image" /></td>
-                <td>{{point.team}}</td>
-                <td>{{point.score}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
