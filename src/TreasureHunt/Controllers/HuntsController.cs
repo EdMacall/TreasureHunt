@@ -63,8 +63,23 @@ namespace TreasureHunt.Controllers
         [HttpGet("{id}/teams")]
         public IActionResult GetTeams(int huntId)
         {
+            if (!ModelState.IsValid)
+            {
+                return HttpBadRequest(ModelState);
+            }
 
+            HuntDTO huntdto = _huntservice.GetHunt(huntId);
+
+            if (huntdto == null)
+            {
+                return HttpNotFound();
+            }
+
+            ICollection<TeamDTO> teamsdto = huntdto.Teams;
+
+            return Ok(teamsdto);
         }
+
         /*
          // GET: api/Hunts/5
          [HttpGet("{id}", Name = "GetHunt")]

@@ -13,6 +13,10 @@ namespace TreasureHunt.Models
         public string ImageURL { get; set; }
         public int Points { get; set; }
 
+        public int HuntId { get; set; }
+        [ForeignKey("HuntId")]
+        public Hunt Hunt { get; set; }
+
         public ICollection<TeamClue> TeamClues { get; set; }
         public ICollection<TeamUser> TeamUsers { get; set; }
 

@@ -11,10 +11,12 @@ namespace TreasureHunt.Services
     public class TeamService
     {
         private TeamRepository _teamrepository;
+        private ClueRepository _cluerepository;
 
-        public TeamService(TeamRepository teamrepository)
+        public TeamService(TeamRepository teamrepository, ClueRepository cluerepository)
         {
             _teamrepository = teamrepository;
+            _cluerepository = cluerepository;
         }
 
         public ICollection<TeamDTO> GetTeamList()
@@ -30,34 +32,70 @@ namespace TreasureHunt.Services
                     }).ToList();
         }
 
-        public TeamDTO GetTeam(int id)
+        public TeamDTO GetUsersTeam(int id, string currentUser)
         {
-            Team team = _teamrepository.List().FirstOrDefault(m => m.Id == id);
+            TeamDTO team = (from t in _teamrepository.FindUsersTeamById(id, currentUser)
+                            select new TeamDTO
+                            {
+                                Name = t.Name,
+                                ImageURL = t.ImageURL,
+                                Points = t.Points
+                            }).FirstOrDefault();
 
-            return new TeamDTO
-            {
-                Name = team.Name,
-                ImageURL = team.ImageURL,
-                Points = team.Points,
-                // ApplicationUsers = team.ApplicationUsers,
-                // Clues = team.Clues
-            };
+            team.Clues = (from c in _cluerepository.FindCluesByTeamId(id)
+                          select new ClueDTO {
+                              Id = c.Id,
+                              Title = c.Title,
+                              Description = c.Description,
+                              PointValue = c.PointValue
+                          }
+                         ).ToList();
+
+            return team;
         }
 
-        public void AddTeamList(TeamDTO teamdto)
+       
+        public TeamDTO GetTeam(int id)
+        {
+            TeamDTO team = (from t in _teamrepository.FindTeamById(id)
+                            select new TeamDTO
+                            {
+                                Name = t.Name,
+                                ImageURL = t.ImageURL,
+                                Points = t.Points
+                            }).FirstOrDefault();
+
+
+
+            return team;
+        }
+        
+
+        public ICollection<TeamDTO> GetTeamsWithHuntId(int id)
+        {
+            return (from t in _teamrepository.FindTeamsByHuntId(id)
+                    select new TeamDTO
+                    {
+                        Name = t.Name,
+                        ImageURL = t.ImageURL,
+                        Points = t.Points
+                    }).ToList();
+        }
+
+        public void AddTeam(TeamDTO teamdto, int huntId)
         {
             Team team = new Team
             {
                 Name = teamdto.Name,
                 ImageURL = teamdto.ImageURL,
                 Points = teamdto.Points,
+                HuntId = huntId
                 // ApplicationUsers = teamdto.ApplicationUsers,
                 // Clues = teamdto.Clues
             };
 
             _teamrepository.Add(team);
             _teamrepository.SaveChanges();
-
         }
 
         /*
