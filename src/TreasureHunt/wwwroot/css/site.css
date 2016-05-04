@@ -98,7 +98,11 @@ div.input-group.col-md-4.center-block {
     height: 30px;
     margin: 2px;
 }
-
+.clue-test-box{
+    width:1135px;
+    height:100px;
+    background-color:burlywood;
+}
 
 
 
