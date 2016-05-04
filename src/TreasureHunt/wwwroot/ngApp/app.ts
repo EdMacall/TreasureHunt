@@ -130,6 +130,12 @@ namespace TreasureHunt {
                 templateUrl: '/ngApp/views/old/oldteam.html',
                 controller: TreasureHunt.Controllers.oldTeamController,
                 controllerAs: 'controller'
+            })
+            .state('jointeam', {
+                url: '/jointeam',
+                templateUrl: '/ngApp/views/jointeam.html',
+                controller: TreasureHunt.Controllers.joinTeamController,
+                controllerAs: 'controller'
             });
 
         // Handle request for non-existent route

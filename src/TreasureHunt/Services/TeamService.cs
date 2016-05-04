@@ -12,9 +12,11 @@ namespace TreasureHunt.Services
     {
         private TeamRepository _teamrepository;
         private ClueRepository _cluerepository;
+        private ApplicationUserRepository _userrepository;
 
-        public TeamService(TeamRepository teamrepository, ClueRepository cluerepository)
+        public TeamService(TeamRepository teamrepository, ClueRepository cluerepository, ApplicationUserRepository userrepository)
         {
+            _userrepository = userrepository;
             _teamrepository = teamrepository;
             _cluerepository = cluerepository;
         }
@@ -67,6 +69,33 @@ namespace TreasureHunt.Services
 
 
 
+            return team;
+        }
+
+        public void JoinTeam(string teamName, string currentUser)
+        {
+            // ApplicationUserDTO user = _userrepository.FindUserById()
+
+            ApplicationUser user = _userrepository.FindUserByName(currentUser).FirstOrDefault();
+
+            ApplicationUserDTO userdto = new ApplicationUserDTO
+            {
+                Email = user.Email,
+                UserName = user.UserName,
+                ImageURL = user.ImageURL
+            };
+        }
+
+        public TeamDTO GetTeamByName(string name)
+        {
+            TeamDTO team = (from t in _teamrepository.FindTeamByName(name)
+                            select new TeamDTO
+                            {
+                                Name = t.Name,
+                                ImageURL = t.ImageURL,
+                                Points = t.Points
+                            }
+                            ).FirstOrDefault();
             return team;
         }
         
