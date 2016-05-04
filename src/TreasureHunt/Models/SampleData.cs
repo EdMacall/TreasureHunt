@@ -812,17 +812,17 @@ namespace TreasureHunt.Models
                                ImageURL = "ngApp/views/images/MasterOfOrion/1290175462masteroforion2.jpg",
                                Story = "Gather resources to defeat the guardian of Orion." },
                     new Hunt { Name = "Elements",
-                    ImageURL = "ngApp/views/images/Elements/the_4_elements_wallpaper_by_jsonn-d75p49x.jpg",
-                    Story = "Unlock the secret of the four basic elements of life." },
+                               ImageURL = "ngApp/views/images/Elements/the_4_elements_wallpaper_by_jsonn-d75p49x.jpg",
+                               Story = "Unlock the secret of the four basic elements of life." },
                     new Hunt { Name = "The Planets",
-                        ImageURL = "ngApp/views/images/Planets/solar-system2.jpg",
-                        Story = "Go on a grand tour of the solar system." },
+                               ImageURL = "ngApp/views/images/Planets/solar-system2.jpg",
+                               Story = "Go on a grand tour of the solar system." },
                     new Hunt { Name = "The Wild Kingdom",
-                        ImageURL = "ngApp/views/images/Animals/2016-botswana-wild-kingdom-hero-botswana-elephant-herd-52098738.jpg",
-                        Story = "Go on a trek through the Animal Kingdom." },
+                               ImageURL = "ngApp/views/images/Animals/2016-botswana-wild-kingdom-hero-botswana-elephant-herd-52098738.jpg",
+                               Story = "Go on a trek through the Animal Kingdom." },
                     new Hunt { Name = "The Lord of the Rings",
-                        ImageURL = "ngApp/views/images/LordOfTheRings/imgres.jpg",
-                        Story = "Go on a quest to rid Middle Earth of all evil." }
+                               ImageURL = "ngApp/views/images/LordOfTheRings/imgres.jpg",
+                               Story = "Go on a quest to rid Middle Earth of all evil." }
                 );
                 context.SaveChanges();
             }
@@ -830,31 +830,52 @@ namespace TreasureHunt.Models
             if (!context.Teams.Any())
             {
                 context.Teams.AddRange(
-                    new Team { Name = "Sssla", ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkralogo.jpg", Points = 0 },
-                    new Team { Name = "Terra", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
-                    new Team { Name = "Navin", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
-                    new Team { Name = "Draconis", ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianbanner.jpg", Points = 0 },
-                    new Team { Name = "Altair", ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarilogo.jpg", Points = 0 },
-                    new Team { Name = "Kholdan", ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonlogo.jpg", Points = 0 },
-                    new Team { Name = "Fierias", ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanlogo.jpg", Points = 0 },
-                    new Team { Name = "Ursa", ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathilogo.jpg", Points = 0 },
-                    new Team { Name = "Meklon", ImageURL = "ngApp/views/images/MasterOfOrion/Meklar/Meklarlogo.jpg", Points = 0 },
-                    new Team { Name = "Trilar", ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianbanner.jpg", Points = 0 },
-                    new Team { Name = "Gnol", ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolambanner.jpg", Points = 0 },
-                    new Team { Name = "Cryslon", ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidlogo.jpg", Points = 0 },
-                    new Team { Name = "Mentar", ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonlogo.jpg", Points = 0 },
-                    new Team { Name = "Mercury", ImageURL = "ngApp/views/images/Planets/planet-mercury.png", Points = 0 },
-                    new Team { Name = "Venus", ImageURL = "ngApp/views/images/Planets/planet-venus.png", Points = 0 },
-                    new Team { Name = "Earth", ImageURL = "ngApp/views/images/Planets/planet-earth.png", Points = 0 },
-                    new Team { Name = "Mars", ImageURL = "ngApp/views/images/Planets/planet-mars.png", Points = 0 },
-                    new Team { Name = "Jupiter", ImageURL = "ngApp/views/images/Planets/planet-jupiter.png", Points = 0 },
-                    new Team { Name = "Saturn", ImageURL = "ngApp/views/images/Planets/planet-saturn.png", Points = 0 },
-                    new Team { Name = "Neptune", ImageURL = "ngApp/views/images/Planets/planet-neptune.png", Points = 0 },
-                    new Team { Name = "Uranus", ImageURL = "ngApp/views/images/Planets/planet-uranus.png", Points = 0 },
-                    new Team { Name = "Pluto", ImageURL = "ngApp/views/images/Planets/52315396-pluto.jpg", Points = 0 }
+                    new Team { Name = "Sssla", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkralogo.jpg", Points = 0 },
+                    new Team { Name = "Terra", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
+                    new Team { Name = "Navin", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
+                    new Team { Name = "Draconis", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianbanner.jpg", Points = 0 },
+                    new Team { Name = "Altair", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarilogo.jpg", Points = 0 },
+                    new Team { Name = "Kholdan", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonlogo.jpg", Points = 0 },
+                    new Team { Name = "Fierias", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanlogo.jpg", Points = 0 },
+                    new Team { Name = "Ursa", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathilogo.jpg", Points = 0 },
+                    new Team { Name = "Meklon", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Meklar/Meklarlogo.jpg", Points = 0 },
+                    new Team { Name = "Trilar", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianbanner.jpg", Points = 0 },
+                    new Team { Name = "Gnol", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolambanner.jpg", Points = 0 },
+                    new Team { Name = "Cryslon", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidlogo.jpg", Points = 0 },
+                    new Team { Name = "Mentar", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonlogo.jpg", Points = 0 },
+                    new Team { Name = "Mercury", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-mercury.png", Points = 0 },
+                    new Team { Name = "Venus", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-venus.png", Points = 0 },
+                    new Team { Name = "Earth", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-earth.png", Points = 0 },
+                    new Team { Name = "Mars", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-mars.png", Points = 0 },
+                    new Team { Name = "Jupiter", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-jupiter.png", Points = 0 },
+                    new Team { Name = "Saturn", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-saturn.png", Points = 0 },
+                    new Team { Name = "Neptune", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-neptune.png", Points = 0 },
+                    new Team { Name = "Uranus", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-uranus.png", Points = 0 },
+                    new Team { Name = "Pluto", HuntId = 3, ImageURL = "ngApp/views/images/Planets/52315396-pluto.jpg", Points = 0 },
+                    new Team { Name = "The Rat", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Snake", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Dog", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Python", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Mouse", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Cat", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Eagle", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Raven", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Elephant", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Lion", HuntId = 4, ImageURL = "", Points = 0 },
+                    new Team { Name = "Earth", HuntId = 2, ImageURL = "", Points = 0 },
+                    new Team { Name = "Fire", HuntId = 2, ImageURL = "", Points = 0 },
+                    new Team { Name = "Wind", HuntId = 2, ImageURL = "", Points = 0 },
+                    new Team { Name = "Water", HuntId = 2, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Elves", HuntId = 5, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Dwarves", HuntId = 5, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Humans", HuntId = 5, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Orcs", HuntId = 5, ImageURL = "", Points = 0 },
+                    new Team { Name = "The Hobbits", HuntId = 5, ImageURL = "", Points = 0 }
                 );
                 context.SaveChanges();
             }
+
+
 
             /*
             if (!context.TeamUsers.Any())
@@ -1078,25 +1099,25 @@ namespace TreasureHunt.Models
             if (!context.Clues.Any())
             { 
                 context.Clues.AddRange(
-                    new Clue { Title = "Admiral Chronos", Description = "Rescue Admiral Chronos,  the aged space farer,  from the Rana star system.  He will be able to show you the way to Orion through the black hole at Sirius.  What is Admiral Chronos?", Answer = "legendary navigator", PointValue = 0 },
-                    new Clue { Title = "The Guardian of Orion", Description = "Defeat The Guardian so that we may loot Orion of its technology and prepare ourselves for the battle at Antares.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Fire Phasers...", Description = "Develop phasers so that we will be able to break through The Guardian's deflector shields.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Dimensional Portal", Description = "Develop dimensional portals so that we may take the fight with the Antarans to their home turf at Antares.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Admiral Sparky", Description = "Hire Admiral Sparky,  the meklar cybernaut,  to repair the deflector shields during the battle with The Guardian.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Golum", Description = "Kill Golum so that he wont be bothering you to give him back his ring all day long.   God damnit!!!", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Ring", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Bilbow and The Ring", Description = "Slap Bilbow upside the head for having let The Ring overpower him.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Big Kahuna", Description = "A high five for Legolas surfing down the steps on his shield.", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Big Rocks", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Musician", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Ein Schooner Tanz...", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Statue", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Find the Chipmunk", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "hi", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "clue", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "go to the store", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "soh", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "eat a cow", Description = "", Answer = "", PointValue = 0 }
+                    new Clue { Title = "Admiral Chronos", Description = "Rescue Admiral Chronos,  the aged space farer,  from the Rana star system.  He will be able to show you the way to Orion through the black hole at Sirius.  What is Admiral Chronos?", Answer = "legendary navigator", PointValue = 100 },
+                    new Clue { Title = "The Guardian of Orion", Description = "Defeat The Guardian so that we may loot Orion of its technology and prepare ourselves for the battle at Antares.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Fire Phasers...", Description = "Develop phasers so that we will be able to break through The Guardian's deflector shields.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Dimensional Portal", Description = "Develop dimensional portals so that we may take the fight with the Antarans to their home turf at Antares.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Admiral Sparky", Description = "Hire Admiral Sparky,  the meklar cybernaut,  to repair the deflector shields during the battle with The Guardian.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Golum", Description = "Kill Golum so that he wont be bothering you to give him back his ring all day long.   God damnit!!!", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Ring", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Bilbow and The Ring", Description = "Slap Bilbow upside the head for having let The Ring overpower him.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Big Kahuna", Description = "A high five for Legolas surfing down the steps on his shield.", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Big Rocks", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Musician", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Ein Schooner Tanz...", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "The Statue", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "Find the Chipmunk", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "hi", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "clue", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "go to the store", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "soh", Description = "", Answer = "", PointValue = 100 },
+                    new Clue { Title = "eat a cow", Description = "", Answer = "", PointValue = 100 }
                 );
                 context.SaveChanges();
 
