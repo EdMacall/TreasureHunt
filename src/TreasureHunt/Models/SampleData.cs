@@ -177,7 +177,7 @@ namespace TreasureHunt.Models
                 eric = new ApplicationUser
                 {
                     UserName = "Eric",
-                    Email = "speedknotjenkins@gmail.com",
+                    Email = "eric.siebeneich@codercamps.com",
                     ImageURL = "ngApp/views/images/CoderCamps/eric.siebeneich.jpg"
                 };
                 await userManager.CreateAsync(eric, "Secret123!");
@@ -803,6 +803,34 @@ namespace TreasureHunt.Models
                 await userManager.CreateAsync(menzagitat, "Secret123!");
             }
 
+            // Ensure Legolas (not IsAdmin)
+            var legolas = await userManager.FindByNameAsync("Legolas");
+            if (legolas == null)
+            {
+                // create user
+                legolas = new ApplicationUser
+                {
+                    UserName = "Legolas",
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = ""
+                };
+                await userManager.CreateAsync(legolas, "Secret123!");
+            }
+
+            // Ensure Froddo (not IsAdmin)
+            var froddo = await userManager.FindByNameAsync("Froddo");
+            if (froddo == null)
+            {
+                // create user
+                froddo = new ApplicationUser
+                {
+                    UserName = "Froddo",
+                    Email = "irvedwmac@aol.com",
+                    ImageURL = ""
+                };
+                await userManager.CreateAsync(froddo, "Secret123!");
+            }
+
 
             if (!context.Hunts.Any())
             {
@@ -875,7 +903,22 @@ namespace TreasureHunt.Models
                 context.SaveChanges();
             }
 
-
+            /*
+            context.TeamUsers.AddRange(
+                new TeamUser
+                {
+                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                    // ApplicationUserId = context.ApplicationUsers.FirstOrDefault(a => a.UserName == "Froddo").Id
+                    ApplicationUserId = userManager.FindByNameAsync("Frodo").Id
+                },
+                new TeamUser
+                {
+                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
+                    ApplicationUserId = userManager.ApplicationUsers.FirstOrDefault(a => a.UserName == "Legolas").Id
+                }
+            );
+            context.SaveChanges();
+            */
 
             /*
             if (!context.TeamUsers.Any())
@@ -1118,6 +1161,15 @@ namespace TreasureHunt.Models
                     new Clue { Title = "go to the store", Description = "", Answer = "", PointValue = 100 },
                     new Clue { Title = "soh", Description = "", Answer = "", PointValue = 100 },
                     new Clue { Title = "eat a cow", Description = "", Answer = "", PointValue = 100 }
+                );
+                context.SaveChanges();
+
+                context.TeamClues.AddRange(
+                    new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "Admiral Chronos").Id
+                    }
                 );
                 context.SaveChanges();
 
