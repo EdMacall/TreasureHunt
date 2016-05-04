@@ -16,5 +16,19 @@ namespace TreasureHunt.Infrastructure
                    where c.Id == id
                    select c;
         }
+
+        public IQueryable<Team> FindUsersClueById(int id, string currentUser)
+        {
+            return from t in _db.Teams
+                   where t.Id == id && t.TeamUsers.Any(tu => tu.ApplicationUser.UserName == currentUser)
+                   select t;
+        }
+
+        public IQueryable<Team> FindTeamById(int id)
+        {
+            return from t in _db.Teams
+                   where t.Id == id
+                   select t;
+        }
     }
 }
