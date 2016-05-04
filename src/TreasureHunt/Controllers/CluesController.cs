@@ -55,13 +55,14 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            _clueservice.Clues.Add(clue);
+            // _clueservice.Clues.Add(clue);
             try
             {
                 _clueservice.SaveChanges();
             }
             catch (DbUpdateException)
             {
+                /*
                 if (ClueExists(clue.Id))
                 {
                     return new HttpStatusCodeResult(StatusCodes.Status409Conflict);
@@ -70,6 +71,7 @@ namespace TreasureHunt.Controllers
                 {
                     throw;
                 }
+                */
             }
 
             return CreatedAtRoute("GetClue", new { id = clue.Id }, clue);

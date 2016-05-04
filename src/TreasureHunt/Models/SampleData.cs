@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TreasureHunt.Infrastructure;
 
 namespace TreasureHunt.Models
 {
@@ -13,6 +14,7 @@ namespace TreasureHunt.Models
         public async static Task Initialize(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetService<ApplicationDbContext>();
+            var userRepo = new ApplicationUserRepository(context);
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
             context.Database.Migrate();
 
@@ -858,63 +860,104 @@ namespace TreasureHunt.Models
             if (!context.Teams.Any())
             {
                 context.Teams.AddRange(
-                    new Team { Name = "Sssla", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkralogo.jpg", Points = 0 },
-                    new Team { Name = "Terra", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
-                    new Team { Name = "Navin", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0 },
-                    new Team { Name = "Draconis", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianbanner.jpg", Points = 0 },
-                    new Team { Name = "Altair", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarilogo.jpg", Points = 0 },
-                    new Team { Name = "Kholdan", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonlogo.jpg", Points = 0 },
-                    new Team { Name = "Fierias", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanlogo.jpg", Points = 0 },
-                    new Team { Name = "Ursa", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathilogo.jpg", Points = 0 },
-                    new Team { Name = "Meklon", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Meklar/Meklarlogo.jpg", Points = 0 },
-                    new Team { Name = "Trilar", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianbanner.jpg", Points = 0 },
-                    new Team { Name = "Gnol", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolambanner.jpg", Points = 0 },
-                    new Team { Name = "Cryslon", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidlogo.jpg", Points = 0 },
-                    new Team { Name = "Mentar", HuntId = 1, ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonlogo.jpg", Points = 0 },
-                    new Team { Name = "Mercury", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-mercury.png", Points = 0 },
-                    new Team { Name = "Venus", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-venus.png", Points = 0 },
-                    new Team { Name = "Earth", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-earth.png", Points = 0 },
-                    new Team { Name = "Mars", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-mars.png", Points = 0 },
-                    new Team { Name = "Jupiter", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-jupiter.png", Points = 0 },
-                    new Team { Name = "Saturn", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-saturn.png", Points = 0 },
-                    new Team { Name = "Neptune", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-neptune.png", Points = 0 },
-                    new Team { Name = "Uranus", HuntId = 3, ImageURL = "ngApp/views/images/Planets/planet-uranus.png", Points = 0 },
-                    new Team { Name = "Pluto", HuntId = 3, ImageURL = "ngApp/views/images/Planets/52315396-pluto.jpg", Points = 0 },
-                    new Team { Name = "The Rat", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Snake", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Dog", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Python", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Mouse", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Cat", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Eagle", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Raven", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Elephant", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Lion", HuntId = 4, ImageURL = "", Points = 0 },
-                    new Team { Name = "Earth", HuntId = 2, ImageURL = "", Points = 0 },
-                    new Team { Name = "Fire", HuntId = 2, ImageURL = "", Points = 0 },
-                    new Team { Name = "Wind", HuntId = 2, ImageURL = "", Points = 0 },
-                    new Team { Name = "Water", HuntId = 2, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Elves", HuntId = 5, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Dwarves", HuntId = 5, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Humans", HuntId = 5, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Orcs", HuntId = 5, ImageURL = "", Points = 0 },
-                    new Team { Name = "The Hobbits", HuntId = 5, ImageURL = "", Points = 0 }
+                    new Team { Name = "Sssla", ImageURL = "ngApp/views/images/MasterOfOrion/Sakkra/Sakkralogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Terra", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Navin", ImageURL = "ngApp/views/images/MasterOfOrion/Darlok/Darloklogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Draconis", ImageURL = "ngApp/views/images/MasterOfOrion/Elerians/Elerianbanner.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Altair", ImageURL = "ngApp/views/images/MasterOfOrion/Alkari/Alkarilogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Kholdan", ImageURL = "ngApp/views/images/MasterOfOrion/Klackons/Klackonlogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Fierias", ImageURL = "ngApp/views/images/MasterOfOrion/Mrrshans/Mrrshanlogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Ursa", ImageURL = "ngApp/views/images/MasterOfOrion/Bulrathi/Bulrathilogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Meklon", ImageURL = "ngApp/views/images/MasterOfOrion/Meklar/Meklarlogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Trilar", ImageURL = "ngApp/views/images/MasterOfOrion/Trilarians/Trilarianbanner.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Gnol", ImageURL = "ngApp/views/images/MasterOfOrion/Gnolams/Gnolambanner.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Cryslon", ImageURL = "ngApp/views/images/MasterOfOrion/Silicoids/Silicoidlogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Mentar", ImageURL = "ngApp/views/images/MasterOfOrion/Psilons/Psilonlogo.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Master Of Orion").Id },
+                    new Team { Name = "Mercury", ImageURL = "ngApp/views/images/Planets/planet-mercury.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Venus", ImageURL = "ngApp/views/images/Planets/planet-venus.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Earth", ImageURL = "ngApp/views/images/Planets/planet-earth.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Mars", ImageURL = "ngApp/views/images/Planets/planet-mars.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Jupiter", ImageURL = "ngApp/views/images/Planets/planet-jupiter.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Saturn", ImageURL = "ngApp/views/images/Planets/planet-saturn.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Neptune", ImageURL = "ngApp/views/images/Planets/planet-neptune.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Uranus", ImageURL = "ngApp/views/images/Planets/planet-uranus.png", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "Pluto", ImageURL = "ngApp/views/images/Planets/52315396-pluto.jpg", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Planets").Id },
+                    new Team { Name = "The Rat", ImageURL = "",  Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Snake", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Dog", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Python", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Mouse", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Cat", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Eagle", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Raven", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Elephant", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "The Lion", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Wild Kingdom").Id },
+                    new Team { Name = "Earth", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Elements").Id },
+                    new Team { Name = "Fire", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Elements").Id },
+                    new Team { Name = "Wind", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Elements").Id },
+                    new Team { Name = "Water", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "Elements").Id },
+                    new Team { Name = "The Elves", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Lord Of The Rings").Id },
+                    new Team { Name = "The Dwarves", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Lord Of The Rings").Id },
+                    new Team { Name = "The Humans", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Lord Of The Rings").Id },
+                    new Team { Name = "The Orcs", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Lord Of The Rings").Id },
+                    new Team { Name = "The Hobbits", ImageURL = "", Points = 0,
+                        HuntId = context.Hunts.FirstOrDefault(t => t.Name == "The Lord Of The Rings").Id }
                 );
                 context.SaveChanges();
             }
+
 
             /*
             context.TeamUsers.AddRange(
                 new TeamUser
                 {
                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
-                    // ApplicationUserId = context.ApplicationUsers.FirstOrDefault(a => a.UserName == "Froddo").Id
-                    ApplicationUserId = userManager.FindByNameAsync("Frodo").Id
+                    ApplicationUserId = userRepo.FindUserByName("Frodo").FirstOrDefault<>().Id
                 },
                 new TeamUser
                 {
                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
-                    ApplicationUserId = userManager.ApplicationUsers.FirstOrDefault(a => a.UserName == "Legolas").Id
+                    ApplicationUserId = userRepo.FindUserByName("Legolas").Id
                 }
             );
             context.SaveChanges();
@@ -1142,25 +1185,25 @@ namespace TreasureHunt.Models
             if (!context.Clues.Any())
             { 
                 context.Clues.AddRange(
-                    new Clue { Title = "Admiral Chronos", Description = "Rescue Admiral Chronos,  the aged space farer,  from the Rana star system.  He will be able to show you the way to Orion through the black hole at Sirius.  What is Admiral Chronos?", Answer = "legendary navigator", PointValue = 100 },
-                    new Clue { Title = "The Guardian of Orion", Description = "Defeat The Guardian so that we may loot Orion of its technology and prepare ourselves for the battle at Antares.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Fire Phasers...", Description = "Develop phasers so that we will be able to break through The Guardian's deflector shields.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Dimensional Portal", Description = "Develop dimensional portals so that we may take the fight with the Antarans to their home turf at Antares.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Admiral Sparky", Description = "Hire Admiral Sparky,  the meklar cybernaut,  to repair the deflector shields during the battle with The Guardian.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Golum", Description = "Kill Golum so that he wont be bothering you to give him back his ring all day long.   God damnit!!!", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Ring", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Bilbow and The Ring", Description = "Slap Bilbow upside the head for having let The Ring overpower him.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Big Kahuna", Description = "A high five for Legolas surfing down the steps on his shield.", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Big Rocks", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Musician", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Ein Schooner Tanz...", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "The Statue", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "Find the Chipmunk", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "hi", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "clue", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "go to the store", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "soh", Description = "", Answer = "", PointValue = 100 },
-                    new Clue { Title = "eat a cow", Description = "", Answer = "", PointValue = 100 }
+                    new Clue { Title = "Admiral Chronos", Description = "Rescue Admiral Chronos,  the aged space farer,  from the Rana star system.  He will be able to show you the way to Orion through the black hole at Sirius.  What is Admiral Chronos?", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Guardian of Orion", Description = "Defeat The Guardian so that we may loot Orion of its technology and prepare ourselves for the battle at Antares.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "Fire Phasers...", Description = "Develop phasers so that we will be able to break through The Guardian's deflector shields.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Dimensional Portal", Description = "Develop dimensional portals so that we may take the fight with the Antarans to their home turf at Antares.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "Admiral Sparky", Description = "Hire Admiral Sparky,  the meklar cybernaut,  to repair the deflector shields during the battle with The Guardian.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "Golum", Description = "Kill Golum so that he wont be bothering you to give him back his ring all day long.   God damnit!!!", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Ring", Description = "", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "Bilbow and The Ring", Description = "Slap Bilbow upside the head for having let The Ring overpower him.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Big Kahuna", Description = "A high five for Legolas surfing down the steps on his shield.", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Big Rocks", Description = "", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Musician", Description = "", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "A Pretty Dance", Description = "", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "The Statue", Description = "", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "Find the Chipmunk", Description = "123", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "hi", Description = "123", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "clue", Description = "123", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "go to the store", Description = "123", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "soh", Description = "123", Answer = "123", PointValue = 100 },
+                    new Clue { Title = "eat a cow", Description = "123", Answer = "123", PointValue = 100 }
                 );
                 context.SaveChanges();
 
@@ -1169,6 +1212,58 @@ namespace TreasureHunt.Models
                     {
                         TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
                         ClueId = context.Clues.FirstOrDefault(c => c.Title == "Admiral Chronos").Id
+                    },
+                    new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Guardian of Orion").Id
+                    },
+                    new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "Fire Phasers...").Id
+                    },
+                    new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Dimensional Portal").Id
+                    },
+                    new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Terra").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "Admiral Sparky").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "Golum").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Ring").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "Bilbow and The Ring").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Big Kahuna").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Fire").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Big Rocks").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Fire").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Musician").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Fire").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "A Pretty Dance").Id
+                    }, new TeamClue
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == "Fire").Id,
+                        ClueId = context.Clues.FirstOrDefault(c => c.Title == "The Big Rocks").Id
                     }
                 );
                 context.SaveChanges();
