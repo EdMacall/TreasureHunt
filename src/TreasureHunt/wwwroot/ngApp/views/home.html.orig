@@ -1,0 +1,39 @@
+
+<div class="container">
+  <!--Header-->
+  <img class="center-block" src="../../images/home_header.png" />
+  <hr />
+
+  <!--Play button-->
+  <button type="button" class="center-block btn btn-success btn-circle">
+    <i class="glyphicon glyphicon-play"></i>
+  </button>
+</div>
+
+
+<!--Card-->
+<div class="container">
+  <div class="row">
+<<<<<<< HEAD
+      <div class="col-sm-3 cards" ng-repeat="hunt in controller.hunts">
+        <img class="card-img-top" ng-src="{{hunt.imageURL}}">
+=======
+      <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts">
+        <img class="img-thumbnail" ng-src="{{hunt.imageURL}}" alt="Card image cap">
+        <div class="card-block">
+>>>>>>> b2c63673a98f3bee3e18f6c58205029236d0223c
+          <h4 class="card-title">{{hunt.name}}</h4>
+          <p class="card-text">{{hunt.story}}</p>
+        </div>
+    </div>
+  </div>
+
+
+  <!--<div>
+    <div ng-repeat="hunt in controller.hunts">
+      {{hunt.name}}
+    </div>
+  </div>-->
+
+
+
