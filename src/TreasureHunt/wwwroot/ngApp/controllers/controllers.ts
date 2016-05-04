@@ -11,8 +11,8 @@ namespace TreasureHunt.Controllers {
         public clue;
 
         constructor(private $http: ng.IHttpService,
-                    private $stateParams: ng.ui.IStateParamsService,
-                    private $state: ng.ui.IStateService) {
+            private $stateParams: ng.ui.IStateParamsService,
+            private $state: ng.ui.IStateService) {
             $http.get(`/api/clues/${$stateParams['id']}`)
                 .then((response) => { this.clue = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -26,7 +26,7 @@ namespace TreasureHunt.Controllers {
         public hunts;
 
         constructor(private $http: ng.IHttpService,
-                    private $state: ng.ui.IStateService) {
+            private $state: ng.ui.IStateService) {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
@@ -46,14 +46,29 @@ namespace TreasureHunt.Controllers {
         public teamadd;
 
         constructor(private $http: ng.IHttpService,
-                    private $stateParams: ng.ui.IStateParamsService,
-                    private $state: ng.ui.IStateService) {
+            private $stateParams: ng.ui.IStateParamsService,
+            private $state: ng.ui.IStateService) {
             $http.get(`/api/hunts/${$stateParams['id']}`)
-                .then((response) => { this.hunt = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
-            $http.get(`/api/huntteams/${$stateParams['id']}`)
-                .then((response) => { this.teams = response.data })
-                .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+                .then((response) => {
+                    console.log(response);
+                    this.hunt = response.data;
+                })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...'); });
+
+            //this.teams = [
+            //    { name: 'Rat', points: 7},
+            //    { name: 'Snake', points: 3},
+            //    { name: 'Dog', points: 9},
+            //    { name: 'Python', points: 4 }
+            //    { name: 'Mouse', points: 10 },
+            //    { name: 'Cat', points: 7 },
+            //    { name: 'Eagle', points: 6 },
+            //    { name: 'Raven', points: 5 }
+            //];
+
+            $http.get(`/api/hunts/${$stateParams['id']}/teams`)
+                .then((response) => { this.teams = response.data; })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...'); })
         }
 
         public saveHunt(): void {
@@ -86,7 +101,7 @@ namespace TreasureHunt.Controllers {
 
         // This controller needs to be modified to take a search string
         constructor(private $http: ng.IHttpService,
-                    private $state: ng.ui.IStateService) {
+            private $state: ng.ui.IStateService) {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })

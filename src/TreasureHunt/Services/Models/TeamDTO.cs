@@ -14,7 +14,5 @@ namespace TreasureHunt.Services.Models
 
         public ICollection<ApplicationUserDTO> ApplicationUsers { get; set; }
         public ICollection<ClueDTO> Clues { get; set; }
-
-        // public ICollection<Riddle> Riddles { get; set; }
     }
 }

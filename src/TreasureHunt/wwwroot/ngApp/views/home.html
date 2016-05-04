@@ -5,8 +5,8 @@
   <hr />
 
   <!--Play button-->
-  <button type="button" class="center-block btn btn-success btn-circle">
-    <i class="glyphicon glyphicon-play"></i>
+  <button type="button" class="center-block btn btn-success btn-circle" >
+    <a href="/hunts" class="glyphicon glyphicon-play"></a>
   </button>
 </div>
 
@@ -15,10 +15,12 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts">
-        <img class="img-thumbnail" ng-src="{{hunt.imageURL}}" alt="Card image cap">
-          <h4 class="card-title">{{hunt.name}}</h4>
-          <p class="card-text">{{hunt.story}}</p>
-        </div>
+          <a href="/hunt/{{hunt.id}}">
+              <img class="img-thumbnail" ng-src="{{hunt.imageURL}}" alt="Card image cap">
+              <h4 class="card-title">{{hunt.name}}</h4>
+              <p class="card-text">{{hunt.story}}</p>
+          </a>
+      </div>
     </div>
   </div>
 
