@@ -29,7 +29,7 @@ namespace TreasureHunt.Controllers
 
         // GET: api/Teams/5
         [HttpGet("{id}", Name = "GetTeam")]
-        public IActionResult GetHunt([FromRoute] int id)
+        public IActionResult GetTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
@@ -37,6 +37,37 @@ namespace TreasureHunt.Controllers
             }
 
             TeamDTO teamdto = _teamservice.GetTeam(id);
+
+            if (teamdto == null)
+            {
+                return HttpNotFound();
+            }
+
+            return Ok(teamdto);
+        }
+
+        [HttpPost]
+        public IActionResult JoinTeam([FromBody] string teamName)
+        {
+            if (!ModelState.IsValid)
+            {
+                return HttpBadRequest(ModelState);
+            }
+
+            //_teamservice.JoinTeam(teamName);
+
+            return Ok();
+        }
+
+        [HttpGet("{name}")]
+        public IActionResult GetTeamByName([FromBody] string name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return HttpBadRequest(ModelState);
+            }
+
+            TeamDTO teamdto = _teamservice.GetTeamByName(name);
 
             if (teamdto == null)
             {

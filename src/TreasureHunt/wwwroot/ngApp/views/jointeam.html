@@ -1,0 +1,7 @@
+﻿<div>
+    <h2>Join Team </h2>
+    <select ng-model="selected">
+         <option ng-repeat="team in controller.teams">{{team.name}}</option>
+    </select>
+    <button ng-click="controller.joinTeam(selected)">Join Team </button>
+</div>

@@ -20,7 +20,7 @@
 <!--Card-->
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts">
+    <div class="col-sm-4 cards" ng-repeat="hunt in controller.hunts | filter:{name:controller.searchstring}">
         <a href="/hunt/{{hunt.id}}">
             <img class="img-thumbnail" ng-src="{{hunt.imageURL}}">
             <h4 class="card-title">{{hunt.name}}</h4>
