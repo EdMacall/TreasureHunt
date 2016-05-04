@@ -26,9 +26,8 @@ namespace TreasureHunt.Services
                         Id = c.Id,
                         Title = c.Title,
                         Description = c.Description,
-                        Answer = c.Answer,
+                        // Answer = c.Answer,
                         PointValue = c.PointValue
-                        // Teams =
                     }).ToList();
         }
 
@@ -37,11 +36,11 @@ namespace TreasureHunt.Services
             Clue clue = _cluerepository.List().FirstOrDefault(m => m.Id == id);
 
             return new ClueDTO {
+                Id = clue.Id,
                 Title = clue.Title,
                 Description = clue.Description,
-                Answer = clue.Answer,
+                // Answer = clue.Answer,
                 PointValue = clue.PointValue
-                // Teams =
             };
         }
     }
