@@ -1,5 +1,13 @@
-<h2>Clue</h2>
-<p>
-    {{controller.message}}
-</p>
-<br />
+<div class="container">
+    <img class="center-block" src="../../images/hunt_header.png" />
+    <hr />
+</div>
+<div class="flex-container">
+    <h2>Clue</h2>
+    <div class="container-row" ng-repeat="team in controller.teams">
+        <div class="flex-row">
+            <div>{{team.name}}</div>
+            <div>{{team.points}}</div>
+        </div>
+    </div>
+</div>
