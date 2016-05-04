@@ -369,4 +369,22 @@ namespace TreasureHunt.Controllers {
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
     }
+    export class joinTeamController {
+        public teams; 
+        public team;
+        constructor(private $http: ng.IHttpService, public $stateParams) {
+            $http.get('/api/teams').then((response) => {
+                this.teams = response.data;
+            });
+        }
+
+        public joinTeam(selected) {
+            console.log(selected);
+            //this.$http.get(`/api/teams/${this.$stateParams['name']}`).then((response) => {
+            //    this.team = response.data;
+            //});
+            console.log(this.team);
+            this.$http.post("/api/teams", selected).then((response) => { })
+        }
+    }
 }
