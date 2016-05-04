@@ -29,7 +29,7 @@ namespace TreasureHunt.Controllers
 
         // GET: api/Teams/5
         [HttpGet("{id}", Name = "GetTeam")]
-        public IActionResult GetHunt([FromRoute] int id)
+        public IActionResult GetTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
