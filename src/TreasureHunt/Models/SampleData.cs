@@ -169,6 +169,23 @@ namespace TreasureHunt.Models
                 await userManager.AddClaimAsync(nelson, new Claim("IsAdmin", "true"));
             }
 
+            // Ensure Eric (IsAdmin)
+            var eric = await userManager.FindByNameAsync("Eric");
+            if (eric == null)
+            {
+                // create user
+                eric = new ApplicationUser
+                {
+                    UserName = "Eric",
+                    Email = "speedknotjenkins@gmail.com",
+                    ImageURL = "ngApp/views/images/CoderCamps/eric.siebeneich.jpg"
+                };
+                await userManager.CreateAsync(eric, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(eric, new Claim("IsAdmin", "true"));
+            }
+
             // Ensure Mike (not IsAdmin)
             var mike = await userManager.FindByNameAsync("Mike@CoderCamps.com");
             if (mike == null)
@@ -1061,15 +1078,15 @@ namespace TreasureHunt.Models
             if (!context.Clues.Any())
             { 
                 context.Clues.AddRange(
-                    new Clue { Title = "Admiral Chronos", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Guardian of Orion", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Fire Phasers...", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Dimensional Portal", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Admiral Sparky", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Golum", Description = "", Answer = "", PointValue = 0 },
+                    new Clue { Title = "Admiral Chronos", Description = "Rescue Admiral Chronos,  the aged space farer,  from the Rana star system.  He will be able to show you the way to Orion through the black hole at Sirius.  What is Admiral Chronos?", Answer = "legendary navigator", PointValue = 0 },
+                    new Clue { Title = "The Guardian of Orion", Description = "Defeat The Guardian so that we may loot Orion of its technology and prepare ourselves for the battle at Antares.", Answer = "", PointValue = 0 },
+                    new Clue { Title = "Fire Phasers...", Description = "Develop phasers so that we will be able to break through The Guardian's deflector shields.", Answer = "", PointValue = 0 },
+                    new Clue { Title = "The Dimensional Portal", Description = "Develop dimensional portals so that we may take the fight with the Antarans to their home turf at Antares.", Answer = "", PointValue = 0 },
+                    new Clue { Title = "Admiral Sparky", Description = "Hire Admiral Sparky,  the meklar cybernaut,  to repair the deflector shields during the battle with The Guardian.", Answer = "", PointValue = 0 },
+                    new Clue { Title = "Golum", Description = "Kill Golum so that he wont be bothering you to give him back his ring all day long.   God damnit!!!", Answer = "", PointValue = 0 },
                     new Clue { Title = "The Ring", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "Bilbow and The Ring", Description = "", Answer = "", PointValue = 0 },
-                    new Clue { Title = "The Big Kahuna", Description = "", Answer = "", PointValue = 0 },
+                    new Clue { Title = "Bilbow and The Ring", Description = "Slap Bilbow upside the head for having let The Ring overpower him.", Answer = "", PointValue = 0 },
+                    new Clue { Title = "The Big Kahuna", Description = "A high five for Legolas surfing down the steps on his shield.", Answer = "", PointValue = 0 },
                     new Clue { Title = "The Big Rocks", Description = "", Answer = "", PointValue = 0 },
                     new Clue { Title = "The Musician", Description = "", Answer = "", PointValue = 0 },
                     new Clue { Title = "Ein Schooner Tanz...", Description = "", Answer = "", PointValue = 0 },
