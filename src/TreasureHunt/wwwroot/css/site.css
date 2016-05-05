@@ -111,12 +111,23 @@ div.input-group.col-md-4.center-block {
 }
 /*nothing to see*/
 .clue-test-box{
+    border-style: solid;
+    border-color: #331a00;
     width:1135px;
     height:75px;
-    background-color:red;
+    background-color: #D9893A;
+    border-radius: 25px;
+    font-size: 200%;    
 }
 .hunt-body{
     background-color:red;
+}
+.flex-container-clue{
+    border-style: solid;
+    border-color: #331a00;
+    background-color: #D9893A;
+    border-radius: 25px;
+    margin: 25px;    
 }
 
 
