@@ -946,23 +946,42 @@ namespace TreasureHunt.Models
                 context.SaveChanges();
             }
 
+            /*
+            public bool AddTeamUser(string teamname, string applicationusername)
+            {
+                if((context.Teams.FirstOrDefault(t => t.Name == teamname) != null) &&
+                   (userRepo.FindUserByName(applicationusername).FirstOrDefault()) &&
+                   (true))
+                {
+                    new TeamUser
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == teamname).Id,
+                        ApplicationUserId = userRepo.FindUserByName(applicationusername).FirstOrDefault().Id
+                    };
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            */
 
-            
-           
-            //context.TeamUsers.AddRange(
-            //    new TeamUser
-            //    {
-            //        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
-            //        ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
-            //    },
-            //    new TeamUser
-            //    {
-            //        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
-            //        ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
-            //    }
-            //);
-            //context.SaveChanges();
-            
+            /*
+             context.TeamUsers.AddRange(
+                 new TeamUser
+                 {
+                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                     ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
+                 },
+                 new TeamUser
+                 {
+                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
+                     ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
+                 }
+             );
+             context.SaveChanges();
+             */
 
             /*
             if (!context.TeamUsers.Any())

@@ -77,6 +77,56 @@ namespace TreasureHunt.Controllers
             return CreatedAtRoute("GetClue", new { id = clue.Id }, clue);
         }
 
+        // [HttpPost("{teamId}")]
+        // public IActionResult Post(int teamId, [FromBody]TeamDTO teamdto)
+        // PUT: api/Clues/5
+        [HttpPost("{clueid}")]
+        public IActionResult PutClue(int clueid, [FromBody] string playersanswer, int teamid)
+        {
+            if (!ModelState.IsValid)
+            {
+                return HttpBadRequest(ModelState);
+            }
+
+            if(_clueservice.CheckAnswer(clueid, playersanswer))
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return Ok(false);
+            }
+
+            /*
+            if (id != clue.Id)
+            {
+                return HttpBadRequest();
+            }
+            */
+
+            // _context.Entry(clue).State = EntityState.Modified;
+
+            try
+            {
+                // _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                /*
+                if (!ClueExists(id))
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    throw;
+                }
+                */
+            }
+
+            return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
+        }
+
         /*
        // PUT: api/Clues/5
        [HttpPut("{id}")]
