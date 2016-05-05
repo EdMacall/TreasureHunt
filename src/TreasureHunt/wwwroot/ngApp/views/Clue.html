@@ -3,16 +3,17 @@
     <hr />
 </div>
 <div class="flex-container">
-    <h2>{{controller.clue.title}}</h2>
+    <center><h2>{{controller.clue.title}}</h2></center>
     <div class="container-row" ng-repeat="team in controller.teams">
-        <div class="flex-row">
+        <!--<div class="flex-row">
             <div>{{team.name}}</div>
             <div>{{team.points}}</div>
-        </div>
+        </div>-->
     </div>
 </div>
-<div class="clue-test-box">
+<div class="clue-test-box"><center>
     {{controller.clue.description}}
+</center>
 </div>
 <form ng-submit="controller.save()">
     <!-- <div>
@@ -35,3 +36,17 @@
 
 <!-- <h2>{{controller.clue.title}} is on:</h2>
 <output>{{favorite.color}}</output> -->
+
+
+<!--<form action="action_page.php">
+    <fieldset>
+        <legend>Personal information:</legend>
+        First name:<br>
+        <input type="text" name="firstname" value="Mickey">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname" value="Mouse">
+        <br><br>
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>-->

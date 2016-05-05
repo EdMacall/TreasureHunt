@@ -55,6 +55,8 @@ namespace TreasureHunt.Controllers {
 
         public teamadd;
 
+        public clues;
+
         constructor(private $http: ng.IHttpService,
             private $stateParams: ng.ui.IStateParamsService,
             private $state: ng.ui.IStateService) {
@@ -64,7 +66,10 @@ namespace TreasureHunt.Controllers {
                     this.hunt = response.data;
                 })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...'); });
-
+            $http.get('/api/clues')
+                .then((response) => { this.clues = response.data })
+                .catch((response) => { console.log('Whitney Houston,  we have a problem...'); });
+        
             //this.teams = [
             //    { name: 'Rat', points: 7},
             //    { name: 'Snake', points: 3},

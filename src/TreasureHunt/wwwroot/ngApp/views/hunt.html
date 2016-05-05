@@ -52,11 +52,11 @@
         </div>        
     </div>
     <div class="flex-container">
-            <h2>One Team</h2>  
-        <div class="container-row" ng-repeat="team in controller.teams">
-            <div class="flex-item">{{team.name}}</div>
-            <div class="flex-item">{{team.points}}</div>
-            <div class="flex-item">{{team.points}}</div>
+        <center><h2>Team's Clues</h2></center>  
+        <div class="container-row" ng-repeat="clue in controller.clues">
+            <div class="flex-item"><center>{{clue.title}}</center></div>
+            <div class="flex-item"><center>{{clue.description}}</center></div>
+            <div class="flex-item"><center><input type="checkbox" name="cbr"></center></div>
         </div>        
     </div>
 </div>
