@@ -62,8 +62,8 @@ namespace TreasureHunt.Controllers {
         public clues;
 
         constructor(private $http: ng.IHttpService,
-            private $stateParams: ng.ui.IStateParamsService,
-            private $state: ng.ui.IStateService) {
+                    private $stateParams: ng.ui.IStateParamsService,
+                    private $state: ng.ui.IStateService) {
             $http.get(`/api/hunts/${$stateParams['id']}`)
                 .then((response) => {
                     console.log(response);
@@ -124,6 +124,29 @@ namespace TreasureHunt.Controllers {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+    export class joinTeamController {
+        public teams;
+        public team;
+        public teamName;
+        constructor(private $http: ng.IHttpService,
+                    public $stateParams,
+                    public $state: ng.ui.IStateService) {
+            $http.get('/api/teams').then((response) => {
+                this.teams = response.data;
+            });
+        }
+
+        public joinTeam(selected) {
+            this.teamName = selected;
+            console.log(this.teamName);
+            //this.$http.get(`/api/teams/${this.$stateParams['name']}`).then((response) => {
+            //    this.team = response.data;
+            //});
+            this.$http.post("/api/teamUsers", JSON.stringify(this.teamName))
+                .then((response) => { this.$state.go(`hunt`) })
         }
     }
 

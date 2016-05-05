@@ -43,6 +43,12 @@ namespace TreasureHunt {
                 controller: TreasureHunt.Controllers.HuntsController,
                 controllerAs: 'controller'
             })
+            .state('jointeam', {
+                url: '/jointeam/:id',
+                templateUrl: '/ngApp/views/jointeam.html',
+                controller: TreasureHunt.Controllers.joinTeamController,
+                controllerAs: 'controller'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: '/ngApp/views/login.html',
@@ -129,12 +135,6 @@ namespace TreasureHunt {
                 url: '/oldteam',
                 templateUrl: '/ngApp/views/old/oldteam.html',
                 controller: TreasureHunt.Controllers.oldTeamController,
-                controllerAs: 'controller'
-            })
-            .state('jointeam', {
-                url: '/jointeam',
-                templateUrl: '/ngApp/views/jointeam.html',
-                controller: TreasureHunt.Controllers.joinTeamController,
                 controllerAs: 'controller'
             });
 
