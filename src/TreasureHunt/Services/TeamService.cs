@@ -10,15 +10,22 @@ namespace TreasureHunt.Services
 {
     public class TeamService
     {
+        private TeamUserRepository _teamuserrepository;
         private TeamRepository _teamrepository;
         private ClueRepository _cluerepository;
         private ApplicationUserRepository _userrepository;
 
-        public TeamService(TeamRepository teamrepository, ClueRepository cluerepository, ApplicationUserRepository userrepository)
+        public TeamService(TeamRepository teamrepository, ClueRepository cluerepository, ApplicationUserRepository userrepository, TeamUserRepository teamuserrepository)
         {
+            _teamuserrepository = teamuserrepository;
             _userrepository = userrepository;
             _teamrepository = teamrepository;
             _cluerepository = cluerepository;
+        }
+
+        public ICollection<TeamUser> GetTeamUsers()
+        {
+            return _teamuserrepository.List().ToList();
         }
 
         public ICollection<TeamDTO> GetTeamList()
@@ -73,18 +80,34 @@ namespace TreasureHunt.Services
         }
 
         
-        public void JoinTeam(string teamName, string currentUser)
+        public void JoinTeam(string teamName, string userName)
         {
             // ApplicationUserDTO user = _userrepository.FindUserById()
 
-            ApplicationUser user = _userrepository.FindUserByName(currentUser).FirstOrDefault();
+            ApplicationUser user = _userrepository.FindUserByName(userName).FirstOrDefault();
+            Team team = _teamrepository.FindTeamByName(teamName).FirstOrDefault();
+            if(team != null) { 
+            TeamUser newMember = new TeamUser
+                {
+                    ApplicationUser = user,
+                    ApplicationUserId = user.Id,
+                    Team = team,
+                    TeamId = team.Id
+                };
 
-            ApplicationUserDTO userdto = new ApplicationUserDTO
-            {
-                Email = user.Email,
-                UserName = user.UserName,
-                ImageURL = user.ImageURL
-            };
+                _teamuserrepository.Add(newMember);
+                _teamuserrepository.SaveChanges();
+            }
+
+            
+
+            
+            //ApplicationUserDTO userdto = new ApplicationUserDTO
+            //{
+            //    Email = user.Email,
+            //    UserName = user.UserName,
+            //    ImageURL = user.ImageURL
+            //};
         }
         
 

@@ -46,19 +46,6 @@ namespace TreasureHunt.Controllers
             return Ok(teamdto);
         }
 
-        [HttpPost]
-        public IActionResult JoinTeam([FromBody] string teamName)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
-
-            //_teamservice.JoinTeam(teamName);
-
-            return Ok();
-        }
-
         [HttpGet("{name}")]
         public IActionResult GetTeamByName([FromBody] string name)
         {

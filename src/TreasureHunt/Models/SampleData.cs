@@ -949,19 +949,19 @@ namespace TreasureHunt.Models
 
             
            
-            context.TeamUsers.AddRange(
-                new TeamUser
-                {
-                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
-                    ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
-                },
-                new TeamUser
-                {
-                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
-                    ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
-                }
-            );
-            context.SaveChanges();
+            //context.TeamUsers.AddRange(
+            //    new TeamUser
+            //    {
+            //        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+            //        ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
+            //    },
+            //    new TeamUser
+            //    {
+            //        TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
+            //        ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
+            //    }
+            //);
+            //context.SaveChanges();
             
 
             /*
