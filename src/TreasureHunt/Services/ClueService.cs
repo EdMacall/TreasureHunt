@@ -43,5 +43,10 @@ namespace TreasureHunt.Services
                 PointValue = clue.PointValue
             };
         }
+
+        public void SaveChanges()
+        {
+            _cluerepository.SaveChanges();
+        }
     }
 }

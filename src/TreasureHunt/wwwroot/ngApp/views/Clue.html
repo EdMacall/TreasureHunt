@@ -16,7 +16,7 @@
 </center>
 </div>
 <form ng-submit="controller.save()">
-    <div>
+    <!-- <div>
         <label>Name:</label>
         <input ng-model="controller.product.name" />
     </div>
@@ -25,15 +25,17 @@
     <h2>Where is {{controller.clue.title}}?</h2>
     <button ng-click="favorite.pickColor('red')">Redulan 9</button>
     <button ng-click="favorite.pickColor('green')">Greenuru</button>
-    <button ng-click="favorite.pickColor('blue')">Bluemetikus</button>
+    <button ng-click="favorite.pickColor('blue')">Bluemetikus</button> -->
     <br />
     <br />
-    <input type="text" placeholder="Enter Answer" />
+    <input type="text" ng-model="controller.playersanswer" placeholder="Enter Answer" />
     <button type="submit">Submit</button>
+    <br />
+    
 </form>
 
-<h2>{{controller.clue.title}} is on:</h2>
-<output>{{favorite.color}}</output>
+<!-- <h2>{{controller.clue.title}} is on:</h2>
+<output>{{favorite.color}}</output> -->
 
 
 <!--<form action="action_page.php">

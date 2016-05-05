@@ -46,42 +46,6 @@ namespace TreasureHunt.Controllers
             return Ok(cluedto);
         }
 
-        /*
-        // PUT: api/Clues/5
-        [HttpPut("{id}")]
-        public IActionResult PutClue(int id, [FromBody] Clue clue)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
-
-            if (id != clue.Id)
-            {
-                return HttpBadRequest();
-            }
-
-            _context.Entry(clue).State = EntityState.Modified;
-
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClueExists(id))
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
-        }
-
         // POST: api/Clues
         [HttpPost]
         public IActionResult PostClue([FromBody] Clue clue)
@@ -91,10 +55,10 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            _context.Clues.Add(clue);
+            _clueservice.Clues.Add(clue);
             try
             {
-                _context.SaveChanges();
+                _clueservice.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -111,40 +75,76 @@ namespace TreasureHunt.Controllers
             return CreatedAtRoute("GetClue", new { id = clue.Id }, clue);
         }
 
-        // DELETE: api/Clues/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteClue(int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        /*
+       // PUT: api/Clues/5
+       [HttpPut("{id}")]
+       public IActionResult PutClue(int id, [FromBody] Clue clue)
+       {
+           if (!ModelState.IsValid)
+           {
+               return HttpBadRequest(ModelState);
+           }
 
-            Clue clue = _context.Clues.Single(m => m.Id == id);
-            if (clue == null)
-            {
-                return HttpNotFound();
-            }
+           if (id != clue.Id)
+           {
+               return HttpBadRequest();
+           }
 
-            _context.Clues.Remove(clue);
-            _context.SaveChanges();
+           _context.Entry(clue).State = EntityState.Modified;
 
-            return Ok(clue);
-        }
+           try
+           {
+               _context.SaveChanges();
+           }
+           catch (DbUpdateConcurrencyException)
+           {
+               if (!ClueExists(id))
+               {
+                   return HttpNotFound();
+               }
+               else
+               {
+                   throw;
+               }
+           }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+           return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
+       }
 
-        private bool ClueExists(int id)
-        {
-            return _context.Clues.Count(e => e.Id == id) > 0;
-        }
-        */
+       // DELETE: api/Clues/5
+       [HttpDelete("{id}")]
+       public IActionResult DeleteClue(int id)
+       {
+           if (!ModelState.IsValid)
+           {
+               return HttpBadRequest(ModelState);
+           }
+
+           Clue clue = _context.Clues.Single(m => m.Id == id);
+           if (clue == null)
+           {
+               return HttpNotFound();
+           }
+
+           _context.Clues.Remove(clue);
+           _context.SaveChanges();
+
+           return Ok(clue);
+       }
+
+       protected override void Dispose(bool disposing)
+       {
+           if (disposing)
+           {
+               _context.Dispose();
+           }
+           base.Dispose(disposing);
+       }
+
+       private bool ClueExists(int id)
+       {
+           return _context.Clues.Count(e => e.Id == id) > 0;
+       }
+       */
     }
 }

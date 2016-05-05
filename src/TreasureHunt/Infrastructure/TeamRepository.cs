@@ -30,5 +30,10 @@ namespace TreasureHunt.Infrastructure
                    where t.Id == id
                    select t;
         }
+
+        public IQueryable<Team> FindTeamByName(string name)
+        {
+            return from t in _db.Teams where t.Name == name select t;
+        }
     }
 }
