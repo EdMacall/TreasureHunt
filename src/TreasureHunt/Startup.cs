@@ -75,6 +75,7 @@ namespace TreasureHunt
             services.AddScoped<TeamRepository>();
             services.AddScoped<HuntRepository>();
             services.AddScoped<ApplicationUserRepository>();
+            services.AddScoped<TeamUserRepository>();
 
             // Services
             services.AddScoped<ClueService>();
