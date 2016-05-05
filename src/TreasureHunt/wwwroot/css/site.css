@@ -1,4 +1,5 @@
 body {
+    /*background-color: #763B00;*/
 }
 
 .spacer {
@@ -44,17 +45,22 @@ div.input-group.col-md-4.center-block {
     padding:10px;
     background-color: aquamarine;	 	 
 }*/
+/*Team Leaders box and One Team*/
 .flex-container {
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: #BA6817;
     margin-right: 5px;
+    border-style: solid;
+    border-color: #4d2600;
+    border-radius: 25px;
+    opacity: .85;
 }
-
+/*behind small boxes*/
 .container-row {
     display: flex;
     flex-direction: row;
-    background-color: darkgrey;
+    background-color: #BA6817;
     margin-right: 5px;
     justify-content: space-between;
 }
@@ -63,12 +69,14 @@ div.input-group.col-md-4.center-block {
     display: flex;
     justify-content: space-between;
 }
+/*team leaders small box*/
 .flex-row {
     display: flex;
-    background-color: cornflowerblue;
+    background-color: #D9893A;
     min-height: 30px;
     width: 100%;
     margin: 2px;
+    border-radius: 25px;
 }
 
     .flex-row :first-child {
@@ -79,29 +87,36 @@ div.input-group.col-md-4.center-block {
         padding: 5px;
         text-align: right;
     }
-
+/*one team title*/
 .flex-container:last-child {
     flex: 1;
     flex-direction: column;
-    background-color: lightgrey;
-    //margin-right: 5px;
+    background-color: #BA6817;
+    
+    /*color: red;*/
+    /*margin-right: 5px;*/
 }
-
+/*behind one team*/
 .flex-container-main {
     display: flex;
-    background-color: lightgrey;
+    background-color: white;
 }
-
+/*one team small box #D9893A*/
 .flex-item {
-    background-color: cornflowerblue;
-    width: 90px;
+    background-color: #D9893A;
+    width: 300px;
     height: 30px;
     margin: 2px;
+    border-radius: 25px;
 }
+/*nothing to see*/
 .clue-test-box{
     width:1135px;
-    height:100px;
-    background-color:burlywood;
+    height:75px;
+    background-color:red;
+}
+.hunt-body{
+    background-color:red;
 }
 
 
