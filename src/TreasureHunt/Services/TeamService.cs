@@ -72,6 +72,7 @@ namespace TreasureHunt.Services
             return team;
         }
 
+        
         public void JoinTeam(string teamName, string currentUser)
         {
             // ApplicationUserDTO user = _userrepository.FindUserById()
@@ -85,6 +86,7 @@ namespace TreasureHunt.Services
                 ImageURL = user.ImageURL
             };
         }
+        
 
         public TeamDTO GetTeamByName(string name)
         {

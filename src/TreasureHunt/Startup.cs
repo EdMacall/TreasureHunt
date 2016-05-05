@@ -74,11 +74,13 @@ namespace TreasureHunt
             services.AddScoped<ClueRepository>();
             services.AddScoped<TeamRepository>();
             services.AddScoped<HuntRepository>();
+            services.AddScoped<ApplicationUserRepository>();
 
             // Services
             services.AddScoped<ClueService>();
             services.AddScoped<TeamService>();
             services.AddScoped<HuntService>();
+            services.AddScoped<ApplicationUserService>();
         }
 
         // This method gets called by the runtime.

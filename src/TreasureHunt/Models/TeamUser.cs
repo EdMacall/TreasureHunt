@@ -10,7 +10,7 @@ namespace TreasureHunt.Models
     public class TeamUser
     {
         // appropriate to have Id here?
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         // need to do something with Team or User here?
         public int TeamId { get; set; }
