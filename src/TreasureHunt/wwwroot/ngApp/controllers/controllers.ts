@@ -12,6 +12,8 @@ namespace TreasureHunt.Controllers {
 
         public playersanswer;
 
+        public result;
+
         constructor(private $http: ng.IHttpService,
                     private $stateParams: ng.ui.IStateParamsService,
                     private $state: ng.ui.IStateService) {
@@ -21,9 +23,12 @@ namespace TreasureHunt.Controllers {
         }
 
         public save(): void {
-            this.$http.post('/api/clues/answer', this.clue, this.playersanswer)
+            // this.$http.post('/api/clues/answer', this.clue, this.playersanswer)
+            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.playersanswer// , this.teamid
+            )
                 .then((response) => {
-                    this.$state.go('hunt');
+                    this.result = response.data;
+                    // this.$state.go('hunt');
                 })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
         }
@@ -120,6 +125,26 @@ namespace TreasureHunt.Controllers {
             $http.get('/api/hunts')
                 .then((response) => { this.hunts = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
+        }
+    }
+
+
+    export class joinTeamController {
+        public teams;
+        public team;
+        constructor(private $http: ng.IHttpService, public $stateParams) {
+            $http.get('/api/teams').then((response) => {
+                this.teams = response.data;
+            });
+        }
+
+        public joinTeam(selected) {
+            console.log(selected);
+            //this.$http.get(`/api/teams/${this.$stateParams['name']}`).then((response) => {
+            //    this.team = response.data;
+            //});
+            console.log(this.team);
+            this.$http.post("/api/teams", selected).then((response) => { })
         }
     }
 
@@ -372,24 +397,6 @@ namespace TreasureHunt.Controllers {
             $http.get('/api/teams')
                 .then((response) => { this.teams = response.data })
                 .catch((response) => { console.log('Whitney Houston,  we have a problem...') })
-        }
-    }
-    export class joinTeamController {
-        public teams; 
-        public team;
-        constructor(private $http: ng.IHttpService, public $stateParams) {
-            $http.get('/api/teams').then((response) => {
-                this.teams = response.data;
-            });
-        }
-
-        public joinTeam(selected) {
-            console.log(selected);
-            //this.$http.get(`/api/teams/${this.$stateParams['name']}`).then((response) => {
-            //    this.team = response.data;
-            //});
-            console.log(this.team);
-            this.$http.post("/api/teams", selected).then((response) => { })
         }
     }
 }

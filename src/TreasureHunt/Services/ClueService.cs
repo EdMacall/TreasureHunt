@@ -44,6 +44,20 @@ namespace TreasureHunt.Services
             };
         }
 
+        public bool CheckAnswer(int id, string playersanswer)
+        {
+            Clue clue = _cluerepository.List().FirstOrDefault(m => m.Id == id);
+
+            if (clue.Answer == playersanswer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void SaveChanges()
         {
             _cluerepository.SaveChanges();

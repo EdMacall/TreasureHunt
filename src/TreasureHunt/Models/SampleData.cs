@@ -946,23 +946,42 @@ namespace TreasureHunt.Models
                 context.SaveChanges();
             }
 
-
-            
-           
-            context.TeamUsers.AddRange(
-                new TeamUser
+            /*
+            public bool AddTeamUser(string teamname, string applicationusername)
+            {
+                if((context.Teams.FirstOrDefault(t => t.Name == teamname) != null) &&
+                   (userRepo.FindUserByName(applicationusername).FirstOrDefault()) &&
+                   (true))
                 {
-                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
-                    ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
-                },
-                new TeamUser
-                {
-                    TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
-                    ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
+                    new TeamUser
+                    {
+                        TeamId = context.Teams.FirstOrDefault(t => t.Name == teamname).Id,
+                        ApplicationUserId = userRepo.FindUserByName(applicationusername).FirstOrDefault().Id
+                    };
+                    return true;
                 }
-            );
-            context.SaveChanges();
-            
+                else
+                {
+                    return false;
+                }
+            }
+            */
+
+            /*
+             context.TeamUsers.AddRange(
+                 new TeamUser
+                 {
+                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Hobbits").Id,
+                     ApplicationUserId = userRepo.FindUserByName("Froddo").FirstOrDefault().Id
+                 },
+                 new TeamUser
+                 {
+                     TeamId = context.Teams.FirstOrDefault(t => t.Name == "The Elves").Id,
+                     ApplicationUserId = userRepo.FindUserByName("Legolas").FirstOrDefault().Id
+                 }
+             );
+             context.SaveChanges();
+             */
 
             /*
             if (!context.TeamUsers.Any())
