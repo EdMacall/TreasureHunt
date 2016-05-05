@@ -23,8 +23,7 @@ namespace TreasureHunt.Controllers {
         }
 
         public save(): void {
-            // this.$http.post('/api/clues/answer', this.clue, this.playersanswer)
-            this.$http.post(`/api/teams/${this.$stateParams['id']}`, this.playersanswer// , this.teamid
+            this.$http.post(`/api/clues/${this.$stateParams['id']}`, this.playersanswer// , this.teamid
             )
                 .then((response) => {
                     this.result = response.data;

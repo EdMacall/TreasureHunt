@@ -88,32 +88,21 @@ namespace TreasureHunt.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-            if(_clueservice.CheckAnswer(clueid, playersanswer))
-            {
-                return Ok(true);
-            }
-            else
-            {
-                return Ok(false);
-            }
-
-            /*
-            if (id != clue.Id)
-            {
-                return HttpBadRequest();
-            }
-            */
-
-            // _context.Entry(clue).State = EntityState.Modified;
-
             try
             {
-                // _context.SaveChanges();
+                if (_clueservice.CheckAnswer(clueid, playersanswer))
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return Ok(false);
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
                 /*
-                if (!ClueExists(id))
+                if (!ClueExists(clueid))
                 {
                     return HttpNotFound();
                 }
